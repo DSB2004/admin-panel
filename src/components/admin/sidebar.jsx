@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import NavItemDrop from '../layouts/nav/nav-item-drop'
-import NavItemLink from '../layouts/nav/nav-item-link'
-import NavItem from '../layouts/nav/nav-item'
-import NavSearch from '../layouts/nav/nav-search'
-import NavUser from '../layouts/nav/nav-user'
-import NavHead from '../layouts/nav/nav-head'
+import NavItemDrop from '../../layouts/nav/nav-item-drop'
+import NavItemLink from '../../layouts/nav/nav-item-link'
+import NavItem from '../../layouts/nav/nav-item'
+import NavSearch from '../../layouts/nav/nav-search'
+import NavUser from '../../layouts/nav/nav-user'
+import NavHead from '../../layouts/nav/nav-head'
 // import "../../style/sidebar.css"
 export default function Sidebar() {
 

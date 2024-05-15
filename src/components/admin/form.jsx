@@ -1,9 +1,9 @@
 import React from 'react'
-import Dropdown from "../layouts/form/dropdown"
-import Input from '../layouts/form/input'
-import TextArea from '../layouts/form/text-area'
-import MultiSelect from '../layouts/form/multi-select'
-import Button from '../layouts/form/button'
+import Dropdown from "../../layouts/form/dropdown"
+import Input from '../../layouts/form/input'
+import TextArea from '../../layouts/form/text-area'
+import MultiSelect from '../../layouts/form/multi-select'
+import Button from '../../layouts/form/button'
 // import Dropdown from '../../layouts/form/dropdown'
 
 export default function Form({ display, toggleDisplay }) {
