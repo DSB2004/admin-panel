@@ -1,0 +1,35 @@
+.form-pop-up {
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    height: 600px;
+    z-index: 100;
+    width: 900px;
+    overflow: hidden;
+    /* border: 2px solid rgba(0, 0, 0, 0.397); */
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    overflow-y: hidden;
+}
+
+.selection {
+    /* display: none; */
+}
+
+@media screen and (max-width:900px) {
+    .form-pop-up {
+
+        top: 0;
+        left: 0;
+        border-radius: 0px;
+        transform: translate(0%, 0%);
+        transform: translateY(00px);
+        height: 100%;
+        z-index: 100;
+        width: 100%;
+
+    }
+
+}
