@@ -1,25 +1,25 @@
-import React from 'react'
+import React from 'react';
 
-export default function MultiSelect() {
+const SelectComponent = () => {
     return (
-        <div className="form-group" data-select2-id={53}>
+        <div className="form-group" data-select2-id={29}>
             <label>Multiple</label>
             <select
                 className="select2 select2-hidden-accessible"
-                multiple=""
+                multiple
                 data-placeholder="Select a State"
                 style={{ width: "100%" }}
                 data-select2-id={7}
                 tabIndex={-1}
                 aria-hidden="true"
             >
-                <option data-select2-id={55}>Alabama</option>
-                <option data-select2-id={56}>Alaska</option>
-                <option data-select2-id={57}>California</option>
-                <option data-select2-id={58}>Delaware</option>
-                <option data-select2-id={59}>Tennessee</option>
-                <option data-select2-id={60}>Texas</option>
-                <option data-select2-id={61}>Washington</option>
+                <option data-select2-id={34}>Alabama</option>
+                <option data-select2-id={35}>Alaska</option>
+                <option data-select2-id={36}>California</option>
+                <option data-select2-id={37}>Delaware</option>
+                <option data-select2-id={38}>Tennessee</option>
+                <option data-select2-id={39}>Texas</option>
+                <option data-select2-id={40}>Washington</option>
             </select>
             <span
                 className="select2 select2-container select2-container--default select2-container--below"
@@ -40,7 +40,7 @@ export default function MultiSelect() {
                             <li
                                 className="select2-selection__choice"
                                 title="California"
-                                data-select2-id={65}
+                                data-select2-id={49}
                             >
                                 <span
                                     className="select2-selection__choice__remove"
@@ -53,7 +53,7 @@ export default function MultiSelect() {
                             <li
                                 className="select2-selection__choice"
                                 title="Tennessee"
-                                data-select2-id={66}
+                                data-select2-id={50}
                             >
                                 <span
                                     className="select2-selection__choice__remove"
@@ -84,6 +84,7 @@ export default function MultiSelect() {
                 <span className="dropdown-wrapper" aria-hidden="true" />
             </span>
         </div>
+    );
+};
 
-    )
-}
+export default SelectComponent;

@@ -1,0 +1,18 @@
+{
+    "width": [
+        400,
+        120,
+        100,
+        100,
+        100,
+        100
+    ],
+    "header": [
+        "Task Title",
+        "Assigned By",
+        "Priority",
+        "Due Date",
+        "Status",
+        "Options"
+    ]
+}

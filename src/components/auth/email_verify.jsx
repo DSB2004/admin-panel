@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Text from "../../layouts/inputs/text"
+import Button from '../../layouts/form/button';
 export default function EmailVerification() {
     const navigate = useNavigate();
     return (
@@ -17,19 +19,10 @@ export default function EmailVerification() {
                                 You forgot your password? Here you can easily retrieve a new password.
                             </p>
                             <form action="recover-password.html" method="post">
-                                <div className="input-group mb-3">
-                                    <input type="email" className="form-control" placeholder="Email" />
-                                    <div className="input-group-append">
-                                        <div className="input-group-text">
-                                            <span className="fas fa-envelope" />
-                                        </div>
-                                    </div>
-                                </div>
+                                <Text placeholder="Enter you Email" icon={<span className="fas fa-envelope" />} />
                                 <div className="row">
                                     <div className="col-12">
-                                        <button type="submit" className="btn btn-primary btn-block" onClick={() => navigate('/auth/reset-password')}>
-                                            Request new password
-                                        </button>
+                                        <Button className="btn-block" text="Request new password" />
                                     </div>
                                 </div>
                             </form>
@@ -45,7 +38,7 @@ export default function EmailVerification() {
                     </div>
                 </div>
 
-            </section>
+            </section >
         </>
     )
 }

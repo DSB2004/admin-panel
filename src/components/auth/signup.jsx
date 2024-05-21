@@ -1,5 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Text from '../../layouts/inputs/text'
+import Password from '../../layouts/inputs/password'
+import SubmitRememberMe from '../../layouts/inputs/submit_remember_me'
+import AuthNavLink from '../../layouts/nav/auth-nav-link'
 export default function SignUp() {
     return (
         <section className='auth-section'>
@@ -15,49 +19,9 @@ export default function SignUp() {
                     <div className="card-body login-card-body">
                         <p className="login-box-msg">Sign Up to start your session</p>
                         <form action="../../index3.html" method="post">
-                            <div className="input-group mb-3">
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    placeholder="Email"
-                                    fdprocessedid="tksub"
-                                />
-                                <div className="input-group-append">
-                                    <div className="input-group-text">
-                                        <span className="fas fa-envelope" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="input-group mb-3">
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    placeholder="Password"
-                                    fdprocessedid="d42sa9"
-                                />
-                                <div className="input-group-append">
-                                    <div className="input-group-text">
-                                        <span className="fas fa-lock" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-8">
-                                    <div className="icheck-primary">
-                                        <input type="checkbox" id="remember" />
-                                        <label htmlFor="remember">Remember Me</label>
-                                    </div>
-                                </div>
-                                <div className="col-4">
-                                    <button
-                                        type="submit"
-                                        className="btn btn-primary btn-block"
-                                        fdprocessedid="45vpgj"
-                                    >
-                                        Sign Up
-                                    </button>
-                                </div>
-                            </div>
+                            <Text placeholder="Email" icon={<span className="fas fa-envelope" />} />
+                            <Password placeholder="Password" />
+                            <SubmitRememberMe buttonText="Submit" />
                         </form>
                         <div className="social-auth-links text-center mb-3">
                             <p>- OR -</p>
@@ -69,12 +33,7 @@ export default function SignUp() {
                                 <i className="fab fa-google-plus mr-2" /> Sign up using Google+
                             </Link>
                         </div>
-                    
-                        <p className="mb-0">
-                            <Link to="/auth/signin" className="text-center">
-                                Continue an existing membership
-                            </Link>
-                        </p>
+                        <AuthNavLink to="/auth/signin" text="Continue an existing membership" />
                     </div>
                 </div>
             </div>

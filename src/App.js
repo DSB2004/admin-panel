@@ -1,28 +1,19 @@
+import { BrowserRouter } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 
-// import Hom from './pages/admin';
-import Admin from './pages/admin';
+const AUTH_ROUTES = lazy(() => import('./routes/auth.routes'));
+const DASHBOARD_ROUTES = lazy(() => import('./routes/dashboard.routes'));
 
-import Auth from './pages/auth';
-
-import EmailVerification from './components/auth/email_verify';
-import SignIn from './components/auth/signin';
-import SignUp from './components/auth/signup';
-import ResetPassword from './components/auth/reset_password';
-
-
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/auth" element={<Auth />} >
-          <Route path='verify' element={<EmailVerification  />} />
-          <Route path='signin' element={<SignIn />} />
-          <Route path='signup' element={<SignUp />} />
-          <Route path='reset-password' element={<ResetPassword />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+
+        <AUTH_ROUTES />
+
+        <DASHBOARD_ROUTES />
+
+      </Suspense>
     </BrowserRouter>
   );
 }

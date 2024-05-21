@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import Text from '../../layouts/inputs/text'
+import Password from '../../layouts/inputs/password'
+import SubmitRememberMe from '../../layouts/inputs/submit_remember_me'
+import AuthNavLink from '../../layouts/nav/auth-nav-link'
 export default function SignIn() {
+
+    const EMAIL_REF = useRef();
+    const PASSWORD_REF = useRef();
+    const REMEMBER_ME_REF = useRef();
+    const TYPE_REF = useRef();
+
     return (
         <section className='auth-section'>
             <div className="login-box">
@@ -15,74 +25,16 @@ export default function SignIn() {
                     <div className="card-body login-card-body">
                         <p className="login-box-msg">Sign in to continue your session</p>
                         <form>
-                            <div className="input-group mb-3">
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    placeholder="Email"
-                                    fdprocessedid="tksub"
-                                />
-                                <div className="input-group-append">
-                                    <div className="input-group-text">
-                                        <span className="fas fa-envelope" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="input-group mb-3">
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    placeholder="Password"
-                                    fdprocessedid="d42sa9"
-                                />
-                                <div className="input-group-append">
-                                    <div className="input-group-text">
-                                        <span className="fas fa-lock" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-8">
-                                    <div className="icheck-primary">
-                                        <input type="checkbox" id="remember" />
-                                        <label htmlFor="remember">Remember Me</label>
-                                    </div>
-                                </div>
-                                <div className="col-4">
-                                    <button
-                                        type="submit"
-                                        className="btn btn-primary btn-block"
-                                        fdprocessedid="45vpgj"
-                                    >
-                                        Sign In
-                                    </button>
-                                </div>
-                            </div>
+                            <Text ref={EMAIL_REF} placeholder="Email" icon={<span className="fas fa-envelope" />} />
+                            <Password ref={PASSWORD_REF} placeholder="Password" />
+                            <SubmitRememberMe ref={REMEMBER_ME_REF} />
                         </form>
-                        <div className="social-auth-links text-center mb-3">
-                            <p>- OR -</p>
-                            <Link to="/auth/signin" className="btn btn-block btn-primary">
-                                <i className="fab fa-facebook mr-2" /> Sign in using Facebook
-                            </Link>
-
-                            <Link to="/auth/signin" className="btn btn-block btn-danger">
-                                <i className="fab fa-google-plus mr-2" /> Sign in using Google+
-                            </Link>
-                        </div>
-                        <p className="mb-1">
-                            <Link to="/auth/verify" className="text-center">
-                                <a href="forgot-password.html">I forgot my password</a>
-                            </Link>
-                        </p>
-                        <p className="mb-0">
-                            <Link to="/auth/signup" className="text-center">
-                                Register a new membership
-                            </Link>
-                        </p>
+                        <AuthNavLink to="/auth/verify" text="I forget my password" />
+                        <AuthNavLink to="/auth/signup" text="Register a new membership" />
                     </div>
                 </div>
             </div>
 
-        </section>
+        </section >
     )
 }

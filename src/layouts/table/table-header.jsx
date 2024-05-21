@@ -1,15 +1,10 @@
 import React from 'react'
 
-export default function TableHeader({ text }) {
+export default function THead({ width, text }) {
     return (
         <th
-            className="sorting sorting_asc"
-            tabIndex={0}
-            aria-controls="example1"
-            rowSpan={1}
-            colSpan={1}
-            aria-sort="ascending"
-            aria-label="Rendering engine: activate to sort column descending"
+            className="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
+            style={{ width: width }}
         >
             {text}
         </th>

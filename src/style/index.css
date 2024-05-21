@@ -1,35 +1,90 @@
-.form-pop-up {
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    transform: translate(-50%, -50%);
-    height: 600px;
-    z-index: 100;
-    width: 900px;
-    overflow: hidden;
-    /* border: 2px solid rgba(0, 0, 0, 0.397); */
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
-    overflow-y: hidden;
+body {
+  margin: 0;
+  overflow: hidden
 }
 
-.selection {
-    /* display: none; */
+::-webkit-scrollbar {
+  width: 8px;
+  /* Width of vertical scrollbar */
+  height: 8px;
+  /* Height of horizontal scrollbar */
 }
 
-@media screen and (max-width:900px) {
-    .form-pop-up {
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Background of the scrollbar track */
+}
 
-        top: 0;
-        left: 0;
-        border-radius: 0px;
-        transform: translate(0%, 0%);
-        transform: translateY(00px);
-        height: 100%;
-        z-index: 100;
-        width: 100%;
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Color of the scrollbar thumb */
+  border-radius: 10px;
+  /* Rounded corners for the scrollbar thumb */
+}
 
-    }
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Color of the scrollbar thumb on hover */
+}
+
+.auth-section {
+  height: 100vh;
+  background-color: rgb(245, 245, 245);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-article {
+  width: 500px;
+}
+
+.display-center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.welcome-msg {
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: grey;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  height: 5px;
+}
+
+.table {
+  height: 70vh;
+  overflow-y: hidden;
+
+}
+
+
+.inner-wrapper {
+  height: 90vh;
+  overflow-y: scroll;
+}
+
+
+.flex-justify {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-sub-title {
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 
 }

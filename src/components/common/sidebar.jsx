@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import NavItemDrop from '../../layouts/nav/nav-item-drop'
 import NavItemLink from '../../layouts/nav/nav-item-link'
 import NavItem from '../../layouts/nav/nav-item'
@@ -17,8 +17,8 @@ export default function Sidebar() {
                 <nav className="mt-2">
                     <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <NavItemDrop text="Dashboard">
-                            <NavItemLink text="Task" to="/" />
+                        <NavItemDrop text="Admin">
+                            <NavItemLink text="Task" to="/admin/task" />
                             <NavItemLink text="User" to="/" />
                             <NavItemLink text="Resources" to="/" />
                         </NavItemDrop>
@@ -26,7 +26,12 @@ export default function Sidebar() {
                             <NavItemLink text="Link" to="/" />
                             <NavItemLink text="Docs" to="/" />
                         </NavItemDrop>
-                        <NavItem to="/" text="HR" />
+                        <NavItemDrop text="HR">
+                            <NavItemLink text="Employee" to="/hr/employee" />
+                            <NavItemLink text="Leaves" to="/hr/leaves" />
+                            <NavItemLink text="Designation" to="/hr/designation" />
+                            <NavItemLink text="Department" to="/hr/department" />
+                        </NavItemDrop>
                         <NavItem to="/" text="LogOut" />
                     </ul>
                 </nav>
