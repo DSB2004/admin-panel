@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Dropdown from "../../../layouts/form/dropdown"
 import Input from '../../../layouts/form/input'
 import TextArea from '../../../layouts/form/text-area'
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function TaskForm() {
     const navigate = useNavigate()
+    const testRef = useRef();
     return (
         <div className="card card-default">
             <div className="card-header">
@@ -38,17 +39,18 @@ export default function TaskForm() {
                 </div>
                 <div className="row">
                     <div className="col-md-6">
-                        <Dropdown label="Status" option={[]} />
+                        <Dropdown label="Status" option={[]} ref={testRef} />
                     </div>
                     <div className="col-md-6">
-                        <Dropdown label="Status" option={[]} />
+                        <Dropdown label="Priority" option={[]} />
                     </div>
                 </div>
-                <div className="row">
-                    {/* <MultiSelect /> */}
-                </div>
+             
                 <div className="flex-center">
-                    <Button text="Submit" onClick={() => console.log("Hello World")} />
+                    <Button text="Submit" onClick={() => {
+                        console.log(testRef.current.value)
+                    }}
+                    />
                 </div>
             </div>
         </div>
