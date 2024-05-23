@@ -1,8 +1,11 @@
 import React from 'react'
-import Dropdown from "../../../layouts/form/dropdown"
+// import Dropdown from "../../../layouts/form/dropdown"
+// import Dropdown from '../../../layouts/form/dropDown';
+import Dropdown from "../../../layouts/form/dropdown/index"
 import Input from '../../../layouts/form/input'
 import Button from '../../../layouts/form/button'
 import Dialog from '@mui/material/Dialog';
+import Data from "../../../assets/test.json"
 
 export default function EmployeeForm({ showModal, toggleModal }) {
     return (
@@ -83,10 +86,10 @@ export default function EmployeeForm({ showModal, toggleModal }) {
                     </div>
                     <div className="row">
                         <div className="col-md-6">
-                            <Dropdown label="Designation" option={[]} />
+                            <Dropdown label="Designation" options={Data.option} />
                         </div>
                         <div className="col-md-6">
-                            <Dropdown label="Department" option={[]} />
+                            <Dropdown label="Department" options={Data.option} />
                         </div>
                     </div>
 

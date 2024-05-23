@@ -2,12 +2,14 @@ import React, { forwardRef, useEffect, useState } from 'react';
 import style from "./style.module.css";
 import { FaCaretDown } from "react-icons/fa";
 
-const Dropdown = forwardRef(({ label, options, onChange }) => {
+const Dropdown = forwardRef(({ label, options = [], onChange }) => {
   const [showSelect, toggleSelect] = useState(false);
   const [selectedVal, setSelectedVal] = useState("Select " + label);
   const [searchVal, setSearchVal] = useState("");
   useEffect(() => {
-    onChange(selectedVal)
+    if (onChange) {
+      onChange(selectedVal)
+    }
     toggleSelect(false)
   }, [selectedVal])
   return (
@@ -30,17 +32,17 @@ const Dropdown = forwardRef(({ label, options, onChange }) => {
           <div className={style.option_wrapper}>
             {
               options.filter(option =>
-                option.toLowerCase().includes(searchVal.toLowerCase())
+                option.label.toLowerCase().includes(searchVal.toLowerCase())
               ).map((element, index) => (
                 <div
                   key={index}
                   className={style.option}
                   onClick={() => {
-                    setSelectedVal(element);
+                    setSelectedVal(element.value);
                     setSearchVal("");
                   }}
                 >
-                  {element}
+                  {element.label}
                 </div>
               ))
             }

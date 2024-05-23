@@ -5,6 +5,7 @@ const Input = forwardRef(({ type, label, placeholder }, ref) => {
         <div className="form-group">
             <label htmlFor="exampleInputEmail1">{label}</label>
             <input
+                autoComplete={true} 
                 ref={ref}
                 type={type}
                 className="form-control"
