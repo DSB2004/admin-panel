@@ -1,0 +1,43 @@
+/* style.module.css */
+
+.relative {
+    position: relative;
+    /* margin-bottom: 10px; */
+}
+
+.toggleBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+}
+
+.select_wrapper {
+    position: absolute;
+    z-index: 100;
+    width: 97.5%;
+}
+
+
+.option {
+    padding: 5px;
+}
+
+.option:hover {
+    color: white;
+    background-color: rgb(0, 102, 255);
+}
+
+.option_wrapper {
+    background-color: white;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

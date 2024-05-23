@@ -5,11 +5,11 @@ import Dashboard from "../pages/dashboard"
 
 // task 
 import TaskTable from "../components/admin/task/task-table";
-import TaskForm from "../components/admin/task/task-form";
 
 //employee
 import EmployeeTable from "../components/hr/employee/employee-table";
-import EmployeeForm from "../components/hr/employee/employee-form";
+
+
 const DASHBOARD_ROUTES = () => {
 
     return (<>
@@ -22,7 +22,7 @@ const DASHBOARD_ROUTES = () => {
                 <Route path="admin" key="admin">
                     <Route path="task">
                         <Route index element={<TaskTable />} />
-                        <Route path="add-more" element={<TaskForm />} />
+                        {/* <Route path="add-more" element={<TaskForm />} /> */}
                     </Route>
                     <Route path="user">
                         {/* to be defined */}
@@ -35,7 +35,7 @@ const DASHBOARD_ROUTES = () => {
                 <Route path="HR">
                     <Route path="employee">
                         <Route index element={<EmployeeTable />} />
-                        <Route path="add-more" element={<EmployeeForm />} />
+                        {/* <Route path="add-more" element={<EmployeeForm />} /> */}
                     </Route>
                     <Route path="leaves">
                         {/* to be defined */}

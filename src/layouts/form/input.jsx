@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { forwardRef } from 'react';
 
-export default function Input({ type, label, placeholder }) {
+const Input = forwardRef(({ type, label, placeholder }, ref) => {
     return (
-        <>
-            <div className="form-group">
-                <label htmlFor="exampleInputEmail1">{label}</label>
-                <input
-                    type={type}
-                    className="form-control"
-                    placeholder={placeholder}
-                    fdprocessedid="z92wtr"
-                />
-            </div>
-        </>
-    )
-}
+        <div className="form-group">
+            <label htmlFor="exampleInputEmail1">{label}</label>
+            <input
+                ref={ref}
+                type={type}
+                className="form-control"
+                placeholder={placeholder}
+                fdprocessedid="z92wtr"
+            />
+        </div>
+    );
+});
+
+export default Input;
