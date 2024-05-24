@@ -1,18 +1,24 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
+import AutoSuggestion from './auto_suggestion';
+const Input = forwardRef(({ type, label, placeholder, autoComplete = false }, ref) => {
+    const [value, setValue] = useState("");
 
-const Input = forwardRef(({ type, label, placeholder }, ref) => {
     return (
-        <div className="form-group">
+        <div className="form-group relative">
             <label htmlFor="exampleInputEmail1">{label}</label>
             <input
-                autoComplete={true} 
+                onChange={(e) => setValue(e.target.value)}
                 ref={ref}
                 type={type}
                 className="form-control"
                 placeholder={placeholder}
                 fdprocessedid="z92wtr"
             />
-        </div>
+            {autoComplete ? <>
+                <AutoSuggestion value={value} />
+            </> : <></>
+            }
+        </div >
     );
 });
 

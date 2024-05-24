@@ -1,6 +1,4 @@
-import React, { useState, useRef } from 'react'
-
-
+import React from 'react'
 import Input from '../../../layouts/form/input'
 import TextArea from '../../../layouts/form/text-area'
 import Button from '../../../layouts/form/button'
@@ -9,8 +7,6 @@ import MultiSelect from '../../../layouts/form/multiSelect'
 import data from "../../../assets/test.json"
 import { Dialog } from '@mui/material'
 export default function TaskForm({ showModal, toggleModal }) {
-
-
     return (
         <Dialog
             open={showModal}
@@ -39,7 +35,7 @@ export default function TaskForm({ showModal, toggleModal }) {
                     </div>
                 </div>
                 <div className="card-body">
-                    <Input label="Task Title" placeholder="Enter the task title..." type="text" />
+                    <Input label="Task Title" autoComplete={true} placeholder="Enter the task title..." type="text" />
                     <TextArea label="Description" placeholder="Enter the description..." rows={5} />
                     <div className="row">
                         <div className="col-md-6">
@@ -57,11 +53,7 @@ export default function TaskForm({ showModal, toggleModal }) {
                             <Dropdown label="Priority" options={data.option} />
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-6">
-                            <MultiSelect label="Assigned To" options={data.option} />
-                        </div>
-                    </div>
+                    <MultiSelect label="Assigned To" options={data.option} />
                     <div className="flex-center">
                         <Button text="Submit" onClick={() => {
                             // console.log(testVal)

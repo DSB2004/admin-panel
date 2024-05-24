@@ -5,7 +5,7 @@ export default function TextArea({ label, rows, placeholder }) {
         <div className="form-group">
             <label htmlFor="exampleInputEmail1">{label}</label>
             <textarea
-                autoComplete={true}
+
                 className="form-control"
                 placeholder={placeholder}
                 fdprocessedid="z92wtr"

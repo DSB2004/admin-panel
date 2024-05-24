@@ -121,6 +121,20 @@ body {
   margin: 0px 20px;
 }
 
+
+.relative {
+  position: relative;
+}
+
+.suggestion {
+  position: absolute;
+  top: 100%;
+  max-height: 100px;
+  overflow-y: auto;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
 @media screen and (max-width:500px) {
   .pagenation_div {
     margin: 20px auto;

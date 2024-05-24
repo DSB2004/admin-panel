@@ -7,6 +7,7 @@ export default function Dropdown({ label, options = [] }) {
         control: (provided) => ({
             ...provided,
             margin: '0px 0 40px 0',
+            width:"100%"
         })
     };
 
