@@ -1,27 +1,20 @@
-import React, { useState, useReducer } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../../../layouts/form/button'
 import THead from '../../../layouts/table/table-header'
 import Task from "../../../assets/task.json"
 import TaskRow from '../../../layouts/table/task-row'
 import TaskForm from './task-form'
+import Pagenation from "../../common/pagenation"
+import { useSelector } from 'react-redux'
 
 export default function TaskTable() {
-    // const TASK_STATE = useSelector((state) => state.Employee);
-    // const reducer = (state, action) => {
-    //     const { type, payload } = action;
-    //     switch (type) {
-    //         case "ADD":
-    //             const addResult = state + payload * 10;
-    //             return addResult < EMPLOYEE_STATE.content.length ? addResult : state;
-    //         case "SUB":
-    //             const subResult = state - payload * 10;
-    //             return subResult >= 0 ? subResult : state;
-    //         default:
-    //             return state;
-    //     }
-    // }
-    // const [INDEX, DISPATCH] = useReducer(reducer, 0);
+    const [INDEX, SETINDEX] = useState(0);
     const [showModal, toggleModal] = useState(false);
+    const TASK_STATE = useSelector(state => state.Task)
+
+    useEffect(() => {
+        console.log(INDEX)
+    }, [INDEX])
     return (
         <>
             <TaskForm showModal={showModal} toggleModal={toggleModal} />
@@ -39,27 +32,17 @@ export default function TaskTable() {
                                     {Task.header.map((element, index) => <THead width={Task.width[index]} text={element} key={`TABLE-HEADER-TASK-${index}`} />)}
                                 </thead>
                                 <tbody >
-                                    <TaskRow />
-                                    <TaskRow />
-                                    <TaskRow />
-                                    <TaskRow />
-                                    <TaskRow />
-                                    <TaskRow />
-                                    <TaskRow />
-                                    <TaskRow />
-                                    <TaskRow />
+                                    {
+                                        TASK_STATE.content.slice(INDEX, INDEX + 10).map(
+                                            (element, index) => {
+                                                return <TaskRow key={index} content={element} />
+                                            }
+                                        )
+                                    }
                                 </tbody>
                             </table>
                         </div>
-                        <div className="btn-group flex-justify">
-                            <button type="button" className="btn btn-default" fdprocessedid="mqprk">
-                                Previous Page
-                            </button>
-
-                            <button type="button" className="btn btn-default" fdprocessedid="m7wuie">
-                                Next Page
-                            </button>
-                        </div>
+                        <Pagenation changeIndex={SETINDEX} STATE={TASK_STATE.content} />
                     </div>
                 </div>
             </div>

@@ -10,6 +10,9 @@ export default function Pagenation({ changeIndex, STATE }) {
             case "SUB":
                 const subResult = state - payload * 10;
                 return subResult >= 0 ? subResult : state;
+            case "SET":
+                const setResult = payload * 10;
+                return setResult;
             default:
                 return state;
         }
@@ -39,7 +42,7 @@ export default function Pagenation({ changeIndex, STATE }) {
                         >
                             ......
                         </PageBtn>
-                        <PageBtn onClick={() => DISPATCH({ type: "ADD", payload: STATE.length })}
+                        <PageBtn onClick={() => DISPATCH({ type: "SET", payload: Math.floor(STATE.length / 10) })}
                         >
                             {Math.floor(STATE.length / 10) + 1}
                         </PageBtn>
