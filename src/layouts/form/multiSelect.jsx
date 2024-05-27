@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Select from 'react-select';
-export default function MultiSelect({ label, options = [] }) {
+const MultiSelect = forwardRef(({ label, options = [] }, ref) => {
+
 
     const customStyles = {
         control: (provided) => ({
@@ -12,9 +13,11 @@ export default function MultiSelect({ label, options = [] }) {
     return (
         <>
             <label htmlFor="exampleInputEmail1">{label}</label>
-            <Select options={options} styles={customStyles} isMulti />
+            <Select options={options} styles={customStyles} isMulti ref={ref} />
         </>
     )
 
 
-}
+})
+
+export default MultiSelect;

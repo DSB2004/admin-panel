@@ -17,20 +17,16 @@ export default function Sidebar() {
                 <nav className="mt-2">
                     <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <NavItemDrop text="Admin">
-                            <NavItemLink text="Task" to="/admin/task" />
-                            <NavItemLink text="User" to="/" />
-                            <NavItemLink text="Resources" to="/" />
-                        </NavItemDrop>
-                        <NavItemDrop text="Credentials">
-                            <NavItemLink text="Link" to="/" />
-                            <NavItemLink text="Docs" to="/" />
-                        </NavItemDrop>
+                        <NavItem text="Task" to="/task" />
+                        <NavItem text="Resources" to="/resources" />
                         <NavItemDrop text="HR">
                             <NavItemLink text="Employee" to="/hr/employee" />
                             <NavItemLink text="Leaves" to="/hr/leaves" />
                             <NavItemLink text="Designation" to="/hr/designation" />
                             <NavItemLink text="Department" to="/hr/department" />
+                        </NavItemDrop>
+                        <NavItemDrop text="Settings">
+                            <NavItemLink text="Credentials" to="/settings/credentials" />
                         </NavItemDrop>
                         <NavItem to="/" text="LogOut" />
                     </ul>

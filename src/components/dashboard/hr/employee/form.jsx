@@ -1,13 +1,13 @@
-import React from 'react'
-// import Dropdown from "../../../layouts/form/dropdown"
-// import Dropdown from '../../../layouts/form/dropDown';
-import Dropdown from "../../../layouts/form/dropdown/index"
-import Input from '../../../layouts/form/input'
-import Button from '../../../layouts/form/button'
+import React, { useRef, useState } from 'react'
+import Dropdown from "../../../../layouts/form/dropdown/index"
+import Input from '../../../../layouts/form/input'
+import Button from '../../../../layouts/form/button'
 import Dialog from '@mui/material/Dialog';
-import Data from "../../../assets/test.json"
+import Data from "../../../../assets/test.json"
 
-export default function EmployeeForm({ showModal, toggleModal }) {
+
+export default function Form({ showModal, toggleModal }) {
+    const [singleSelect, changeSelect] = useState();
     return (
         <Dialog
             open={showModal}
@@ -86,7 +86,7 @@ export default function EmployeeForm({ showModal, toggleModal }) {
                     </div>
                     <div className="row">
                         <div className="col-md-6">
-                            <Dropdown label="Designation" options={Data.option} />
+                            <Dropdown label="Designation" options={Data.option} onChange={changeSelect} />
                         </div>
                         <div className="col-md-6">
                             <Dropdown label="Department" options={Data.option} />
@@ -94,7 +94,7 @@ export default function EmployeeForm({ showModal, toggleModal }) {
                     </div>
 
                     <div className="flex-center">
-                        <Button text="Submit" onClick={() => console.log("Hello World")} />
+                        <Button text="Submit" onClick={() => console.log(singleSelect)} />
                     </div>
                 </div >
             </div >

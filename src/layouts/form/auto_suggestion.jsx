@@ -3,7 +3,9 @@ import React, { useEffect, useDeferredValue } from 'react'
 export default function AutoSuggestion({ value }) {
     useEffect(() => {
         const Event = setTimeout(() => {
-            console.log("API: ", value);
+            if (value !== "") {
+                console.log("API Called", value);
+            }
         }, 200)
         return () => clearTimeout(Event);
     }

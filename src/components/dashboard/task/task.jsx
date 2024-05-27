@@ -3,21 +3,17 @@ import Button from '../../../layouts/form/button'
 import THead from '../../../layouts/table/table-header'
 import Task from "../../../assets/task.json"
 import TaskRow from '../../../layouts/table/task-row'
-import TaskForm from './task-form'
+import Form from './form'
 import Pagenation from "../../common/pagenation"
 import { useSelector } from 'react-redux'
 
-export default function TaskTable() {
+export default function TASK() {
     const [INDEX, SETINDEX] = useState(0);
     const [showModal, toggleModal] = useState(false);
     const TASK_STATE = useSelector(state => state.Task)
-
-    useEffect(() => {
-        console.log(INDEX)
-    }, [INDEX])
     return (
         <>
-            <TaskForm showModal={showModal} toggleModal={toggleModal} />
+            <Form showModal={showModal} toggleModal={toggleModal} />
             <div className="card">
                 <div className="card-header">
                     <div className="card-tools">

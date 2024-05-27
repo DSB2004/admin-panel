@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
-import Button from '../../../layouts/form/button'
-import THead from '../../../layouts/table/table-header'
-import EmployeeRow from '../../../layouts/table/employee-row'
-import Employee from "../../../assets/employee.json"
-import EmployeeForm from './employee-form'
-import { useSelector } from 'react-redux'
-import Pagenation from '../../common/pagenation'
 
-export default function EmployeeTable() {
+import Button from '../../../../layouts/form/button'
+import THead from '../../../../layouts/table/table-header'
+import EmployeeRow from '../../../../layouts/table/employee-row'
+import Employee from "../../../../assets/employee.json"
+import Form from './form'
+import { useSelector } from 'react-redux'
+import Pagenation from '../../../common/pagenation'
+
+export default function EMPLOYEE() {
     const EMPLOYEE_STATE = useSelector((state) => state.Employee);
     const [INDEX, TOGGLE_INDEX] = useState(0);
     const [showModal, toggleModal] = useState(false);
     return (
         <>
-            <EmployeeForm showModal={showModal} toggleModal={toggleModal} />
+            <Form showModal={showModal} toggleModal={toggleModal} />
             <div className="card">
                 <div className="card-header">
                     <div className="card-tools">

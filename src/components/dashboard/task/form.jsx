@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Input from '../../../layouts/form/input'
 import TextArea from '../../../layouts/form/text-area'
 import Button from '../../../layouts/form/button'
@@ -6,7 +6,9 @@ import Dropdown from '../../../layouts/form/dropDown'
 import MultiSelect from '../../../layouts/form/multiSelect'
 import data from "../../../assets/test.json"
 import { Dialog } from '@mui/material'
-export default function TaskForm({ showModal, toggleModal }) {
+export default function Form({ showModal, toggleModal }) {
+    const singleSelect = useRef();
+    const multiSelect = useRef();
     return (
         <Dialog
             open={showModal}
@@ -47,16 +49,17 @@ export default function TaskForm({ showModal, toggleModal }) {
                     </div>
                     <div className="row">
                         <div className="col-md-6">
-                            <Dropdown label="Status" options={data.option} />
+                            <Dropdown label="Status" options={data.option} ref={singleSelect} />
                         </div>
                         <div className="col-md-6">
                             <Dropdown label="Priority" options={data.option} />
                         </div>
                     </div>
-                    <MultiSelect label="Assigned To" options={data.option} />
+                    <MultiSelect label="Assigned To" options={data.option} ref={multiSelect} />
                     <div className="flex-center">
                         <Button text="Submit" onClick={() => {
-                            // console.log(testVal)
+                            console.log(singleSelect.current.getValue())
+                            console.log(multiSelect.current.getValue())
                         }}
                         />
                     </div>
