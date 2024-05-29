@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import Input from '../../../layouts/form/input'
 import TextArea from '../../../layouts/form/text-area'
 import Button from '../../../layouts/form/button'
-import Dropdown from '../../../layouts/form/dropDown'
+import Dropdown from '../../../layouts/form/dropdown'
 import MultiSelect from '../../../layouts/form/multiSelect'
 import data from "../../../assets/test.json"
 import { Dialog } from '@mui/material'
