@@ -21,6 +21,40 @@
             "label": "Option 5"
         }
     ],
+    "campaign": [
+        {
+            "id": 1,
+            "campaign_name": "Campaign 1",
+            "Payout": "$50",
+            "Advertiser": "Advertiser A",
+            "Status": "Active",
+            "Description": "This is the description for Campaign 1. It provides details about the campaign goals, target audience, and objectives."
+        },
+        {
+            "id": 2,
+            "campaign_name": "Campaign 2",
+            "Payout": "$100",
+            "Advertiser": "Advertiser B",
+            "Status": "Paused",
+            "Description": "Campaign 2 aims to promote a new product launch. It targets young adults aged 18-30 who are interested in technology."
+        },
+        {
+            "id": 3,
+            "campaign_name": "Campaign 3",
+            "Payout": "$75",
+            "Advertiser": "Advertiser C",
+            "Status": "Completed",
+            "Description": "This campaign focused on increasing brand awareness through social media marketing. It included influencer collaborations and engaging content."
+        },
+        {
+            "id": 4,
+            "campaign_name": "Campaign 4",
+            "Payout": "$120",
+            "Advertiser": "Advertiser D",
+            "Status": "Active",
+            "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
+        }
+    ],
     "employee": [
         {
             "emp_id": "E001",

@@ -135,6 +135,26 @@ body {
   background-color: #f1f1f1;
 }
 
+.alert-message {
+  width: 100%;
+  text-align: center;
+  height: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.loader {
+  animation: spin 1s linear infinite;
+}
+
 @media screen and (max-width:500px) {
   .pagenation_div {
     margin: 20px auto;

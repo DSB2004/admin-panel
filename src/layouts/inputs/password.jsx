@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 
-export default function Password({ placeholder, ref }) {
+const Password = forwardRef(({ placeholder }, ref) => {
     return (
         <div className="input-group mb-3">
             <input
@@ -17,4 +17,8 @@ export default function Password({ placeholder, ref }) {
             </div>
         </div>
     )
-}
+})
+
+export default Password;
+
+

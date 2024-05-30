@@ -1,10 +1,10 @@
 import axios from "axios";
-import { BACKEND_URL, API_KEY } from "../config/index.config";
+import { AWS_URL, API_KEY } from "../config/index.config";
 
 
 
-const AUTH_API = axios.create(BACKEND_URL + '/login', {
-
+const AUTH_API = axios.create({
+    baseURL: AWS_URL + "/log_reg",
     headers: {
         'x-api-key': API_KEY,
     }

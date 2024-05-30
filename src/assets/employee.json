@@ -16,5 +16,107 @@
         "Reporting To",
         "Status",
         "Action"
-    ]
+    ],
+    "gender": [
+        {
+            "label": "Male",
+            "value": "Male"
+        },
+        {
+            "label": "Female",
+            "value": "Female"
+        },
+        {
+            "label": "Others",
+            "value": "Others"
+        }
+    ],
+    "country": [
+        "India"
+    ],
+    "city": [
+        "Kolkata",
+        "New Delhi"
+    ],
+    "designation": [
+        {
+            "value": "Designation 1",
+            "label": "Designation 1"
+        },
+        {
+            "value": "Designation 2",
+            "label": "Designation 2"
+        },
+        {
+            "value": "Designation 3",
+            "label": "Designation 3"
+        },
+        {
+            "value": "Designation 4",
+            "label": "Designation 4"
+        },
+        {
+            "value": "Designation 5",
+            "label": "Designation 5"
+        },
+        {
+            "value": "Designation 6",
+            "label": "Designation 6"
+        }
+    ],
+    "department": [
+        {
+            "value": "Department 1",
+            "label": "Department 1"
+        },
+        {
+            "value": "Department 2",
+            "label": "Department 2"
+        },
+        {
+            "value": "Department 3",
+            "label": "Department 3"
+        },
+        {
+            "value": "Department 4",
+            "label": "Department 4"
+        },
+        {
+            "value": "Department 5",
+            "label": "Department 5"
+        },
+        {
+            "value": "Department 6",
+            "label": "Department 6"
+        }
+    ],
+    "test": {
+        "employee_name": "John Doe",
+        "employee_id": "EMP12345",
+        "employee_email": "john.doe@example.com",
+        "employee_password": "Password@123",
+        "employee_company_id": "COMP67890",
+        "employee_designation": "Software Engineer",
+        "employee_department": "Engineering",
+        "employee_privation_period": "6 months",
+        "employee_phone_no": "+1234567890",
+        "employee_whatsapp": "+1234567890",
+        "employee_linkedin": "https://www.linkedin.com/in/johndoe",
+        "employee_skype": "john.doe.skype",
+        "employee_personal_email": "john.doe.personal@example.com",
+        "emergency_contact_name": "Jane Doe",
+        "emergency_contact_number": "+0987654321",
+        "permanent_address1": "123 Main St",
+        "permanent_address2": "Apt 4B",
+        "personal_address1": "123 Main St",
+        "personal_address2": "Apt 4B",
+        "permanent_pincode": "123456",
+        "personal_pincode": "123456",
+        "permanent_city": "New York",
+        "personal_city": "New York",
+        "permanent_country": "USA",
+        "personal_country": "USA",
+        "employee_gender": "Male",
+        "employee_martial_status": "Single"
+    }
 }

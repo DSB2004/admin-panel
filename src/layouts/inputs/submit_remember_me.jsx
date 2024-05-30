@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import Button from '../form/button';
 
-const SubmitRememberMe = forwardRef((props, ref) => {
+const SubmitRememberMe = forwardRef(({ onClick }, ref) => {
     return (
         <div className="row">
             <div className="col-8">
@@ -11,7 +11,7 @@ const SubmitRememberMe = forwardRef((props, ref) => {
                 </div>
             </div>
             <div className="col-4">
-                <Button text="Submit" />
+                <Button text="Submit" onClick={() => { if (onClick) { onClick() } }} />
             </div>
         </div>
     );
