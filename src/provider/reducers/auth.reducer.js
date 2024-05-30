@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import AUTH_API from "../../api/auth.api";
 import SetCredentials from "../../utils/set_credentials.util";
-
 export const HANDLE_LOGIN = createAsyncThunk("handle-login", async (content) => {
     const response = await AUTH_API.post("/login", content);
-    SetCredentials(response.data.body)
+
+    await SetCredentials(response.data.body)
+
     return response.data;
 });
 
@@ -34,7 +35,6 @@ const AUTH_REDUCER = createSlice({
         });
         builder.addCase(HANDLE_LOGIN.fulfilled, (state, action) => {
             state.loading = false;
-
         });
         builder.addCase(HANDLE_LOGIN.rejected, (state) => {
             state.loading = false;

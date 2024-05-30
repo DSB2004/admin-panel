@@ -1,6 +1,7 @@
-const GetCredentials = () => {
-    const loginid = localStorage.getItem('login_id');
-    const admpnlid = localStorage.getItem('admpnlId');
+import decryptData from "./decrypt_data.util"
+const GetCredentials = async () => {
+    const loginid = await decryptData(localStorage.getItem('login_id'));
+    const admpnlid = await decryptData(localStorage.getItem('admpnlId'));
     return { loginid, admpnlid };
 };
 

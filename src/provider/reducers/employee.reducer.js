@@ -5,8 +5,14 @@ import EMPLOYEE_API from "../../api/employee.api";
 
 
 export const CREATE_EMPLOYEE = createAsyncThunk("create employee", async (content) => {
-    // const response =
-    console.log("CREATE EMPLOYEE:", content)
+    const loginin = content.employee_company_id;
+    const adminlid = content.created_by;
+    // const res = await EMPLOYEE_API.post("/create", content, { headers: {
+    //     'panel id':
+    // } })
+
+    console.log("API CALLED")
+    console.log(res.data)
 })
 
 
@@ -18,7 +24,7 @@ const Employee = createSlice({
     },
     reducers: {
         getEmployee: (state, action) => {
-            // Define your reducer logic here
+
         }
     }
     , extraReducers: (builder) => {

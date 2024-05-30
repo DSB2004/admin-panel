@@ -8,10 +8,13 @@ import { useNavigate } from 'react-router-dom'
 export default function Dashboard() {
     const navigate = useNavigate()
     useEffect(() => {
-        const data = GetCredentials();
-        if (!data.admpnlid || !data.loginid) {
-            navigate("/auth/signin")
+        const handleRender = async () => {
+            const data = await GetCredentials();
+            if (!data.admpnlid || !data.loginid) {
+                navigate("/auth/signin")
+            }
         }
+        handleRender()
     }, [])
     return (
         <>

@@ -29,6 +29,7 @@ export default function SignIn() {
             remember_user: REMEMBER_ME_REF.current.checked
         }
         const response = await dispatch(HANDLE_LOGIN(data)).unwrap();
+
         if (response.statusCode === 200) {
             navigate("/")
         }

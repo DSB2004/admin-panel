@@ -1,6 +1,6 @@
 
 import { ENCRYPT_KEY } from "../config/index.config";
-export const decryptData = async (encryptedText) => {
+const decryptData = async (encryptedText) => {
     const decodedText = atob(encryptedText); // Decode Base64
     let result = '';
     for (let i = 0; i < decodedText.length; i++) {
@@ -9,3 +9,4 @@ export const decryptData = async (encryptedText) => {
     }
     return result;
 };
+export default decryptData;
