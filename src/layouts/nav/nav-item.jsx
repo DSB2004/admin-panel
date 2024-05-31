@@ -1,8 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-export default function NavItem({ to, text }) {
+export default function NavItem({ to, text, onClick }) {
     return (
-        <li className="nav-item">
+        <li className="nav-item"
+            onClick={() => {
+                if (onClick) {
+                    onClick();
+                }
+            }}
+        >
+
             <Link
                 to={to}
                 className="nav-link"

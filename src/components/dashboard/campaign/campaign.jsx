@@ -3,7 +3,7 @@ import Button from '../../../layouts/form/button'
 import THead from '../../../layouts/table/table-header'
 import Campaign from "../../../assets/campaign.json"
 import CampaignRow from '../../../layouts/table/campaign-row'
-import Pagenation from "../../common/pagenation"
+import Pagenation from '../../../layouts/table/pagenation'
 import { useSelector } from 'react-redux'
 
 import CreateForm from './create-form'
@@ -33,7 +33,7 @@ export default function TASK() {
     const [STATE, DISPATCH] = useReducer(reducer, { id: null, form: null })
     const CAMPAIGN_STATE = useSelector(state => state.Campaign);
 
-  
+
 
     return (
         <>
@@ -44,34 +44,78 @@ export default function TASK() {
             <ViewCampaign showModal={STATE.form === "VIEW"} id={STATE.id} DISPATCH={DISPATCH} />
 
             <div className="card">
+
                 <div className="card-header">
+                    <h3 className="card-title">Campaign Table</h3>
                     <div className="card-tools">
-                        <Button text="Add More Campaign" className="btn-sm"
-                            onClick={() => DISPATCH({ type: "ADD" })}
-                        />
+                        <Button text="Add  Campaign" className="btn-sm" onClick={() => DISPATCH({ type: "ADD" })} />
                     </div>
                 </div>
-                <div className="card-body">
-                    <div id="jsGrid1" className="jsgrid" >
-                        <div className="jsgrid-grid-body scrollbar-hidden">
-                            <table className="jsgrid-table table" >
-                                <thead>
-                                    {Campaign.header.map((element, index) => <THead width={Campaign.width[index]} text={element} key={`TABLE-HEADER-TASK-${index}`} />)}
-                                </thead>
-                                <tbody >
-                                    {
-                                        CAMPAIGN_STATE.content.slice(INDEX, INDEX + 10).map(
-                                            element => {
-                                                return <CampaignRow DISPATCH={DISPATCH} key={element.id} content={element} />
-                                            }
-                                        )
-                                    }
-                                </tbody>
-                            </table>
+
+                <div className="card-body table-scroll">
+                    <div id="example2_wrapper" className="dataTables_wrapper dt-bootstrap4">
+
+                        <div className="row">
+                            <div className="col-sm-12">
+                                <table id="example2" className="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+                                    <thead>
+                                        {
+                                            Campaign.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)
+                                        }
+                                    </thead>
+                                    <tbody>
+
+
+                                        {
+                                            CAMPAIGN_STATE.content.slice(INDEX, INDEX + 10).map((element, index) => {
+                                                if (index % 2 === 0) {
+                                                    return (
+                                                        <>
+                                                            <tr className="odd">
+                                                                <td className="sorting_1 dtr-control" tabIndex={0}>
+                                                                    {element.campaign_name}</td>
+                                                                <td>{element.Payout}</td>
+                                                                <td>{element.Advertiser}</td>
+                                                                <td>{element.Status}</td>
+                                                                {/* <td>{element.Description}</td> */}
+
+                                                            </tr>
+                                                        </>)
+                                                }
+                                                else {
+                                                    return (
+                                                        <>
+                                                            <tr className="odd">
+                                                                <td className="sorting_1 dtr-control" tabIndex={0}>
+                                                                    {element.campaign_name}</td>
+                                                                <td>{element.Payout}</td>
+                                                                <td>{element.Advertiser}</td>
+                                                                <td>{element.Status}</td>
+                                                                {/* <td>{element.Description}</td> */}
+
+                                                            </tr>
+                                                        </>)
+                                                }
+                                            })
+                                        }
+
+
+
+                                    </tbody>
+                                    <tfoot>
+                                        {
+                                            Campaign.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)
+                                        }
+                                    </tfoot>
+                                </table>
+
+                            </div>
                         </div>
-                        <Pagenation changeIndex={SETINDEX} STATE={CAMPAIGN_STATE.content} />
                     </div>
                 </div>
+
+                <Pagenation STATE_CONTENT={CAMPAIGN_STATE.content} TOGGLE_INDEX={SETINDEX} />
+
             </div >
         </>
     )

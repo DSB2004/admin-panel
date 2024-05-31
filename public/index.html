@@ -27,41 +27,45 @@
     <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
- 
+    <!-- summernote -->
     <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 
     <link rel="stylesheet" href="/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
     <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
 
     <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
- 
-    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    
 
-    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
+    <style type="text/css">
+      .App {
+        text-align: unset !important;
+      }
+      /* .dataTables_empty {
+        display: none;
+      } */
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
   </body>
 
 
-  <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="../../plugins/jszip/jszip.min.js"></script>
-  <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-  
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
@@ -75,38 +79,58 @@
 <script src="/plugins/daterangepicker/daterangepicker.js"></script>
 <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 
-<script src="/plugins/jsgrid/demos/db.js"></script>
-<script src="/plugins/jsgrid/jsgrid.min.js"></script>
+
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
 
 
 <script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <script src="/plugins/summernote/summernote-bs4.min.js"></script>
 <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
+<script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
 
 <script src="/plugins/select2/js/select2.full.min.js"></script>
 
 <script src="/dist/js/adminlte.js"></script>
-<script src="/dist/js/demo.js"></script>
+{% comment %} <script src="/dist/js/demo.js"></script> {% endcomment %}
+
+
+<!-- <script src="/dist/js/pages/dashboard.js"></script> -->
 
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+  $(document).ready(function() {
+    $('.select2').select2()
+
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+
+  $("#example1").DataTable({
+    "responsive": true, "lengthChange": false, "autoWidth": false,
+  }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+
+  $('#example2').DataTable({
+    "paging": true,
+    "lengthChange": false,
+    "searching": false,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false,
+    "responsive": true,
   });
+  
+ 
+  
+});
+
 </script>
 
 
 </html>
-

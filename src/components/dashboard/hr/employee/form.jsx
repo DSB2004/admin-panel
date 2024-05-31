@@ -136,7 +136,7 @@ export default function Form({ showModal, toggleModal }) {
     }
 
 
-    const handleSumbit = async () => {
+    const handleSubmit = async () => {
         const employee_data = {
             name: await encryptData(employee_name.current.value),
             email: await encryptData(employee_email.current.value),
@@ -312,15 +312,14 @@ export default function Form({ showModal, toggleModal }) {
                         </div>
                     </div>
 
-
-                    {/* <Checkbox placeholder="Add Test Value" value={testrun} onChange={toggleTest} /> */}
-
-                    <input type="checkbox" onChange={runtest} />
-
+                    {DEV_MODE ? <>
+                        <input type="checkbox" onChange={runtest} />
+                    </> : <></>
+                    }
 
 
                     <div className="flex-center">
-                        <Button text="Submit" onClick={() => handleSumbit()} />
+                        <Button text="Submit" onClick={() => handleSubmit()} />
                     </div>
                 </div>
             </div>

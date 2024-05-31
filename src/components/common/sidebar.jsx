@@ -5,6 +5,7 @@ import NavItem from '../../layouts/nav/nav-item'
 import NavSearch from '../../layouts/nav/nav-search'
 import NavUser from '../../layouts/nav/nav-user'
 import NavHead from '../../layouts/nav/nav-head'
+import RemoveCredentials from '../../utils/remove_credentials'
 // import "../../style/sidebar.css"
 export default function Sidebar() {
 
@@ -28,7 +29,7 @@ export default function Sidebar() {
                         <NavItemDrop text="Settings">
                             <NavItemLink text="Credentials" to="/settings/credentials" />
                         </NavItemDrop>
-                        <NavItem to="/" text="LogOut" />
+                        <NavItem text="LogOut" onClick={() => { RemoveCredentials() }} />
                     </ul>
                 </nav>
             </div>

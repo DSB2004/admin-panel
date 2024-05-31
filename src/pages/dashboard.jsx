@@ -14,7 +14,7 @@ export default function Dashboard() {
                 navigate("/auth/signin")
             }
         }
-        // handleRender()
+        handleRender()
     }, [])
     return (
         <>

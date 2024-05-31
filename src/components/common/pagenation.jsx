@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 import PageBtn from '../../layouts/table/page_btn'
-export default function Pagenation({ changeIndex, STATE }) {
+export default function Pagenation123({ changeIndex, STATE }) {
     const reducer = (state, action) => {
         const { type, payload } = action;
         switch (type) {
