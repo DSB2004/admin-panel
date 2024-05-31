@@ -3,9 +3,7 @@ import AUTH_API from "../../api/auth.api";
 import SetCredentials from "../../utils/set_credentials.util";
 export const HANDLE_LOGIN = createAsyncThunk("handle-login", async (content) => {
     const response = await AUTH_API.post("/login", content);
-
     await SetCredentials(response.data.body)
-
     return response.data;
 });
 
