@@ -80,11 +80,11 @@ export default function EMPLOYEE() {
 
 
                                     </tbody>
-                                    <tfoot>
+                                    {/* <tfoot>
                                         {
                                             Employee.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)
                                         }
-                                    </tfoot>
+                                    </tfoot> */}
                                 </table>
 
                             </div>

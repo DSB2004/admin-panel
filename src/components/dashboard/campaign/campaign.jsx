@@ -102,11 +102,11 @@ export default function TASK() {
 
 
                                     </tbody>
-                                    <tfoot>
+                                    {/* <tfoot>
                                         {
                                             Campaign.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)
                                         }
-                                    </tfoot>
+                                    </tfoot> */}
                                 </table>
 
                             </div>

@@ -58,18 +58,21 @@ export default function Form({ showModal, toggleModal }) {
             personal_pincode.current.value = permanent_pincode.current.value;
             personal_city.current.value = permanent_city.current.value;
             personal_country.current.value = permanent_country.current.value;
+            personal_state.current.value = permanent_state.current.value
         } else {
             personal_address1.current.value = '';
             personal_address2.current.value = '';
             personal_pincode.current.value = '';
             personal_city.current.value = '';
             personal_country.current.value = '';
+            personal_state.current.value = '';
         }
         personal_address1.current.disabled = sameAddress.current.checked;
         personal_address2.current.disabled = sameAddress.current.checked;
         personal_pincode.current.disabled = sameAddress.current.checked;
         personal_city.current.disabled = sameAddress.current.checked;
         personal_country.current.disabled = sameAddress.current.checked;
+        personal_state.current.disabled = sameAddress.current.checked;
     }
 
     const runtest = (e) => {
@@ -135,38 +138,84 @@ export default function Form({ showModal, toggleModal }) {
         }
     }
 
-
+    // console.log(DEV_MODE)
     const handleSubmit = async () => {
+        console.log({
+            name: employee_name.current.value,
+            email: employee_email.current.value,
+            password: employee_password.current.value,
+
+            address: permanent_address1.current.value,
+            address2: permanent_address2.current.value,
+            pin: permanent_pincode.current.value,
+            city_id: permanent_city.current.value,
+            state_id: permanent_state.current.value,
+            country_id: permanent_country.current.value,
+
+            PEaddress: personal_address1.current.value,
+            PEaddress2: personal_address2.current.value,
+            PEpin: personal_pincode.current.value,
+            PEcountry_id: personal_country.current.value,
+            PEcity_id: personal_city.current.value,
+            PEstate_id: personal_state.current.value,
+
+            company_id: GetCredentials().admpnlId,
+
+            gender: employee_gender.current.getValue()[0].value,
+            marital_status: employee_marital_status.current.value,
+
+            phone_no: employee_phone_no.current.value,
+            whatsapp: employee_whatsapp.current.value,
+            linkedin: employee_linkedin.current.value,
+            skype: employee_skype.current.value,
+            personal_email: employee_personal_email.current.value,
+
+            Econ_per_name: emergency_contact_name.current.value,
+            Econ_per_number: emergency_contact_number.current.value,
+
+            designation_id: employee_designation.current.getValue()[0].value,
+            deparment_id: employee_department.current.getValue()[0].value,
+
+            privation_period: employee_privation_period.current.value
+        });
+
         const employee_data = {
+
             name: await encryptData(employee_name.current.value),
             email: await encryptData(employee_email.current.value),
             password: await encryptData(employee_password.current.value),
-            employee_company_id: (await GetCredentials()).loginid,
-            created_by: (await GetCredentials()).admpnlid,
+
             address: await encryptData(permanent_address1.current.value),
             address2: await encryptData(permanent_address2.current.value),
             pin: await encryptData(permanent_pincode.current.value),
-            status: await encryptData(employee_status.current.value),
             city_id: await encryptData(permanent_city.current.value),
             state_id: await encryptData(permanent_state.current.value),
-            country: await encryptData(permanent_country.current.value),
+            country_id: await encryptData(permanent_country.current.value),
+
             PEaddress: await encryptData(personal_address1.current.value),
             PEaddress2: await encryptData(personal_address2.current.value),
             PEpin: await encryptData(personal_pincode.current.value),
             PEcountry_id: await encryptData(personal_country.current.value),
             PEcity_id: await encryptData(personal_city.current.value),
             PEstate_id: await encryptData(personal_state.current.value),
-            gender: await encryptData(employee_gender.current.value),
+
+            company_id: GetCredentials().admpnlId,
+
+            gender: await encryptData(employee_gender.current.getValue()[0].value),
             marital_status: await encryptData(employee_marital_status.current.value),
+
             phone_no: await encryptData(employee_phone_no.current.value),
             whatsapp: await encryptData(employee_whatsapp.current.value),
             linkedin: await encryptData(employee_linkedin.current.value),
             skype: await encryptData(employee_skype.current.value),
             personal_email: await encryptData(employee_personal_email.current.value),
+
             Econ_per_name: await encryptData(emergency_contact_name.current.value),
             Econ_per_number: await encryptData(emergency_contact_number.current.value),
-            designation_id: await encryptData(employee_designation.current.value),
-            deparment_id: await encryptData(employee_department.current.value),
+
+            designation_id: await encryptData(employee_designation.current.getValue()[0].value),
+            deparment_id: await encryptData(employee_department.current.getValue()[0].value),
+
             privation_period: await encryptData(employee_privation_period.current.value)
         }
         dispatch(CREATE_EMPLOYEE(employee_data))
@@ -312,7 +361,7 @@ export default function Form({ showModal, toggleModal }) {
                         </div>
                     </div>
 
-                    {DEV_MODE ? <>
+                    {(DEV_MODE === 'true') ? <>
                         <input type="checkbox" onChange={runtest} />
                     </> : <></>
                     }

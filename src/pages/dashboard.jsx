@@ -10,7 +10,7 @@ export default function Dashboard() {
     useEffect(() => {
         const handleRender = async () => {
             const data = await GetCredentials();
-            if (!data.admpnlid || !data.loginid) {
+            if (!data.admpnlId || !data.loginid) {
                 navigate("/auth/signin")
             }
         }

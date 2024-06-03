@@ -20,6 +20,7 @@ export default function Sidebar() {
                         data-accordion="false">
                         <NavItem text="Task" to="/task" />
                         <NavItem text="Resources" to="/resources" />
+                        <NavItem text="Campaign" to="/campaign" />
                         <NavItemDrop text="HR">
                             <NavItemLink text="Employee" to="/hr/employee" />
                             <NavItemLink text="Leaves" to="/hr/leaves" />

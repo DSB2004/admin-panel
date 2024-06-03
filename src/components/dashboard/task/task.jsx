@@ -72,11 +72,11 @@ export default function TASK() {
 
 
                   </tbody>
-                  <tfoot>
+                  {/* <tfoot>
                     {
                       Task.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)
                     }
-                  </tfoot>
+                  </tfoot> */}
                 </table>
 
               </div>
