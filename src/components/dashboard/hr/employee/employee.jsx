@@ -8,6 +8,7 @@ import Form from './form'
 import { useSelector } from 'react-redux'
 import Pagenation from '../../../../layouts/table/pagenation'
 export default function EMPLOYEE() {
+    
     const EMPLOYEE_STATE = useSelector((state) => state.Employee);
     const [INDEX, SETINDEX] = useState(0);
     const [showModal, toggleModal] = useState(false);

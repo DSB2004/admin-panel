@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Dropdown from '../../../../layouts/form/dropdown';
 import Input from '../../../../layouts/form/input';
 import Button from '../../../../layouts/form/button';
@@ -11,9 +11,9 @@ import GetCredentials from "../../../../utils/get_credentials.util"
 import { CREATE_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
 import { useDispatch } from 'react-redux';
 export default function Form({ showModal, toggleModal }) {
-
-    // for office use
     const dispatch = useDispatch();
+    const [updateMsg, setMsg] = useState();
+    // for office use
     const employee_name = useRef();
     const employee_id = useRef();
     const employee_email = useRef();
@@ -81,7 +81,6 @@ export default function Form({ showModal, toggleModal }) {
             employee_name.current.value = EMPLOYEE_CONTENT.test.employee_name;
             employee_email.current.value = EMPLOYEE_CONTENT.test.employee_email;
             employee_password.current.value = EMPLOYEE_CONTENT.test.employee_password;
-            employee_status.current.value = EMPLOYEE_CONTENT.test.employee_status;
             employee_designation.current.value = EMPLOYEE_CONTENT.test.employee_designation;
             employee_department.current.value = EMPLOYEE_CONTENT.test.employee_department;
             employee_privation_period.current.value = EMPLOYEE_CONTENT.test.employee_privation_period;
@@ -110,7 +109,6 @@ export default function Form({ showModal, toggleModal }) {
             employee_id.current.value = '';
             employee_name.current.value = '';
             employee_email.current.value = '';
-            employee_status.current.value = '';
             employee_designation.current.value = '';
             employee_department.current.option = '';
             employee_privation_period.current.value = '';
@@ -199,9 +197,10 @@ export default function Form({ showModal, toggleModal }) {
             PEcity_id: await encryptData(personal_city.current.value),
             PEstate_id: await encryptData(personal_state.current.value),
 
-            company_id: GetCredentials().admpnlId,
+            company_id: GetCredentials().panelid,
 
-            gender: await encryptData(employee_gender.current.getValue()[0].value),
+            gender: await encryptData(employee_gender.current ? employee_gender.current.getValue()[0].value : "Gender"),
+
             marital_status: await encryptData(employee_marital_status.current.value),
 
             phone_no: await encryptData(employee_phone_no.current.value),
@@ -213,8 +212,8 @@ export default function Form({ showModal, toggleModal }) {
             Econ_per_name: await encryptData(emergency_contact_name.current.value),
             Econ_per_number: await encryptData(emergency_contact_number.current.value),
 
-            designation_id: await encryptData(employee_designation.current.getValue()[0].value),
-            deparment_id: await encryptData(employee_department.current.getValue()[0].value),
+            designation_id: await encryptData(employee_designation.current ? employee_designation.current.getValue()[0].value : "Designation 1"),
+            deparment_id: await encryptData(employee_department.current ? employee_department.current.getValue()[0].value : "Department 1"),
 
             privation_period: await encryptData(employee_privation_period.current.value)
         }
@@ -366,6 +365,8 @@ export default function Form({ showModal, toggleModal }) {
                     <div className="flex-center">
                         <Button text="Submit" onClick={() => handleSubmit()} />
                     </div>
+
+                    <p>{updateMsg}</p>
                 </div>
             </div>
         </Dialog>

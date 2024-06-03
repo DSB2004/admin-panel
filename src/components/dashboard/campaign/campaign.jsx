@@ -23,7 +23,7 @@ export default function TASK() {
             return { form: "ADD", id: null }
         }
         else if (type === "OPTION") {
-            return { id: payload, form: "OPTION" }
+            return { id: payload, form: "OPTION" ,}
         }
         else if (type === "CLOSE") {
             return { id: null, form: null }
@@ -32,7 +32,7 @@ export default function TASK() {
     }
 
     const [INDEX, SETINDEX] = useState(0);
-    const [STATE, DISPATCH] = useReducer(reducer, { id: null, form: null })
+    const [STATE, DISPATCH] = useReducer(reducer, { id: null, form: null, content: null })
     const CAMPAIGN_STATE = useSelector(state => state.Campaign);
 
 

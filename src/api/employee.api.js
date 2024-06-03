@@ -7,7 +7,7 @@ const EMPLOYEE_API = Axios.create({
     baseURL: AWS_URL + "/employee",
     headers: {
         'x-api-key': API_KEY,
-        'panelid': GetCredentials().admpnlId,
+        'panelid': GetCredentials().panelid,
         'login_id': GetCredentials().loginid
     }
 });
