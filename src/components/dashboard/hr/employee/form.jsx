@@ -267,10 +267,6 @@ export default function Form({ showModal, toggleModal }) {
                         <div className="col-md-6">
                             <Input ref={employee_privation_period} label="Privation Period" placeholder="Enter the employee privation period..." type="text" />
                         </div>
-
-                        <div className="col-md-6">
-                            <Input ref={employee_status} label="Employee Status" placeholder="Enter the employee Status..." type="text" />
-                        </div>
                         <div className="col-md-6">
                             <Dropdown ref={employee_designation} label="Designation" options={EMPLOYEE_CONTENT.designation} />
                         </div>
