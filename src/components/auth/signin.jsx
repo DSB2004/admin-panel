@@ -8,7 +8,7 @@ import AuthNavLink from '../../layouts/nav/auth-nav-link'
 
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { encryptData } from '../../utils/encrypt_data.util'
+import EncryptData from '../../utils/encrypt_data.util'
 import { RiLoader2Fill } from "react-icons/ri";
 
 
@@ -26,26 +26,33 @@ export default function SignIn() {
 
     const HandleSignIn = async () => {
         try {
-            update_msg(<RiLoader2Fill className='loader' />)
-            const USER_CREDENTIALS = {
-                email: await encryptData(EMAIL_REF.current.value),
-                password: await encryptData(PASSWORD_REF.current.value),
-                remember_user: REMEMBER_ME_REF.current.checked
-            }
-            
-            const response = await AUTH_API.post("/login", USER_CREDENTIALS);
 
-            if (response.data.body.error) {
-                update_msg(response.data.body.error)
+            if (PASSWORD_REF.current && EMAIL_REF.current && REMEMBER_ME_REF.current.checked) {
+                update_msg(<RiLoader2Fill className='loader' />)
+                const USER_CREDENTIALS = {
+                    email: EMAIL_REF.current.value,
+                    password: PASSWORD_REF.current.value,
+                    remember_user: REMEMBER_ME_REF.current.checked
+                }
+                const ENCRYPTED_USER_CREDENTIALS = await EncryptData(USER_CREDENTIALS);
+                const response = await AUTH_API.post("/login", ENCRYPTED_USER_CREDENTIALS);
+                if (response.data.body.error) {
+                    update_msg(response.data.body.error)
+                }
+                else {
+                    const res = await SetCredentials(response.data.body);
+                    navigate('/');
+                    return res;
+                }
             }
             else {
-                await SetCredentials(response.data.body);
-                navigate('/')
+                update_msg("All Fields are required");
+                return;
             }
-
         }
         catch (err) {
-            update_msg("Internal Error!! Check logs")
+            update_msg("Field Not Provided");
+            return;
         }
     }
 

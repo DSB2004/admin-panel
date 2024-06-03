@@ -6,5 +6,4 @@ const GetCredentials = () => {
 
 };
 
-
 export default GetCredentials;

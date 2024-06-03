@@ -4,7 +4,7 @@ import Input from '../../../../layouts/form/input';
 import Button from '../../../../layouts/form/button';
 import Checkbox from '../../../../layouts/form/check-box';
 import Dialog from '@mui/material/Dialog';
-import { encryptData } from '../../../../utils/encrypt_data.util';
+import EncryptData from '../../../../utils/encrypt_data.util';
 import { DEV_MODE } from '../../../../config/index.config';
 import EMPLOYEE_CONTENT from '../../../../assets/employee.json';
 import GetCredentials from "../../../../utils/get_credentials.util"
@@ -77,36 +77,29 @@ export default function Form({ showModal, toggleModal }) {
 
     const runtest = (e) => {
         if (DEV_MODE && e.target.checked) {
-            employee_id.current.value = EMPLOYEE_CONTENT.test.employee_id;
-            employee_name.current.value = EMPLOYEE_CONTENT.test.employee_name;
-            employee_email.current.value = EMPLOYEE_CONTENT.test.employee_email;
-            employee_password.current.value = EMPLOYEE_CONTENT.test.employee_password;
-            employee_designation.current.value = EMPLOYEE_CONTENT.test.employee_designation;
-            employee_department.current.value = EMPLOYEE_CONTENT.test.employee_department;
-            employee_privation_period.current.value = EMPLOYEE_CONTENT.test.employee_privation_period;
-            employee_phone_no.current.value = EMPLOYEE_CONTENT.test.employee_phone_no;
-            employee_whatsapp.current.value = EMPLOYEE_CONTENT.test.employee_whatsapp;
-            employee_linkedin.current.value = EMPLOYEE_CONTENT.test.employee_linkedin;
-            employee_skype.current.value = EMPLOYEE_CONTENT.test.employee_skype;
-            employee_personal_email.current.value = EMPLOYEE_CONTENT.test.employee_personal_email;
-            emergency_contact_name.current.value = EMPLOYEE_CONTENT.test.emergency_contact_name;
-            emergency_contact_number.current.value = EMPLOYEE_CONTENT.test.emergency_contact_number;
-            permanent_address1.current.value = EMPLOYEE_CONTENT.test.permanent_address1;
-            permanent_address2.current.value = EMPLOYEE_CONTENT.test.permanent_address2;
-            permanent_pincode.current.value = EMPLOYEE_CONTENT.test.permanent_pincode;
-            permanent_city.current.value = EMPLOYEE_CONTENT.test.permanent_city;
-            permanent_country.current.value = EMPLOYEE_CONTENT.test.permanent_country;
-            personal_address1.current.value = EMPLOYEE_CONTENT.test.personal_address1;
-            personal_address2.current.value = EMPLOYEE_CONTENT.test.personal_address2;
-            personal_pincode.current.value = EMPLOYEE_CONTENT.test.personal_pincode;
-            personal_city.current.value = EMPLOYEE_CONTENT.test.personal_city;
-            personal_state.current.value = EMPLOYEE_CONTENT.test.personal_state;
-            permanent_state.current.value = EMPLOYEE_CONTENT.test.permanent_state;
-            personal_country.current.value = EMPLOYEE_CONTENT.test.personal_country;
-            employee_gender.current.value = EMPLOYEE_CONTENT.test.employee_gender;
-            employee_marital_status.current.value = EMPLOYEE_CONTENT.test.employee_martial_status;
+            employee_name.current.value = EMPLOYEE_CONTENT.test.name;
+            employee_email.current.value = EMPLOYEE_CONTENT.test.email;
+            employee_password.current.value = EMPLOYEE_CONTENT.test.password;
+            employee_designation.current.value = EMPLOYEE_CONTENT.test.designation_id;
+            employee_department.current.value = EMPLOYEE_CONTENT.test.department_id;
+            employee_privation_period.current.value = EMPLOYEE_CONTENT.test.privation_period;
+            employee_phone_no.current.value = EMPLOYEE_CONTENT.test.phone_no;
+            employee_whatsapp.current.value = EMPLOYEE_CONTENT.test.whatsapp;
+            employee_linkedin.current.value = EMPLOYEE_CONTENT.test.linkedin;
+            employee_skype.current.value = EMPLOYEE_CONTENT.test.skype;
+            employee_personal_email.current.value = EMPLOYEE_CONTENT.test.personal_email;
+            emergency_contact_name.current.value = EMPLOYEE_CONTENT.test.Econ_per_name;
+            emergency_contact_number.current.value = EMPLOYEE_CONTENT.test.Econ_per_number;
+            permanent_address1.current.value = EMPLOYEE_CONTENT.test.PEaddress;
+            permanent_address2.current.value = EMPLOYEE_CONTENT.test.PEaddress2;
+            permanent_pincode.current.value = EMPLOYEE_CONTENT.test.pin;
+            permanent_city.current.value = EMPLOYEE_CONTENT.test.city_id;
+            permanent_country.current.value = EMPLOYEE_CONTENT.test.country_id;
+            permanent_state.current.value = EMPLOYEE_CONTENT.test.state_id;
+            employee_gender.current.value = EMPLOYEE_CONTENT.test.gender;
+            employee_marital_status.current.value = EMPLOYEE_CONTENT.test.martial_status;
+            // sameAddress.current.checked = true;
         } else {
-            employee_id.current.value = '';
             employee_name.current.value = '';
             employee_email.current.value = '';
             employee_designation.current.value = '';
@@ -124,100 +117,51 @@ export default function Form({ showModal, toggleModal }) {
             permanent_pincode.current.value = '';
             permanent_city.current.value = '';
             permanent_country.current.value = '';
-            personal_address1.current.value = '';
-            personal_address2.current.value = '';
-            personal_pincode.current.value = '';
             permanent_state.current.value = '';
-            personal_state.current.value = '';
-            personal_city.current.value = '';
-            personal_country.current.value = '';
+            // sameAddress.current.checked = false;
             employee_gender.current.value = '';
             employee_marital_status.current.value = '';
         }
     }
-
-    // console.log(DEV_MODE)
     const handleSubmit = async () => {
-        console.log({
-            name: employee_name.current.value,
-            email: employee_email.current.value,
-            password: employee_password.current.value,
-
-            address: permanent_address1.current.value,
-            address2: permanent_address2.current.value,
-            pin: permanent_pincode.current.value,
-            city_id: permanent_city.current.value,
-            state_id: permanent_state.current.value,
-            country_id: permanent_country.current.value,
-
-            PEaddress: personal_address1.current.value,
-            PEaddress2: personal_address2.current.value,
-            PEpin: personal_pincode.current.value,
-            PEcountry_id: personal_country.current.value,
-            PEcity_id: personal_city.current.value,
-            PEstate_id: personal_state.current.value,
-
-            company_id: GetCredentials().admpnlId,
-
-            gender: employee_gender.current.getValue()[0].value,
-            marital_status: employee_marital_status.current.value,
-
-            phone_no: employee_phone_no.current.value,
-            whatsapp: employee_whatsapp.current.value,
-            linkedin: employee_linkedin.current.value,
-            skype: employee_skype.current.value,
-            personal_email: employee_personal_email.current.value,
-
-            Econ_per_name: emergency_contact_name.current.value,
-            Econ_per_number: emergency_contact_number.current.value,
-
-            designation_id: employee_designation.current.getValue()[0].value,
-            deparment_id: employee_department.current.getValue()[0].value,
-
-            privation_period: employee_privation_period.current.value
-        });
-
-        const employee_data = {
-
-            name: await encryptData(employee_name.current.value),
-            email: await encryptData(employee_email.current.value),
-            password: await encryptData(employee_password.current.value),
-
-            address: await encryptData(permanent_address1.current.value),
-            address2: await encryptData(permanent_address2.current.value),
-            pin: await encryptData(permanent_pincode.current.value),
-            city_id: await encryptData(permanent_city.current.value),
-            state_id: await encryptData(permanent_state.current.value),
-            country_id: await encryptData(permanent_country.current.value),
-
-            PEaddress: await encryptData(personal_address1.current.value),
-            PEaddress2: await encryptData(personal_address2.current.value),
-            PEpin: await encryptData(personal_pincode.current.value),
-            PEcountry_id: await encryptData(personal_country.current.value),
-            PEcity_id: await encryptData(personal_city.current.value),
-            PEstate_id: await encryptData(personal_state.current.value),
-
-            company_id: GetCredentials().panelid,
-
-            gender: await encryptData(employee_gender.current ? employee_gender.current.getValue()[0].value : "Gender"),
-
-            marital_status: await encryptData(employee_marital_status.current.value),
-
-            phone_no: await encryptData(employee_phone_no.current.value),
-            whatsapp: await encryptData(employee_whatsapp.current.value),
-            linkedin: await encryptData(employee_linkedin.current.value),
-            skype: await encryptData(employee_skype.current.value),
-            personal_email: await encryptData(employee_personal_email.current.value),
-
-            Econ_per_name: await encryptData(emergency_contact_name.current.value),
-            Econ_per_number: await encryptData(emergency_contact_number.current.value),
-
-            designation_id: await encryptData(employee_designation.current ? employee_designation.current.getValue()[0].value : "Designation 1"),
-            deparment_id: await encryptData(employee_department.current ? employee_department.current.getValue()[0].value : "Department 1"),
-
-            privation_period: await encryptData(employee_privation_period.current.value)
+        try {
+            const EMPLOYEE_DETAILS = {
+                name: employee_name.current.value,
+                email: employee_email.current.value,
+                password: employee_password.current.value,
+                address: permanent_address1.current.value,
+                address2: permanent_address2.current.value,
+                pin: permanent_pincode.current.value,
+                city_id: permanent_city.current.value,
+                state_id: permanent_state.current.value,
+                country_id: permanent_country.current.value,
+                PEaddress: personal_address1.current.value,
+                PEaddress2: personal_address2.current.value,
+                PEpin: personal_pincode.current.value,
+                PEcountry_id: personal_country.current.value,
+                PEcity_id: personal_city.current.value,
+                PEstate_id: personal_state.current.value,
+                company_id: GetCredentials().panelid,
+                gender: employee_gender.current.getValue()[0].value,
+                marital_status: employee_marital_status.current.value,
+                phone_no: employee_phone_no.current.value,
+                whatsapp: employee_whatsapp.current.value,
+                linkedin: employee_linkedin.current.value,
+                skype: employee_skype.current.value,
+                personal_email: employee_personal_email.current.value,
+                Econ_per_name: emergency_contact_name.current.value,
+                Econ_per_number: emergency_contact_number.current.value,
+                designation_id: employee_designation.current.getValue()[0].value,
+                deparment_id: employee_department.current.getValue()[0].value,
+                privation_period: employee_privation_period.current.value
+            };
+            console.log(EMPLOYEE_DETAILS)
+            const ENCRYTED_EMPLOYEE_DETAIALS = await EncryptData(EMPLOYEE_DETAILS);
+            dispatch(CREATE_EMPLOYEE(ENCRYTED_EMPLOYEE_DETAIALS))
         }
-        dispatch(CREATE_EMPLOYEE(employee_data))
+        catch (err) {
+            setMsg("All Fields are required")
+        }
     }
 
 
@@ -251,9 +195,6 @@ export default function Form({ showModal, toggleModal }) {
                 <div className="card-body">
                     <h3 className="card-sub-title">Personal Info</h3>
                     <div className="row">
-                        <div className="col-md-6">
-                            <Input ref={employee_id} label="Employee ID" placeholder="Enter the employee ID..." type="text" />
-                        </div>
                         <div className="col-md-6">
                             <Input ref={employee_name} label="Employee Name" placeholder="Enter the employee name..." type="text" />
                         </div>
@@ -364,9 +305,9 @@ export default function Form({ showModal, toggleModal }) {
 
                     <div className="flex-center">
                         <Button text="Submit" onClick={() => handleSubmit()} />
+                        <p className='alert-message'>{updateMsg}</p>
                     </div>
 
-                    <p>{updateMsg}</p>
                 </div>
             </div>
         </Dialog>

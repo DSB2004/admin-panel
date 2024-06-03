@@ -1,8 +1,7 @@
 
 import { ENCRYPT_KEY } from "../config/index.config";
 
-export const encryptData = async (text) => {
-    // console.log(text)
+const encrypt = (text) => {
     if (text) {
         text = String(text)
         let result = '';
@@ -18,3 +17,21 @@ export const encryptData = async (text) => {
 
 };
 
+function EncryptData(data) {
+    return new Promise((resolve, reject) => {
+        try {
+            let encryptedData = {};
+            for (let key in data) {
+                if (data.hasOwnProperty(key)) {
+                    encryptedData[key] = encrypt(data[key]);
+                }
+            }
+            resolve(encryptedData);
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+
+export default EncryptData;

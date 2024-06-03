@@ -1,15 +1,11 @@
-import { encryptData } from "./encrypt_data.util";
+import EncryptData from "./encrypt_data.util";
 const SetCredentials = async (data) => {
-
-
     if (data.EmpID && data.CompId) {
-
-        const encrypt_login_id = await encryptData(data.EmpID)
-        const encrypt_company_id = await encryptData(data.CompId);
-        localStorage.setItem('token', data.Email);
-        localStorage.setItem('login_id', encrypt_login_id);
-        localStorage.setItem("admpnlId", encrypt_company_id);
-        localStorage.setItem("name", data.Name);
+        const ENCRYPTED_CREDENTIALS = await EncryptData(data)
+        localStorage.setItem('token', ENCRYPTED_CREDENTIALS.Email);
+        localStorage.setItem('login_id', ENCRYPTED_CREDENTIALS.EmpID);
+        localStorage.setItem("admpnlId", ENCRYPTED_CREDENTIALS.CompId);
+        localStorage.setItem("name", ENCRYPTED_CREDENTIALS.Name);
     }
 
 }
