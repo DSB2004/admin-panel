@@ -2,9 +2,10 @@ import React, { useEffect, useReducer, useState } from 'react'
 import Button from '../../../layouts/form/button'
 import THead from '../../../layouts/table/table-header'
 import Campaign from "../../../assets/campaign.json"
-import CampaignRow from '../../../layouts/table/campaign-row'
 import Pagenation from '../../../layouts/table/pagenation'
+import ActionButton from '../../../layouts/table/action-button'
 import { useSelector } from 'react-redux'
+import { useMemo } from 'react'
 
 import CreateForm from './create-form'
 import UpdateForm from './update-form'
@@ -21,17 +22,28 @@ export default function TASK() {
         else if (type === "ADD") {
             return { form: "ADD", id: null }
         }
-        else if (type === "UPDATE") {
-            return { id: payload, form: "UPDATE" }
+        else if (type === "OPTION") {
+            return { id: payload, form: "OPTION" }
         }
         else if (type === "CLOSE") {
             return { id: null, form: null }
         }
         return state;
     }
+
     const [INDEX, SETINDEX] = useState(0);
     const [STATE, DISPATCH] = useReducer(reducer, { id: null, form: null })
     const CAMPAIGN_STATE = useSelector(state => state.Campaign);
+
+
+
+    const ACTION_LIST = (element) => [
+        { content: "Doable", onClick: () => DISPATCH({ type: "OPTION", subContent: "Doable", id: element.id }) },
+        { content: "Doable at Condition", onClick: () => DISPATCH({ type: "OPTION", subContent: "Doable at condition", id: element.id }) },
+        { content: "Not Doable", onClick: () => DISPATCH({ type: "OPTION", subContent: "Not Doable", id: element.id }) },
+        { content: "Edit" },
+        { content: "Integrate" },
+    ]
 
 
 
@@ -40,7 +52,7 @@ export default function TASK() {
 
 
             <CreateForm showModal={STATE.form === "ADD"} DISPATCH={DISPATCH} />
-            <UpdateForm showModal={STATE.form === "UPDATE"} id={STATE.id} DISPATCH={DISPATCH} />
+            <UpdateForm showModal={STATE.form === "OPTION"} id={STATE.id} DISPATCH={DISPATCH} />
             <ViewCampaign showModal={STATE.form === "VIEW"} id={STATE.id} DISPATCH={DISPATCH} />
 
             <div className="card">
@@ -72,26 +84,35 @@ export default function TASK() {
                                                     return (
                                                         <>
                                                             <tr className="odd">
-                                                                <td className="sorting_1 dtr-control" tabIndex={0}>
+                                                                <td className="sorting_1 dtr-control" tabIndex={0} onClick={() => DISPATCH({ type: "VIEW" })}>
                                                                     {element.campaign_name}</td>
                                                                 <td>{element.Payout}</td>
                                                                 <td>{element.Advertiser}</td>
                                                                 <td>{element.Status}</td>
-                                                                {/* <td>{element.Description}</td> */}
+                                                                <td className="sorting_1 dtr-control">
+                                                                    <ActionButton
+                                                                        actionList={ACTION_LIST(element)}
+                                                                    />
+                                                                </td>
 
-                                                            </tr>
+
+                                                            </tr >
                                                         </>)
                                                 }
                                                 else {
                                                     return (
                                                         <>
-                                                            <tr className="odd">
-                                                                <td className="sorting_1 dtr-control" tabIndex={0}>
+                                                            <tr className="odd" >
+                                                                <td className="sorting_1 dtr-control" tabIndex={0} onClick={() => DISPATCH({ type: "VIEW" })} >
                                                                     {element.campaign_name}</td>
                                                                 <td>{element.Payout}</td>
                                                                 <td>{element.Advertiser}</td>
                                                                 <td>{element.Status}</td>
-                                                                {/* <td>{element.Description}</td> */}
+                                                                <td className="sorting_1 dtr-control">
+                                                                    <ActionButton
+                                                                        actionList={ACTION_LIST(element)} />
+                                                                </td>
+
 
                                                             </tr>
                                                         </>)
@@ -102,11 +123,7 @@ export default function TASK() {
 
 
                                     </tbody>
-                                    {/* <tfoot>
-                                        {
-                                            Campaign.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)
-                                        }
-                                    </tfoot> */}
+
                                 </table>
 
                             </div>

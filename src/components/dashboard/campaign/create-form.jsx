@@ -3,6 +3,8 @@ import { Dialog } from '@mui/material'
 import Button from '../../../layouts/form/button'
 import Input from '../../../layouts/form/input'
 import Dropdown from '../../../layouts/form/dropdown'
+import TextArea from '../../../layouts/form/text-area'
+import CAMPAIGN_CONTENT from "../../../assets/campaign.json"
 export default function CreateForm({ showModal, DISPATCH }) {
     const employee_name = useRef();
     const employee_id = useRef();
@@ -42,35 +44,30 @@ export default function CreateForm({ showModal, DISPATCH }) {
                 </div>
                 <div className="card-body">
 
-                    <div className="row">
-                        <div className="col-md-6">
-                            <Input ref={employee_id} label="Employee ID" placeholder="Enter the employee ID..." type="text" />
-                        </div>
-                        <div className="col-md-6">
-                            <Input ref={employee_name} label="Employee Name" placeholder="Enter the employee name..." type="text" />
-                        </div>
-                        <div className="col-md-6">
-                            <Input ref={employee_email} label="Employee Email" placeholder="Enter the employee email..." type="text" />
-                        </div>
-                        <div className="col-md-6">
-                            <Input ref={employee_password} label="Employee Password" placeholder="Enter the employee password..." type="password" />
-                        </div>
-                        <div className="col-md-6">
-                            <Input ref={employee_privation_period} label="Privation Period" placeholder="Enter the employee privation period..." type="text" />
-                        </div>
+                    <Input ref={employee_id} label="Campaign Name" placeholder="Enter the campaign name..." type="text" />
 
-                       
-                        <div className="col-md-6">
-                            <Dropdown ref={employee_designation} label="Designation" options={EMPLOYEE_CONTENT.designation} />
+                    <TextArea label="Description" placeholder="Enter description for campaign..." rows={6} />
+                    <div className='row'>
+                        <div className='col-md-6'>
+                            <Input label="Advertiser" placeholder="Enter advertiser..." />
                         </div>
-                        <div className="col-md-6">
-                            <Dropdown ref={employee_department} label="Department" options={EMPLOYEE_CONTENT.department} />
+                        <div className='col-md-6'>
+                            <Input label="Payout" placeholder="Enter Payout..." />
+                        </div>
+                        <div className='col-md-6'>
+                            <Input label="LP" placeholder="Enter LP..." />
+                        </div>
+                        <div className='col-md-6'>
+                            <Dropdown label="Platform" options={CAMPAIGN_CONTENT.platform} />
                         </div>
                     </div>
 
 
+                    <div className="flex-center">
+                        <Button text="Submit" onClick={() => DISPATCH({ type: "CLOSE" })} />
+                    </div>
                 </div>
             </div>
-        </Dialog>
+        </Dialog >
     )
 }

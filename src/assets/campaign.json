@@ -14,5 +14,15 @@
         "Advertiser",
         "Status",
         "Action"
+    ],
+    "platform": [
+        {
+            "value": "Web",
+            "label": "Web"
+        },
+        {
+            "value": "App",
+            "label": "App"
+        }
     ]
 }
