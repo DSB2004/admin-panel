@@ -64,6 +64,20 @@
             "label": "Designation 6"
         }
     ],
+    "manager": [
+        {
+            "value": "Manager 1",
+            "label": "Manager 1"
+        },
+        {
+            "value": "Manager 2",
+            "label": "Manager 2"
+        },
+        {
+            "value": "Manager 3",
+            "label": "Manager 3"
+        }
+    ],
     "department": [
         {
             "value": "Department 1",
@@ -118,6 +132,7 @@
         "Econ_per_number": "1234567890",
         "company_id": "5Gj9Ks7M",
         "marital_status": "Single",
-        "gender": "Male"
+        "gender": "Male",
+        "reporting_to": "manager 1"
     }
 }

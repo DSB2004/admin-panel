@@ -22,6 +22,7 @@ export default function Form({ showModal, toggleModal }) {
     const employee_designation = useRef();
     const employee_department = useRef();
     const employee_privation_period = useRef();
+    const employee_reporting_manager = useRef();
 
     // contact info
     const employee_phone_no = useRef();
@@ -154,7 +155,8 @@ export default function Form({ showModal, toggleModal }) {
                 Econ_per_number: emergency_contact_number.current.value,
                 designation_id: employee_designation.current.getValue()[0].value,
                 department_id: employee_department.current.getValue()[0].value,
-                privation_period: employee_privation_period.current.value
+                privation_period: employee_privation_period.current.value,
+                reporting_to: employee_reporting_manager.current.getValue()[0].value
             };
             const ENCRYTED_EMPLOYEE_DETAIALS = await EncryptData(EMPLOYEE_DETAILS);
             const res = await dispatch(CREATE_EMPLOYEE(ENCRYTED_EMPLOYEE_DETAIALS)).unwrap();
@@ -227,7 +229,11 @@ export default function Form({ showModal, toggleModal }) {
                         <div className="col-md-6">
                             <Dropdown ref={employee_department} label="Department" options={EMPLOYEE_CONTENT.department} />
                         </div>
+                        <div className="col-md-6">
+                            <Dropdown ref={employee_reporting_manager} label="Reporting To" options={EMPLOYEE_CONTENT.manager} />
+                        </div>
                     </div>
+
 
                     <h3 className="card-sub-title">Address</h3>
                     <div className="row">
