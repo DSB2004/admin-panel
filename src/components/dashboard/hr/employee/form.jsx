@@ -9,10 +9,11 @@ import { DEV_MODE } from '../../../../config/index.config';
 import EMPLOYEE_CONTENT from '../../../../assets/employee.json';
 import GetCredentials from "../../../../utils/get_credentials.util"
 import { CREATE_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
+import { RiLoader2Fill } from "react-icons/ri";
 import { useDispatch } from 'react-redux';
 export default function Form({ showModal, toggleModal }) {
     const dispatch = useDispatch();
-    const [updateMsg, setMsg] = useState();
+    const [updateMsg, update_msg] = useState('');
     // for office use
     const employee_name = useRef();
     const employee_id = useRef();
@@ -118,13 +119,13 @@ export default function Form({ showModal, toggleModal }) {
             permanent_city.current.value = '';
             permanent_country.current.value = '';
             permanent_state.current.value = '';
-            // sameAddress.current.checked = false;
             employee_gender.current.value = '';
             employee_marital_status.current.value = '';
         }
     }
     const handleSubmit = async () => {
         try {
+            update_msg(<RiLoader2Fill className='loader' />)
             const EMPLOYEE_DETAILS = {
                 name: employee_name.current.value,
                 email: employee_email.current.value,
@@ -152,15 +153,18 @@ export default function Form({ showModal, toggleModal }) {
                 Econ_per_name: emergency_contact_name.current.value,
                 Econ_per_number: emergency_contact_number.current.value,
                 designation_id: employee_designation.current.getValue()[0].value,
-                deparment_id: employee_department.current.getValue()[0].value,
+                department_id: employee_department.current.getValue()[0].value,
                 privation_period: employee_privation_period.current.value
             };
-            console.log(EMPLOYEE_DETAILS)
             const ENCRYTED_EMPLOYEE_DETAIALS = await EncryptData(EMPLOYEE_DETAILS);
-            dispatch(CREATE_EMPLOYEE(ENCRYTED_EMPLOYEE_DETAIALS))
+            const res = await dispatch(CREATE_EMPLOYEE(ENCRYTED_EMPLOYEE_DETAIALS)).unwrap();
+            if (res) {
+                toggleModal(false)
+            }
+
         }
         catch (err) {
-            setMsg("All Fields are required")
+            update_msg("All Fields are required")
         }
     }
 
@@ -305,10 +309,10 @@ export default function Form({ showModal, toggleModal }) {
 
                     <div className="flex-center">
                         <Button text="Submit" onClick={() => handleSubmit()} />
-                        <p className='alert-message'>{updateMsg}</p>
                     </div>
 
                 </div>
+                <p className='alert-message margin-20'>{updateMsg}</p>
             </div>
         </Dialog>
     );

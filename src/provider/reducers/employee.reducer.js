@@ -1,15 +1,13 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, unwrapResult } from "@reduxjs/toolkit";
 import DATA from "../../assets/test.json";
 import EMPLOYEE_API from "../../api/employee.api";
 
 export const CREATE_EMPLOYEE = createAsyncThunk("create employee", async (content) => {
-
-    console.log("Request Headers:", EMPLOYEE_API.defaults.headers);
+    const res = await EMPLOYEE_API.post("/create", content)
+    console.log(res.data)
+    return res.data;
 })
 
-// console.log(content)
-// const res = await EMPLOYEE_API.post("/create", content)
-// console.log(res.data)
 
 
 const Employee = createSlice({
