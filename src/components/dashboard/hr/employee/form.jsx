@@ -158,7 +158,17 @@ export default function Form({ showModal, toggleModal }) {
             };
             const ENCRYTED_EMPLOYEE_DETAIALS = await EncryptData(EMPLOYEE_DETAILS);
             const res = await dispatch(CREATE_EMPLOYEE(ENCRYTED_EMPLOYEE_DETAIALS)).unwrap();
-            if (res) {
+            if (res.body.resType === 'error') {
+                let message = res.body.resMessage
+                const prefix = "errorMessage: ";
+                if (message.startsWith(prefix)) {
+                    update_msg(message.slice(prefix.length).trim())
+                }
+                else {
+                    update_msg(message)
+                }
+            }
+            else {
                 toggleModal(false)
             }
 
