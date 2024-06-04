@@ -227,6 +227,9 @@ export default function Form({ showModal, toggleModal }) {
                         <div className="col-md-6">
                             <Dropdown ref={employee_department} label="Department" options={EMPLOYEE_CONTENT.department} />
                         </div>
+                        <div className="col-md-6">
+                            <Dropdown ref={employee_department} label="Repoting Manager" options={EMPLOYEE_CONTENT.department} />
+                        </div>
                     </div>
 
                     <h3 className="card-sub-title">Address</h3>
