@@ -31,13 +31,6 @@
             "value": "Others"
         }
     ],
-    "country": [
-        "India"
-    ],
-    "city": [
-        "Kolkata",
-        "New Delhi"
-    ],
     "designation": [
         {
             "value": "Designation 1",
@@ -78,6 +71,36 @@
             "label": "Manager 3"
         }
     ],
+    "marital_status": [
+        {
+            "label": "Single",
+            "value": "0001"
+        },
+        {
+            "label": "Married",
+            "value": "0002"
+        },
+        {
+            "label": "Divorced",
+            "value": "0003"
+        },
+        {
+            "label": "Widower",
+            "value": "0004"
+        },
+        {
+            "label": "Widow",
+            "value": "0005"
+        },
+        {
+            "label": "Seperate",
+            "value": "0006"
+        },
+        {
+            "label": "Engaged",
+            "value": "0007"
+        }
+    ],
     "department": [
         {
             "value": "Department 1",
@@ -104,35 +127,264 @@
             "label": "Department 6"
         }
     ],
+    "country": [
+        {
+            "value": "United States",
+            "label": "United States"
+        },
+        {
+            "value": "Canada",
+            "label": "Canada"
+        },
+        {
+            "value": "United Kingdom",
+            "label": "United Kingdom"
+        },
+        {
+            "value": "Australia",
+            "label": "Australia"
+        },
+        {
+            "value": "Germany",
+            "label": "Germany"
+        },
+        {
+            "value": "France",
+            "label": "France"
+        },
+        {
+            "value": "Italy",
+            "label": "Italy"
+        },
+        {
+            "value": "Spain",
+            "label": "Spain"
+        },
+        {
+            "value": "Japan",
+            "label": "Japan"
+        },
+        {
+            "value": "China",
+            "label": "China"
+        },
+        {
+            "value": "India",
+            "label": "India"
+        },
+        {
+            "value": "Brazil",
+            "label": "Brazil"
+        },
+        {
+            "value": "Mexico",
+            "label": "Mexico"
+        },
+        {
+            "value": "Russia",
+            "label": "Russia"
+        },
+        {
+            "value": "South Africa",
+            "label": "South Africa"
+        },
+        {
+            "value": "South Korea",
+            "label": "South Korea"
+        },
+        {
+            "value": "New Zealand",
+            "label": "New Zealand"
+        },
+        {
+            "value": "Argentina",
+            "label": "Argentina"
+        },
+        {
+            "value": "Saudi Arabia",
+            "label": "Saudi Arabia"
+        },
+        {
+            "value": "Turkey",
+            "label": "Turkey"
+        }
+    ],
+    "state": [
+        {
+            "value": "New York",
+            "label": "New York"
+        },
+        {
+            "value": "Los Angeles",
+            "label": "Los Angeles"
+        },
+        {
+            "value": "Chicago",
+            "label": "Chicago"
+        },
+        {
+            "value": "Houston",
+            "label": "Houston"
+        },
+        {
+            "value": "Phoenix",
+            "label": "Phoenix"
+        },
+        {
+            "value": "Philadelphia",
+            "label": "Philadelphia"
+        },
+        {
+            "value": "San Antonio",
+            "label": "San Antonio"
+        },
+        {
+            "value": "San Diego",
+            "label": "San Diego"
+        },
+        {
+            "value": "Dallas",
+            "label": "Dallas"
+        },
+        {
+            "value": "San Jose",
+            "label": "San Jose"
+        },
+        {
+            "value": "Austin",
+            "label": "Austin"
+        },
+        {
+            "value": "Jacksonville",
+            "label": "Jacksonville"
+        },
+        {
+            "value": "Fort Worth",
+            "label": "Fort Worth"
+        },
+        {
+            "value": "Columbus",
+            "label": "Columbus"
+        },
+        {
+            "value": "Charlotte",
+            "label": "Charlotte"
+        },
+        {
+            "value": "San Francisco",
+            "label": "San Francisco"
+        },
+        {
+            "value": "Indianapolis",
+            "label": "Indianapolis"
+        },
+        {
+            "value": "Seattle",
+            "label": "Seattle"
+        },
+        {
+            "value": "Denver",
+            "label": "Denver"
+        },
+        {
+            "value": "Washington",
+            "label": "Washington"
+        }
+    ],
+    "relations": [
+        {
+            "value": "mother",
+            "label": "Mother"
+        },
+        {
+            "value": "father",
+            "label": "Father"
+        },
+        {
+            "value": "sister",
+            "label": "Sister"
+        },
+        {
+            "value": "brother",
+            "label": "Brother"
+        },
+        {
+            "value": "wife",
+            "label": "Wife"
+        },
+        {
+            "value": "Husband",
+            "label": "husband"
+        },
+        {
+            "value": "in-laws",
+            "label": "In Laws"
+        }
+    ],
     "test": {
         "name": "John Smith",
         "password": "dH7js8FjN9hK",
-        "email": "john123.smith@example.com",
+        "email": "john123456.smith@example.com",
         "address": "123 Main St",
         "address2": "Apt 4B",
         "pin": "123456",
         "city_id": "7v8Kd6Hj",
-        "state_id": "4Jf9Ls8Q",
-        "country_id": "9Zx3Ue5P",
-        "PEaddress": "456 Elm St",
-        "PEaddress2": "Suite 300",
-        "PEpin": "654321",
-        "PEcity_id": "H2y7Kd4J",
-        "PEstate_id": "8Ql9Fp3Z",
-        "PEcountry_id": "7Mn5Lf8J",
+        "state_id": [
+            {
+                "value": "Columbus",
+                "label": "Columbus"
+            }
+        ],
+        "country_id": [
+            {
+                "value": "United States",
+                "label": "United States"
+            }
+        ],
         "phone_no": "9876543210",
         "whatsapp": "0123456789",
         "linkedin": "https://www.linkedin.com/in/johnsmith",
-        "skype": "john.smith",
+        "skype": "link:john.smith",
         "personal_email": "john.smith@personal.com",
-        "privation_period": "Rf8Jk5H2",
-        "designation_id": "6Hg7Pl9F",
-        "department_id": "8Kj4Qe5Z",
+        "privation_period": "2022-03-12",
+        "designation_id": [
+            {
+                "value": "Designation 1",
+                "label": "Designation 1"
+            }
+        ],
+        "department_id": [
+            {
+                "value": "Department 3",
+                "label": "Department 3"
+            }
+        ],
         "Econ_per_name": "Jane Doe",
         "Econ_per_number": "1234567890",
+        "Econ_per_relation": [
+            {
+                "label": "Wife",
+                "value": "wife"
+            }
+        ],
         "company_id": "5Gj9Ks7M",
-        "marital_status": "Single",
-        "gender": "Male",
-        "reporting_to": "manager 1"
+        "marital_status": [
+            {
+                "label": "Married",
+                "value": "0002"
+            }
+        ],
+        "gender": [
+            {
+                "label": "Male",
+                "value": "Male"
+            }
+        ],
+        "reporting_to": [
+            {
+                "value": "Manager 1",
+                "label": "Manager 1"
+            }
+        ]
     }
 }

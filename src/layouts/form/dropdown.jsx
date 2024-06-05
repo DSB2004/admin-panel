@@ -1,20 +1,30 @@
 import React, { forwardRef } from 'react'
 import Select from 'react-select';
 
-const Dropdown = forwardRef(({ label, options = [] }, ref) => {
+const Dropdown = forwardRef(({ label, options = [], disable }, ref) => {
 
     const customStyles = {
         control: (provided) => ({
             ...provided,
-            margin: '0px 0 40px 0',
-            width: "100%"
+            margin: '0px 0 20px 0',
+            width: '100%',
+            height: '30px'
+        }),
+        valueContainer: (provided) => ({
+            ...provided,
+            height: '30px',
+            padding: '0 8px'
+        }),
+        input: (provided) => ({
+            ...provided,
+            margin: '0px'
         })
     };
 
     return (
         <>
             <label htmlFor="exampleInputEmail1">{label}</label>
-            <Select options={options} styles={customStyles} ref={ref} />
+            <Select options={options} styles={customStyles} ref={ref} isDisabled={disable} />
         </>
     )
 })
