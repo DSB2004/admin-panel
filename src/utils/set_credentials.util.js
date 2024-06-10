@@ -1,5 +1,6 @@
 import EncryptData from "./encrypt_data.util";
 const SetCredentials = async (data) => {
+    // console.log("Data given: ", data)
     if (data.EmpID && data.CompId) {
         const ENCRYPTED_CREDENTIALS = await EncryptData(data)
         localStorage.setItem('token', ENCRYPTED_CREDENTIALS.Email);

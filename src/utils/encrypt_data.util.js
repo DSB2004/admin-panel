@@ -2,7 +2,8 @@
 import { ENCRYPT_KEY } from "../config/index.config";
 
 const encrypt = (text) => {
-    if (text) {
+    console.log(text)
+    if (text !== undefined) {
         text = String(text)
         let result = '';
         for (let i = 0; i < text.length; i++) {
@@ -18,6 +19,7 @@ const encrypt = (text) => {
 };
 
 function EncryptData(data) {
+    // console.log(data)
     return new Promise((resolve, reject) => {
         try {
             let encryptedData = {};

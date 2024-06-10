@@ -36,6 +36,7 @@ export default function SignIn() {
                 }
                 const ENCRYPTED_USER_CREDENTIALS = await EncryptData(USER_CREDENTIALS);
                 const response = await AUTH_API.post("/login", ENCRYPTED_USER_CREDENTIALS);
+                // console.log(response.data.body)
                 if (response.data.body.error) {
                     update_msg(response.data.body.error)
                 }
@@ -51,6 +52,7 @@ export default function SignIn() {
             }
         }
         catch (err) {
+            console.log(err)
             update_msg("Field Not Provided");
             return;
         }
