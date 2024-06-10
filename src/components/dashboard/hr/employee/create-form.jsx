@@ -11,7 +11,7 @@ import GetCredentials from "../../../../utils/get_credentials.util"
 import { CREATE_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
 import { RiLoader2Fill } from "react-icons/ri";
 import { useDispatch } from 'react-redux';
-export default function Form({ showModal, toggleModal }) {
+export default function CreateForm({ showModal, toggleModal }) {
     const dispatch = useDispatch();
     const [updateMsg, update_msg] = useState('');
     const [disableInput, toggleDisable] = useState();
@@ -162,8 +162,6 @@ export default function Form({ showModal, toggleModal }) {
                 reporting_to: employee_reporting_manager.current.getValue()[0].value
             };
             const ENCRYTED_EMPLOYEE_DETAILS = await EncryptData(EMPLOYEE_DETAILS);
-            console.log(EMPLOYEE_DETAILS)
-            console.log(ENCRYTED_EMPLOYEE_DETAILS)
             const res = await dispatch(CREATE_EMPLOYEE(ENCRYTED_EMPLOYEE_DETAILS)).unwrap();
             if (res.body.error) {
                 update_msg("Error Happened!! Check Field")

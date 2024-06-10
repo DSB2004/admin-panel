@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Button from '../../../layouts/form/button'
 import THead from '../../../layouts/table/table-header'
 import Task from "../../../assets/task.json"
-import TaskRow from '../../../layouts/table/task-row'
-import Form from './form'
+import ActionButton from '../../../layouts/table/action-button'
+import SearchBar from '../../../layouts/table/search-bar'
+import Form from './create-form'
 import Pagenation from '../../../layouts/table/pagenation'
 import { useSelector } from 'react-redux'
 
@@ -17,7 +18,9 @@ export default function TASK() {
 
       <div className="card">
         <div className="card-header">
-          <h3 className="card-title">Task Table</h3>
+          <div className="card-title" style={{ width: "260px" }} >
+            <SearchBar />
+          </div>
           <div className="card-tools">
             <Button text="Add  Task" className="btn-sm" onClick={() => toggleModal(true)} />
           </div>
@@ -50,6 +53,7 @@ export default function TASK() {
                                 <td>{element.due_date}</td>
                                 <td>{element.status}</td>
                                 <td>{element.options}</td>
+                                <td><ActionButton /></td>
                               </tr>
                             </>)
                         }
@@ -63,6 +67,7 @@ export default function TASK() {
                                 <td>{element.due_date}</td>
                                 <td>{element.status}</td>
                                 <td>{element.options}</td>
+                                <td><ActionButton /></td>
                               </tr>
                             </>)
                         }

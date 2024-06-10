@@ -1,7 +1,7 @@
 import React, { forwardRef, useState } from 'react';
 import AutoSuggestion from './auto_suggestion';
-const Input = forwardRef(({ type, label, placeholder, autoComplete = false, disable, pattern, title }, ref) => {
-    const [value, setValue] = useState("");
+const Input = forwardRef(({ type, label, placeholder, autoComplete = false, disable, pattern, title, value }, ref) => {
+    const [auto_com_value, setValue] = useState("");
 
     return (
         <div className="form-group relative">
@@ -16,9 +16,10 @@ const Input = forwardRef(({ type, label, placeholder, autoComplete = false, disa
                 disabled={disable}
                 pattern={pattern}
                 title={title}
+                value={value}
             />
             {autoComplete ? <>
-                <AutoSuggestion value={value} />
+                <AutoSuggestion value={auto_com_value} />
             </> : <></>
             }
         </div >

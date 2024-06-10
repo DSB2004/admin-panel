@@ -1,13 +1,4 @@
 {
-    "width": [
-        200,
-        200,
-        300,
-        150,
-        150,
-        100,
-        100
-    ],
     "header": [
         "Employee ID",
         "Employee Name",
@@ -321,6 +312,20 @@
             "label": "In Laws"
         }
     ],
+    "status": [
+        {
+            "value": "status_1",
+            "label": "Status 1"
+        },
+        {
+            "value": "status_2",
+            "label": "Status 2"
+        },
+        {
+            "value": "status_3",
+            "label": "Status 3"
+        }
+    ],
     "test": {
         "name": "John Smith",
         "password": "dH7js8FjN9hK",
@@ -339,6 +344,12 @@
             {
                 "value": "United States",
                 "label": "United States"
+            }
+        ],
+        "status": [
+            {
+                "value": "status_2",
+                "label": "Status 2"
             }
         ],
         "phone_no": "9876543210",

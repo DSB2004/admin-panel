@@ -6,7 +6,7 @@ import Dropdown from '../../../layouts/form/dropdown'
 import MultiSelect from '../../../layouts/form/multiSelect'
 import data from "../../../assets/test.json"
 import { Dialog } from '@mui/material'
-export default function Form({ showModal, toggleModal }) {
+export default function CreateForm({ showModal, toggleModal }) {
     const singleSelect = useRef();
     const multiSelect = useRef();
     return (
