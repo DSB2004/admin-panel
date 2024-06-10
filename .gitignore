@@ -3,3 +3,4 @@
 /build
 test.js
 /build.zip
+.env.text
