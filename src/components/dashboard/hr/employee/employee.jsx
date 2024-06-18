@@ -2,8 +2,6 @@ import React, { useState, useReducer, useEffect, useRef } from 'react';
 
 // utils
 
-import EncryptData from '../../../../utils/encrypt_data.util';
-// redux 
 import { useSelector, useDispatch } from 'react-redux';
 import { VIEW_EMPLOYEES, SEARCH_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
 

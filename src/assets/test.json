@@ -343,656 +343,118 @@
             "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
         }
     ],
-    "employee": [
-        {
-            "emp_id": "E001",
-            "emp_name": "John Doe",
-            "emp_mail": "john.doe@example.com",
-            "emp_role": "Developer",
-            "report_to": "Jane Smith",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E002",
-            "emp_name": "Alice Johnson",
-            "emp_mail": "alice.johnson@example.com",
-            "emp_role": "Designer",
-            "report_to": "Jane Smith",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E003",
-            "emp_name": "Bob Brown",
-            "emp_mail": "bob.brown@example.com",
-            "emp_role": "Tester",
-            "report_to": "John Doe",
-            "status": "Inactive",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E004",
-            "emp_name": "Carol White",
-            "emp_mail": "carol.white@example.com",
-            "emp_role": "Manager",
-            "report_to": "David Wilson",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E005",
-            "emp_name": "David Wilson",
-            "emp_mail": "david.wilson@example.com",
-            "emp_role": "Director",
-            "report_to": "CEO",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E006",
-            "emp_name": "Emma Davis",
-            "emp_mail": "emma.davis@example.com",
-            "emp_role": "Developer",
-            "report_to": "John Doe",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E007",
-            "emp_name": "Frank Harris",
-            "emp_mail": "frank.harris@example.com",
-            "emp_role": "Designer",
-            "report_to": "Alice Johnson",
-            "status": "Inactive",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E008",
-            "emp_name": "Grace Lee",
-            "emp_mail": "grace.lee@example.com",
-            "emp_role": "Tester",
-            "report_to": "Bob Brown",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E009",
-            "emp_name": "Henry Martinez",
-            "emp_mail": "henry.martinez@example.com",
-            "emp_role": "Manager",
-            "report_to": "Carol White",
-            "status": "Inactive",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E010",
-            "emp_name": "Isabella Thompson",
-            "emp_mail": "isabella.thompson@example.com",
-            "emp_role": "Developer",
-            "report_to": "Emma Davis",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E011",
-            "emp_name": "Jack Garcia",
-            "emp_mail": "jack.garcia@example.com",
-            "emp_role": "Designer",
-            "report_to": "Frank Harris",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E012",
-            "emp_name": "Kelly Lewis",
-            "emp_mail": "kelly.lewis@example.com",
-            "emp_role": "Tester",
-            "report_to": "Grace Lee",
-            "status": "Inactive",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E013",
-            "emp_name": "Liam Young",
-            "emp_mail": "liam.young@example.com",
-            "emp_role": "Manager",
-            "report_to": "Henry Martinez",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E014",
-            "emp_name": "Mia Hernandez",
-            "emp_mail": "mia.hernandez@example.com",
-            "emp_role": "Director",
-            "report_to": "David Wilson",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E015",
-            "emp_name": "Noah Robinson",
-            "emp_mail": "noah.robinson@example.com",
-            "emp_role": "Developer",
-            "report_to": "Emma Davis",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E016",
-            "emp_name": "Olivia Walker",
-            "emp_mail": "olivia.walker@example.com",
-            "emp_role": "Designer",
-            "report_to": "Jack Garcia",
-            "status": "Inactive",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E017",
-            "emp_name": "Paul Hall",
-            "emp_mail": "paul.hall@example.com",
-            "emp_role": "Tester",
-            "report_to": "Kelly Lewis",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E018",
-            "emp_name": "Quinn Allen",
-            "emp_mail": "quinn.allen@example.com",
-            "emp_role": "Manager",
-            "report_to": "Liam Young",
-            "status": "Inactive",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E019",
-            "emp_name": "Rachel Scott",
-            "emp_mail": "rachel.scott@example.com",
-            "emp_role": "Developer",
-            "report_to": "Noah Robinson",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E020",
-            "emp_name": "Steve King",
-            "emp_mail": "steve.king@example.com",
-            "emp_role": "Designer",
-            "report_to": "Olivia Walker",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E021",
-            "emp_name": "Employee 21",
-            "emp_mail": "employee21@example.com",
-            "emp_role": "Role 21",
-            "report_to": "Manager 21",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E022",
-            "emp_name": "Employee 22",
-            "emp_mail": "employee22@example.com",
-            "emp_role": "Role 22",
-            "report_to": "Manager 22",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E023",
-            "emp_name": "Employee 23",
-            "emp_mail": "employee23@example.com",
-            "emp_role": "Role 23",
-            "report_to": "Manager 23",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E024",
-            "emp_name": "Employee 24",
-            "emp_mail": "employee24@example.com",
-            "emp_role": "Role 24",
-            "report_to": "Manager 24",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E025",
-            "emp_name": "Employee 25",
-            "emp_mail": "employee25@example.com",
-            "emp_role": "Role 25",
-            "report_to": "Manager 25",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E026",
-            "emp_name": "Employee 26",
-            "emp_mail": "employee26@example.com",
-            "emp_role": "Role 26",
-            "report_to": "Manager 26",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E027",
-            "emp_name": "Employee 27",
-            "emp_mail": "employee27@example.com",
-            "emp_role": "Role 27",
-            "report_to": "Manager 27",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E028",
-            "emp_name": "Employee 28",
-            "emp_mail": "employee28@example.com",
-            "emp_role": "Role 28",
-            "report_to": "Manager 28",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E029",
-            "emp_name": "Employee 29",
-            "emp_mail": "employee29@example.com",
-            "emp_role": "Role 29",
-            "report_to": "Manager 29",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E030",
-            "emp_name": "Employee 30",
-            "emp_mail": "employee30@example.com",
-            "emp_role": "Role 30",
-            "report_to": "Manager 30",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E031",
-            "emp_name": "Employee 31",
-            "emp_mail": "employee31@example.com",
-            "emp_role": "Role 31",
-            "report_to": "Manager 31",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E032",
-            "emp_name": "Employee 32",
-            "emp_mail": "employee32@example.com",
-            "emp_role": "Role 32",
-            "report_to": "Manager 32",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E033",
-            "emp_name": "Employee 33",
-            "emp_mail": "employee33@example.com",
-            "emp_role": "Role 33",
-            "report_to": "Manager 33",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E034",
-            "emp_name": "Employee 34",
-            "emp_mail": "employee34@example.com",
-            "emp_role": "Role 34",
-            "report_to": "Manager 34",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E035",
-            "emp_name": "Employee 35",
-            "emp_mail": "employee35@example.com",
-            "emp_role": "Role 35",
-            "report_to": "Manager 35",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E036",
-            "emp_name": "Employee 36",
-            "emp_mail": "employee36@example.com",
-            "emp_role": "Role 36",
-            "report_to": "Manager 36",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E037",
-            "emp_name": "Employee 37",
-            "emp_mail": "employee37@example.com",
-            "emp_role": "Role 37",
-            "report_to": "Manager 37",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E038",
-            "emp_name": "Employee 38",
-            "emp_mail": "employee38@example.com",
-            "emp_role": "Role 38",
-            "report_to": "Manager 38",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E039",
-            "emp_name": "Employee 39",
-            "emp_mail": "employee39@example.com",
-            "emp_role": "Role 39",
-            "report_to": "Manager 39",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E040",
-            "emp_name": "Employee 40",
-            "emp_mail": "employee40@example.com",
-            "emp_role": "Role 40",
-            "report_to": "Manager 40",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E041",
-            "emp_name": "Employee 41",
-            "emp_mail": "employee41@example.com",
-            "emp_role": "Role 41",
-            "report_to": "Manager 41",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E021",
-            "emp_name": "Employee 21",
-            "emp_mail": "employee21@example.com",
-            "emp_role": "Role 21",
-            "report_to": "Manager 21",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E022",
-            "emp_name": "Employee 22",
-            "emp_mail": "employee22@example.com",
-            "emp_role": "Role 22",
-            "report_to": "Manager 22",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E023",
-            "emp_name": "Employee 23",
-            "emp_mail": "employee23@example.com",
-            "emp_role": "Role 23",
-            "report_to": "Manager 23",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E024",
-            "emp_name": "Employee 24",
-            "emp_mail": "employee24@example.com",
-            "emp_role": "Role 24",
-            "report_to": "Manager 24",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E025",
-            "emp_name": "Employee 25",
-            "emp_mail": "employee25@example.com",
-            "emp_role": "Role 25",
-            "report_to": "Manager 25",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E026",
-            "emp_name": "Employee 26",
-            "emp_mail": "employee26@example.com",
-            "emp_role": "Role 26",
-            "report_to": "Manager 26",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E027",
-            "emp_name": "Employee 27",
-            "emp_mail": "employee27@example.com",
-            "emp_role": "Role 27",
-            "report_to": "Manager 27",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E028",
-            "emp_name": "Employee 28",
-            "emp_mail": "employee28@example.com",
-            "emp_role": "Role 28",
-            "report_to": "Manager 28",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E029",
-            "emp_name": "Employee 29",
-            "emp_mail": "employee29@example.com",
-            "emp_role": "Role 29",
-            "report_to": "Manager 29",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E030",
-            "emp_name": "Employee 30",
-            "emp_mail": "employee30@example.com",
-            "emp_role": "Role 30",
-            "report_to": "Manager 30",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E031",
-            "emp_name": "Employee 31",
-            "emp_mail": "employee31@example.com",
-            "emp_role": "Role 31",
-            "report_to": "Manager 31",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E032",
-            "emp_name": "Employee 32",
-            "emp_mail": "employee32@example.com",
-            "emp_role": "Role 32",
-            "report_to": "Manager 32",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E033",
-            "emp_name": "Employee 33",
-            "emp_mail": "employee33@example.com",
-            "emp_role": "Role 33",
-            "report_to": "Manager 33",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E034",
-            "emp_name": "Employee 34",
-            "emp_mail": "employee34@example.com",
-            "emp_role": "Role 34",
-            "report_to": "Manager 34",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E035",
-            "emp_name": "Employee 35",
-            "emp_mail": "employee35@example.com",
-            "emp_role": "Role 35",
-            "report_to": "Manager 35",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E036",
-            "emp_name": "Employee 36",
-            "emp_mail": "employee36@example.com",
-            "emp_role": "Role 36",
-            "report_to": "Manager 36",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E037",
-            "emp_name": "Employee 37",
-            "emp_mail": "employee37@example.com",
-            "emp_role": "Role 37",
-            "report_to": "Manager 37",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E038",
-            "emp_name": "Employee 38",
-            "emp_mail": "employee38@example.com",
-            "emp_role": "Role 38",
-            "report_to": "Manager 38",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E039",
-            "emp_name": "Employee 39",
-            "emp_mail": "employee39@example.com",
-            "emp_role": "Role 39",
-            "report_to": "Manager 39",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E040",
-            "emp_name": "Employee 40",
-            "emp_mail": "employee40@example.com",
-            "emp_role": "Role 40",
-            "report_to": "Manager 40",
-            "status": "Active",
-            "action": "Edit/Delete"
-        },
-        {
-            "emp_id": "E041",
-            "emp_name": "Employee 41",
-            "emp_mail": "employee41@example.com",
-            "emp_role": "Role 41",
-            "report_to": "Manager 41",
-            "status": "Active",
-            "action": "Edit/Delete"
-        }
-    ],
     "task": [
         {
-            "id": "task-1a2b3c4d5e-001",
-            "title": "Plant here few rule.",
-            "assig_by": "Christine Ford",
-            "priority": "Low",
-            "due_date": "2024-01-06T00:00:00.000",
-            "status": "In Progress",
-            "options": "catch"
+            "title": "Sample Title 1",
+            "assign_by": {
+                "value": "0003",
+                "label": "Person 3"
+            },
+            "priority": {
+                "value": "mid",
+                "label": "Medium"
+            },
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
+            "start_date": "2022-06-10",
+            "end_date": "2024-04-12",
+            "status": "Done",
+            "option": "none"
         },
         {
-            "id": "task-6f7g8h9i0j-001",
-            "title": "Pull easy leave part pick too parent.",
-            "assig_by": "Charlene Murphy",
-            "priority": "High",
-            "due_date": "2023-12-01T00:00:00.000",
-            "status": "Completed",
-            "options": "science"
+            "title": "Sample Title 1",
+            "assign_by": {
+                "value": "0003",
+                "label": "Person 3"
+            },
+            "priority": {
+                "value": "mid",
+                "label": "Medium"
+            },
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
+            "start_date": "2022-06-10",
+            "end_date": "2024-04-12",
+            "status": "Done",
+            "option": "none"
         },
         {
-            "id": "task-a1b2c3d4e5-001",
-            "title": "Available gun worker far.",
-            "assig_by": "Kimberly Jordan",
-            "priority": "Low",
-            "due_date": "2023-08-17T00:00:00.000",
-            "status": "Completed",
-            "options": "stand"
+            "title": "Sample Title 1",
+            "assign_by": {
+                "value": "0003",
+                "label": "Person 3"
+            },
+            "priority": {
+                "value": "mid",
+                "label": "Medium"
+            },
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
+            "start_date": "2022-06-10",
+            "end_date": "2024-04-12",
+            "status": "Done",
+            "option": "none"
         },
         {
-            "id": "task-f6g7h8i9j0-001",
-            "title": "Reflect young research simply mean several teacher job.",
-            "assig_by": "David Casey",
-            "priority": "Medium",
-            "due_date": "2023-07-06T00:00:00.000",
-            "status": "Not Started",
-            "options": "box"
+            "title": "Sample Title 1",
+            "assign_by": {
+                "value": "0003",
+                "label": "Person 3"
+            },
+            "priority": {
+                "value": "mid",
+                "label": "Medium"
+            },
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
+            "start_date": "2022-06-10",
+            "end_date": "2024-04-12",
+            "status": "Done",
+            "option": "none"
         },
         {
-            "id": "task-1a2b3c4d5e-002",
-            "title": "Plant here few rule.",
-            "assig_by": "Christine Ford",
-            "priority": "Low",
-            "due_date": "2024-01-06T00:00:00.000",
-            "status": "In Progress",
-            "options": "catch"
+            "title": "Sample Title 1",
+            "assign_by": {
+                "value": "0003",
+                "label": "Person 3"
+            },
+            "priority": {
+                "value": "mid",
+                "label": "Medium"
+            },
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
+            "start_date": "2022-06-10",
+            "end_date": "2024-04-12",
+            "status": "Done",
+            "option": "none"
         },
         {
-            "id": "task-6f7g8h9i0j-002",
-            "title": "Pull easy leave part pick too parent.",
-            "assig_by": "Charlene Murphy",
-            "priority": "High",
-            "due_date": "2023-12-01T00:00:00.000",
-            "status": "Completed",
-            "options": "science"
+            "title": "Sample Title 1",
+            "assign_by": {
+                "value": "0003",
+                "label": "Person 3"
+            },
+            "priority": {
+                "value": "mid",
+                "label": "Medium"
+            },
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
+            "start_date": "2022-06-10",
+            "end_date": "2024-04-12",
+            "status": "Done",
+            "option": "none"
         },
         {
-            "id": "task-a1b2c3d4e5-002",
-            "title": "Available gun worker far.",
-            "assig_by": "Kimberly Jordan",
-            "priority": "Low",
-            "due_date": "2023-08-17T00:00:00.000",
-            "status": "Completed",
-            "options": "stand"
-        },
-        {
-            "id": "task-f6g7h8i9j0-002",
-            "title": "Reflect young research simply mean several teacher job.",
-            "assig_by": "David Casey",
-            "priority": "Medium",
-            "due_date": "2023-07-06T00:00:00.000",
-            "status": "Not Started",
-            "options": "box"
-        },
-        {
-            "id": "task-1a2b3c4d5e-003",
-            "title": "Plant here few rule.",
-            "assig_by": "Christine Ford",
-            "priority": "Low",
-            "due_date": "2024-01-06T00:00:00.000",
-            "status": "In Progress",
-            "options": "catch"
-        },
-        {
-            "id": "task-6f7g8h9i0j-003",
-            "title": "Pull easy leave part pick too parent.",
-            "assig_by": "Charlene Murphy",
-            "priority": "High",
-            "due_date": "2023-12-01T00:00:00.000",
-            "status": "Completed",
-            "options": "science"
+            "title": "Sample Title 1",
+            "assign_by": {
+                "value": "0003",
+                "label": "Person 3"
+            },
+            "priority": {
+                "value": "mid",
+                "label": "Medium"
+            },
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
+            "start_date": "2022-06-10",
+            "end_date": "2024-04-12",
+            "status": "Done",
+            "option": "none"
         }
     ]
 }

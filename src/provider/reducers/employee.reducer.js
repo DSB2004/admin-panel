@@ -3,10 +3,8 @@ import GetCredentials from "../../utils/get_credentials.util";
 import { EMPLOYEE_API, CREATE_EMPLOYEE_API } from "../../api/employee.api";
 import EncryptData from "../../utils/encrypt_data.util";
 import { decrypt } from "../../utils/decrypt_data.util"
-import SearchBar from "../../layouts/table/search-bar";
 import { API_KEY } from "../../config/index.config";
 import axios from "axios";
-// const response = await CREATE_EMPLOYEE_API.post('/create', content);
 
 
 
@@ -28,8 +26,6 @@ export const CREATE_EMPLOYEE = createAsyncThunk("post-create-employee", async (c
         throw err;
     }
 });
-
-
 
 
 
@@ -75,7 +71,7 @@ export const SEARCH_EMPLOYEE = createAsyncThunk("get-search-employee", async (co
 const Employee = createSlice({
     name: "employee",
     initialState: {
-        content_loading: false, content: [], total_count: 0, search: [], form_loading: false
+        content_loading: false, content: [], total_count: 0, form_loading: false
     },
     reducers: {
         getEmployee: (state, action) => {
@@ -83,6 +79,7 @@ const Employee = createSlice({
         }
     }
     , extraReducers: (builder) => {
+
         // create employee
         builder.addCase(CREATE_EMPLOYEE.pending, (state, action) => {
             state.form_loading = true;
@@ -102,7 +99,6 @@ const Employee = createSlice({
         builder.addCase(VIEW_EMPLOYEES.fulfilled, (state, action) => {
             const { page, data, count } = action.payload
             state.total_count = count
-            state.search = [...state.search, data];
             state.content = [...state.content, { page: [page], data: data }];
             state.content_loading = false;
         })
