@@ -5,10 +5,24 @@ import Button from '../../../layouts/form/button'
 import Dropdown from '../../../layouts/form/dropdown'
 import MultiSelect from '../../../layouts/form/multiSelect'
 import data from "../../../assets/test.json"
+
 import { Dialog } from '@mui/material'
-export default function CreateForm({ showModal, toggleModal }) {
-    const singleSelect = useRef();
-    const multiSelect = useRef();
+import { useSelector } from 'react-redux'
+export default function EditForm({ showModal, toggleModal, task_id }) {
+    const description = useRef();
+    const title = useRef();
+    const start_data = useRef();
+    const end_data = useRef();
+    const status = useRef();
+    const priority = useRef();
+    const assignto = useRef();
+
+    const TASK_STATE = useSelector((state) => state.Task.content.filter(element => element.id === task_id))[0];
+
+    const HandleTaskEdit = (e) => {
+        e.preventDefault();
+        console.log(TASK_STATE)
+    }
     return (
         <Dialog
             open={showModal}
@@ -24,7 +38,7 @@ export default function CreateForm({ showModal, toggleModal }) {
             }}>
             <div className="card card-default">
                 <div className="card-header">
-                    <h3 className="card-title">Add More Task</h3>
+                    <h3 className="card-title">Edit Task</h3>
                     <div className="card-tools">
                         <button
                             type="button"
@@ -36,35 +50,33 @@ export default function CreateForm({ showModal, toggleModal }) {
                         </button>
                     </div>
                 </div>
-                <div className="card-body">
-                    <Input label="Task Title" autoComplete={true} placeholder="Enter the task title..." type="text" />
-                    <TextArea label="Description" placeholder="Enter the description..." rows={5} />
+                <form className="card-body" onSubmit={HandleTaskEdit}>
+                    <Input label="Task ID" value={task_id} placeholder="Task ID" type="text" ref={title} disable={true} />
+                    <Input label="Task Title" value={TASK_STATE && TASK_STATE.title} autoComplete={true} placeholder="Enter the task title..." type="text" ref={title} />
+                    <TextArea label="Description" value={TASK_STATE && TASK_STATE.description} placeholder="Enter the description..." rows={5} ref={description} />
+                    {/* <EditorBox /> */}
                     <div className="row">
                         <div className="col-md-6">
-                            <Input label="Start Date" placeholder="Enter the start date..." type="date" />
+                            <Input label="Start Date" ref={start_data} placeholder="Enter the start date..." type="date" />
                         </div>
                         <div className="col-md-6">
-                            <Input label="End Date" placeholder="Enter the end date..." type="date" />
+                            <Input label="End Date" ref={end_data} placeholder="Enter the end date..." type="date" />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-6">
-                            <Dropdown label="Status" options={data.option} ref={singleSelect} />
+                            <Dropdown label="Status" ref={status} options={data.option} />
                         </div>
                         <div className="col-md-6">
-                            <Dropdown label="Priority" options={data.option} />
+                            <Dropdown label="Priority" ref={priority} options={data.option} />
                         </div>
                     </div>
-                    <MultiSelect label="Assigned To" options={data.option} ref={multiSelect} />
+                    <MultiSelect label="Assigned To" ref={assignto} options={data.option} />
                     <div className="flex-center">
-                        <Button text="Submit" onClick={() => {
-                            console.log(singleSelect.current.getValue())
-                            console.log(multiSelect.current.getValue())
-                        }}
-                        />
+                        <Button text="Submit" type="submit" />
                     </div>
-                </div>
+                </form>
             </div>
-        </Dialog>
+        </Dialog >
     )
 }

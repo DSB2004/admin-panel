@@ -162,6 +162,7 @@ export default function CreateForm({ showModal, toggleModal }) {
                 reporting_to: employee_reporting_manager.current.getValue()[0].value
             };
             const ENCRYTED_EMPLOYEE_DETAILS = await EncryptData(EMPLOYEE_DETAILS);
+            console.log(ENCRYTED_EMPLOYEE_DETAILS)
             const res = await dispatch(CREATE_EMPLOYEE(ENCRYTED_EMPLOYEE_DETAILS)).unwrap();
             if (res.body.error) {
                 update_msg("Error Happened!! Check Field")

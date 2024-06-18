@@ -2,7 +2,6 @@
 import { ENCRYPT_KEY } from "../config/index.config";
 
 const encrypt = (text) => {
-    console.log(text)
     if (text !== undefined) {
         text = String(text)
         let result = '';

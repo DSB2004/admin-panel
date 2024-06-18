@@ -1,20 +1,45 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import Button from '../../../layouts/form/button'
 import THead from '../../../layouts/table/table-header'
 import Task from "../../../assets/task.json"
 import ActionButton from '../../../layouts/table/action-button'
 import SearchBar from '../../../layouts/table/search-bar'
-import Form from './create-form'
+
+import CreateForm from './create-form'
+import EditForm from './edit-form'
 import Pagenation from '../../../layouts/table/pagenation'
 import { useSelector } from 'react-redux'
 
 export default function TASK() {
   const [INDEX, SETINDEX] = useState(0);
-  const [showModal, toggleModal] = useState(false);
-  const TASK_STATE = useSelector(state => state.Task)
+  const TASK_STATE = useSelector(state => state.Task);
+  const reducer = (state, action) => {
+    const { type, id } = action;
+    if (type === "VIEW") {
+      return { id: id, type: "VIEW" };
+    } else if (type === "ADD") {
+      return { id: null, type: "ADD" };
+    } else if (type === "EDIT") {
+      return { id: id, type: "EDIT" };
+    } else if (type === "CLOSE") {
+      return { id: null, type: null };
+    }
+    return state;
+  };
+  const ACTION_LIST = (ID) => [
+    { content: "View", onClick: () => DISPATCH({ type: "VIEW", id: ID }) },
+    { content: "Edit", onClick: () => DISPATCH({ type: "EDIT", id: ID }) },
+    { content: "Mark As Completed", onClick: () => console.log("Mark As Completed") },
+    { content: "Mark in Progress", onClick: () => console.log("Mark in Progress") },
+    { content: "Delete", onClick: () => console.log("Delete") },
+
+  ];
+  const [STATE, DISPATCH] = useReducer(reducer, { id: null, type: null });
   return (
     <>
-      <Form showModal={showModal} toggleModal={toggleModal} />
+      {/* <Form showModal={showModal} toggleModal={toggleModal} /> */}
+      <CreateForm showModal={STATE.type === "ADD"} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
+      <EditForm showModal={STATE.type === "EDIT"} task_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
 
       <div className="card">
         <div className="card-header">
@@ -22,7 +47,7 @@ export default function TASK() {
             <SearchBar />
           </div>
           <div className="card-tools">
-            <Button text="Add  Task" className="btn-sm" onClick={() => toggleModal(true)} />
+            <Button text="Add Task" className="btn-sm" onClick={() => DISPATCH({ type: "ADD" })} />
           </div>
         </div>
 
@@ -53,7 +78,9 @@ export default function TASK() {
                                 <td>{element.due_date}</td>
                                 <td>{element.status}</td>
                                 <td>{element.options}</td>
-                                <td><ActionButton /></td>
+                                <td>
+                                  <ActionButton actionList={ACTION_LIST(element.id)} />
+                                </td>
                               </tr>
                             </>)
                         }
@@ -67,7 +94,9 @@ export default function TASK() {
                                 <td>{element.due_date}</td>
                                 <td>{element.status}</td>
                                 <td>{element.options}</td>
-                                <td><ActionButton /></td>
+                                <td>
+                                  <ActionButton actionList={ACTION_LIST(element.id)} />
+                                </td>
                               </tr>
                             </>)
                         }

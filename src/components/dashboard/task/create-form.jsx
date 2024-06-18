@@ -7,8 +7,13 @@ import MultiSelect from '../../../layouts/form/multiSelect'
 import data from "../../../assets/test.json"
 import { Dialog } from '@mui/material'
 export default function CreateForm({ showModal, toggleModal }) {
-    const singleSelect = useRef();
-    const multiSelect = useRef();
+    const description = useRef();
+    const title = useRef();
+    const start_data = useRef();
+    const end_data = useRef();
+    const status = useRef();
+    const priority = useRef();
+    const assignto = useRef();
     return (
         <Dialog
             open={showModal}
@@ -37,31 +42,28 @@ export default function CreateForm({ showModal, toggleModal }) {
                     </div>
                 </div>
                 <div className="card-body">
-                    <Input label="Task Title" autoComplete={true} placeholder="Enter the task title..." type="text" />
-                    <TextArea label="Description" placeholder="Enter the description..." rows={5} />
+                    <Input label="Task ID" autoComplete={true} placeholder="Auto Generated" type="text" />
+                    <Input label="Task Title" ref={title} autoComplete={true} placeholder="Enter the task title..." type="text" />
+                    <TextArea label="Description" ref={description} placeholder="Enter the description..." rows={20} />
                     <div className="row">
                         <div className="col-md-6">
-                            <Input label="Start Date" placeholder="Enter the start date..." type="date" />
+                            <Input label="Start Date" ref={start_data} placeholder="Enter the start date..." type="date" />
                         </div>
                         <div className="col-md-6">
-                            <Input label="End Date" placeholder="Enter the end date..." type="date" />
+                            <Input label="End Date" ref={end_data} placeholder="Enter the end date..." type="date" />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-6">
-                            <Dropdown label="Status" options={data.option} ref={singleSelect} />
+                            <Dropdown label="Status" ref={status} options={data.option} />
                         </div>
                         <div className="col-md-6">
-                            <Dropdown label="Priority" options={data.option} />
+                            <Dropdown label="Priority" ref={priority} options={data.option} />
                         </div>
                     </div>
-                    <MultiSelect label="Assigned To" options={data.option} ref={multiSelect} />
+                    <MultiSelect label="Assigned To" ref={assignto} options={data.option} />
                     <div className="flex-center">
-                        <Button text="Submit" onClick={() => {
-                            console.log(singleSelect.current.getValue())
-                            console.log(multiSelect.current.getValue())
-                        }}
-                        />
+                        <Button text="Submit" type="submit" />
                     </div>
                 </div>
             </div>

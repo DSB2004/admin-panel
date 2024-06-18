@@ -136,9 +136,9 @@ td {
 }
 
 
-.card {
-  /* position: relative; */
-  /* min-height: 90vh; */
+.table-card {
+  position: relative;
+  min-height: 85vh;
 }
 
 

@@ -1,35 +1,22 @@
 import React, { useReducer, useEffect } from 'react'
 
-export default function Pagenation({ STATE_CONTENT, TOGGLE_INDEX }) {
+export default function Pagenation({ TOTAL, SET_PAGE, PAGE }) {
 
-    const reducer = (state, action) => {
-        const { type, payload } = action;
-        switch (type) {
-            case "ADD":
-                return state + payload < STATE_CONTENT.length ? state + payload : state;
-            case "SUB":
-                return state - payload >= 0 ? state - payload : 0;
-            case "SET":
-                return payload < STATE_CONTENT.length ? payload : state;
-            default:
-                return state;
-        }
-    }
 
-    const [INDEX, DISPATCH] = useReducer(reducer, 0);
+    console.log(TOTAL, PAGE)
 
-    useEffect(() => {
-        TOGGLE_INDEX(INDEX);
-    }, [INDEX]);
     return (
 
         <div className='pagenation_container'>
 
+
             <div className='pagenation_inner_container'>
                 <p className="dataTables_info " id="example2_info" role="status" aria-live="polite">
-                    Showing {INDEX + 1} to {Math.min(INDEX + 10, STATE_CONTENT.length)} of {STATE_CONTENT.length} entries
+                    Showing {PAGE + 1} to {Math.min(PAGE + 10, TOTAL)} of {TOTAL} entries
                 </p>
             </div>
+            {/*
+
 
             <div className='pagenation_inner_container'>
 
@@ -77,10 +64,10 @@ export default function Pagenation({ STATE_CONTENT, TOGGLE_INDEX }) {
                     <li className="paginate_button page-item next" id="example2_next">
                         <div href="#" aria-controls="example2" data-dt-idx={7} tabIndex={0} className="page-link" onClick={() => DISPATCH({ type: "ADD", payload: 10 })}>Next</div>
                     </li>
-                </ul >
+                </ul > */}
 
 
-            </div >
+            {/* </div > */}
 
         </div >
     )

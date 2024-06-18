@@ -1,7 +1,7 @@
 
 import { ENCRYPT_KEY } from "../config/index.config";
 
-const decrypt = (encryptedText) => {
+export const decrypt = (encryptedText) => {
     const decodedText = atob(encryptedText);
     let result = '';
     for (let i = 0; i < decodedText.length; i++) {
