@@ -1,0 +1,98 @@
+.view-campaign {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    justify-content: space-evenly;
+}
+
+.option-label {
+    text-align: center;
+    font-size: 20px;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+
+}
+
+.view-campaign-section {
+    /* border: 2px solid black; */
+    position: relative;
+    width: 30%;
+    margin: 0px 10px;
+    height: 75vh;
+    overflow-y: auto;
+}
+
+.larger {
+    width: 70%;
+}
+
+.view-campaign-name {
+    margin: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.view-campaign-label {
+    margin: 0px 10px;
+    font-weight: bold;
+}
+
+.comment-section {
+    height: 300px;
+    overflow-y: auto;
+    width: 95%;
+    margin: 20px 0px;
+}
+
+.campaign-description {
+    margin: 20px 0px;
+}
+
+.campaign-description-container {
+    text-transform: capitalize;
+    padding: 5px;
+    background-color: rgb(249, 249, 249);
+    width: 95%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.campaign-description-key {
+    font-weight: 600;
+}
+
+.description-action {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    margin-top: auto;
+}
+
+@media screen and (max-width:1000px) {
+    .view-campaign {
+        display: block;
+        overflow-y: auto;
+    }
+
+    .overflow-hidden {
+        overflow-y: auto;
+    }
+
+    .view-campaign-section {
+        width: 100%;
+        height: auto;
+    }
+
+    .description-action {
+        position: relative;
+        bottom: 0px;
+        width: 100%;
+        margin-top: 50px;
+
+    }
+}

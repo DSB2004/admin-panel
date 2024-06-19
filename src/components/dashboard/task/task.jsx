@@ -51,7 +51,7 @@ export default function TASK() {
       <div className="card table-card">
         <div className="card-header">
           <div className="card-title" style={{ width: "260px" }} >
-            <SearchBar />
+            <SearchBar placeholder="Search by Task ID" />
           </div>
           <div className="card-tools">
             <Button text="Add Employee" className="btn-sm" onClick={() => DISPATCH({ type: "ADD" })} />
@@ -76,8 +76,8 @@ export default function TASK() {
                               <td className="sorting_1 dtr-control" tabIndex={0}>
                                 {element["title"]}
                               </td>
-                              <td>{element["assign_by"].label}</td>
-                              <td>{element["priority"].label}</td>
+                              <td>{element["assign_by"]}</td>
+                              <td>{element["priority"]}</td>
                               <td>{element['end_date']}</td>
                               <td>{element['status']}</td>
                               <td>{element['option']}</td>

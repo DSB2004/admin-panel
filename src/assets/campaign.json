@@ -17,12 +17,38 @@
     ],
     "platform": [
         {
-            "value": "Web",
+            "value": "web",
             "label": "Web"
         },
         {
-            "value": "App",
+            "value": "app",
             "label": "App"
+        }
+    ],
+    "test": {
+        "campaign name": "Test Campaign",
+        "description": "<h1><span class='hljs-section'>Project Overview </span></h1><br><h2><span class='hljs-section'>Introduction</span></h2><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. <span class='hljs-section'><ul><li>point 1 </li><li>point 2</li><li>point 3</li></ul><br><br><h2><span class='hljs-section'>Objective</span></h2><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. <span class='hljs-section'>",
+        "payout": "$10000",
+        "advertiser": "John Smith",
+        "lp": "none",
+        "platform": "web"
+    },
+    "comments": [
+        {
+            "username": "Sarah",
+            "comment": "This article provided excellent insights into modern web development trends. Really helpful!"
+        },
+        {
+            "username": "John123",
+            "comment": "I found the tutorial on React.js very clear and easy to follow. Thanks for sharing!"
+        },
+        {
+            "username": "TechEnthusiast",
+            "comment": "The comparison between Python and JavaScript was eye-opening. Great analysis!"
+        },
+        {
+            "username": "Emily_89",
+            "comment": "I love the practical examples in your coding tutorials. They make learning so much easier!"
         }
     ]
 }

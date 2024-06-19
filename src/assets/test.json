@@ -21,6 +21,7 @@
             "label": "Option 5"
         }
     ],
+    
     "campaign": [
         {
             "id": 1,
@@ -55,305 +56,43 @@
             "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
         },
         {
-            "id": 1,
-            "campaign_name": "Campaign 1",
-            "Payout": "$50",
-            "Advertiser": "Advertiser A",
+            "id": 5,
+            "campaign_name": "Campaign 5",
+            "Payout": "$200",
+            "Advertiser": "Advertiser E",
             "Status": "Active",
-            "Description": "This is the description for Campaign 1. It provides details about the campaign goals, target audience, and objectives."
+            "Description": "Campaign 5 is a nationwide marketing effort focused on driving online sales through a series of digital advertisements and email campaigns."
         },
         {
-            "id": 2,
-            "campaign_name": "Campaign 2",
-            "Payout": "$100",
-            "Advertiser": "Advertiser B",
+            "id": 6,
+            "campaign_name": "Campaign 6",
+            "Payout": "$150",
+            "Advertiser": "Advertiser F",
             "Status": "Paused",
-            "Description": "Campaign 2 aims to promote a new product launch. It targets young adults aged 18-30 who are interested in technology."
+            "Description": "This campaign is designed to promote eco-friendly products and sustainability initiatives. It includes educational content and social media outreach."
         },
         {
-            "id": 3,
-            "campaign_name": "Campaign 3",
-            "Payout": "$75",
-            "Advertiser": "Advertiser C",
+            "id": 7,
+            "campaign_name": "Campaign 7",
+            "Payout": "$90",
+            "Advertiser": "Advertiser G",
             "Status": "Completed",
-            "Description": "This campaign focused on increasing brand awareness through social media marketing. It included influencer collaborations and engaging content."
+            "Description": "Campaign 7 targeted fitness enthusiasts with a series of promotions for a new line of sportswear. The campaign featured fitness influencers and giveaways."
         },
         {
-            "id": 4,
-            "campaign_name": "Campaign 4",
-            "Payout": "$120",
-            "Advertiser": "Advertiser D",
+            "id": 8,
+            "campaign_name": "Campaign 8",
+            "Payout": "$130",
+            "Advertiser": "Advertiser H",
             "Status": "Active",
-            "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
-        },
-        {
-            "id": 1,
-            "campaign_name": "Campaign 1",
-            "Payout": "$50",
-            "Advertiser": "Advertiser A",
-            "Status": "Active",
-            "Description": "This is the description for Campaign 1. It provides details about the campaign goals, target audience, and objectives."
-        },
-        {
-            "id": 2,
-            "campaign_name": "Campaign 2",
-            "Payout": "$100",
-            "Advertiser": "Advertiser B",
-            "Status": "Paused",
-            "Description": "Campaign 2 aims to promote a new product launch. It targets young adults aged 18-30 who are interested in technology."
-        },
-        {
-            "id": 3,
-            "campaign_name": "Campaign 3",
-            "Payout": "$75",
-            "Advertiser": "Advertiser C",
-            "Status": "Completed",
-            "Description": "This campaign focused on increasing brand awareness through social media marketing. It included influencer collaborations and engaging content."
-        },
-        {
-            "id": 4,
-            "campaign_name": "Campaign 4",
-            "Payout": "$120",
-            "Advertiser": "Advertiser D",
-            "Status": "Active",
-            "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
-        },
-        {
-            "id": 1,
-            "campaign_name": "Campaign 1",
-            "Payout": "$50",
-            "Advertiser": "Advertiser A",
-            "Status": "Active",
-            "Description": "This is the description for Campaign 1. It provides details about the campaign goals, target audience, and objectives."
-        },
-        {
-            "id": 2,
-            "campaign_name": "Campaign 2",
-            "Payout": "$100",
-            "Advertiser": "Advertiser B",
-            "Status": "Paused",
-            "Description": "Campaign 2 aims to promote a new product launch. It targets young adults aged 18-30 who are interested in technology."
-        },
-        {
-            "id": 3,
-            "campaign_name": "Campaign 3",
-            "Payout": "$75",
-            "Advertiser": "Advertiser C",
-            "Status": "Completed",
-            "Description": "This campaign focused on increasing brand awareness through social media marketing. It included influencer collaborations and engaging content."
-        },
-        {
-            "id": 4,
-            "campaign_name": "Campaign 4",
-            "Payout": "$120",
-            "Advertiser": "Advertiser D",
-            "Status": "Active",
-            "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
-        },
-        {
-            "id": 1,
-            "campaign_name": "Campaign 1",
-            "Payout": "$50",
-            "Advertiser": "Advertiser A",
-            "Status": "Active",
-            "Description": "This is the description for Campaign 1. It provides details about the campaign goals, target audience, and objectives."
-        },
-        {
-            "id": 2,
-            "campaign_name": "Campaign 2",
-            "Payout": "$100",
-            "Advertiser": "Advertiser B",
-            "Status": "Paused",
-            "Description": "Campaign 2 aims to promote a new product launch. It targets young adults aged 18-30 who are interested in technology."
-        },
-        {
-            "id": 3,
-            "campaign_name": "Campaign 3",
-            "Payout": "$75",
-            "Advertiser": "Advertiser C",
-            "Status": "Completed",
-            "Description": "This campaign focused on increasing brand awareness through social media marketing. It included influencer collaborations and engaging content."
-        },
-        {
-            "id": 4,
-            "campaign_name": "Campaign 4",
-            "Payout": "$120",
-            "Advertiser": "Advertiser D",
-            "Status": "Active",
-            "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
-        },
-        {
-            "id": 1,
-            "campaign_name": "Campaign 1",
-            "Payout": "$50",
-            "Advertiser": "Advertiser A",
-            "Status": "Active",
-            "Description": "This is the description for Campaign 1. It provides details about the campaign goals, target audience, and objectives."
-        },
-        {
-            "id": 2,
-            "campaign_name": "Campaign 2",
-            "Payout": "$100",
-            "Advertiser": "Advertiser B",
-            "Status": "Paused",
-            "Description": "Campaign 2 aims to promote a new product launch. It targets young adults aged 18-30 who are interested in technology."
-        },
-        {
-            "id": 3,
-            "campaign_name": "Campaign 3",
-            "Payout": "$75",
-            "Advertiser": "Advertiser C",
-            "Status": "Completed",
-            "Description": "This campaign focused on increasing brand awareness through social media marketing. It included influencer collaborations and engaging content."
-        },
-        {
-            "id": 4,
-            "campaign_name": "Campaign 4",
-            "Payout": "$120",
-            "Advertiser": "Advertiser D",
-            "Status": "Active",
-            "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
-        },
-        {
-            "id": 1,
-            "campaign_name": "Campaign 1",
-            "Payout": "$50",
-            "Advertiser": "Advertiser A",
-            "Status": "Active",
-            "Description": "This is the description for Campaign 1. It provides details about the campaign goals, target audience, and objectives."
-        },
-        {
-            "id": 2,
-            "campaign_name": "Campaign 2",
-            "Payout": "$100",
-            "Advertiser": "Advertiser B",
-            "Status": "Paused",
-            "Description": "Campaign 2 aims to promote a new product launch. It targets young adults aged 18-30 who are interested in technology."
-        },
-        {
-            "id": 3,
-            "campaign_name": "Campaign 3",
-            "Payout": "$75",
-            "Advertiser": "Advertiser C",
-            "Status": "Completed",
-            "Description": "This campaign focused on increasing brand awareness through social media marketing. It included influencer collaborations and engaging content."
-        },
-        {
-            "id": 4,
-            "campaign_name": "Campaign 4",
-            "Payout": "$120",
-            "Advertiser": "Advertiser D",
-            "Status": "Active",
-            "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
-        },
-        {
-            "id": 1,
-            "campaign_name": "Campaign 1",
-            "Payout": "$50",
-            "Advertiser": "Advertiser A",
-            "Status": "Active",
-            "Description": "This is the description for Campaign 1. It provides details about the campaign goals, target audience, and objectives."
-        },
-        {
-            "id": 2,
-            "campaign_name": "Campaign 2",
-            "Payout": "$100",
-            "Advertiser": "Advertiser B",
-            "Status": "Paused",
-            "Description": "Campaign 2 aims to promote a new product launch. It targets young adults aged 18-30 who are interested in technology."
-        },
-        {
-            "id": 3,
-            "campaign_name": "Campaign 3",
-            "Payout": "$75",
-            "Advertiser": "Advertiser C",
-            "Status": "Completed",
-            "Description": "This campaign focused on increasing brand awareness through social media marketing. It included influencer collaborations and engaging content."
-        },
-        {
-            "id": 4,
-            "campaign_name": "Campaign 4",
-            "Payout": "$120",
-            "Advertiser": "Advertiser D",
-            "Status": "Active",
-            "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
-        },
-        {
-            "id": 1,
-            "campaign_name": "Campaign 1",
-            "Payout": "$50",
-            "Advertiser": "Advertiser A",
-            "Status": "Active",
-            "Description": "This is the description for Campaign 1. It provides details about the campaign goals, target audience, and objectives."
-        },
-        {
-            "id": 2,
-            "campaign_name": "Campaign 2",
-            "Payout": "$100",
-            "Advertiser": "Advertiser B",
-            "Status": "Paused",
-            "Description": "Campaign 2 aims to promote a new product launch. It targets young adults aged 18-30 who are interested in technology."
-        },
-        {
-            "id": 3,
-            "campaign_name": "Campaign 3",
-            "Payout": "$75",
-            "Advertiser": "Advertiser C",
-            "Status": "Completed",
-            "Description": "This campaign focused on increasing brand awareness through social media marketing. It included influencer collaborations and engaging content."
-        },
-        {
-            "id": 4,
-            "campaign_name": "Campaign 4",
-            "Payout": "$120",
-            "Advertiser": "Advertiser D",
-            "Status": "Active",
-            "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
-        },
-        {
-            "id": 1,
-            "campaign_name": "Campaign 1",
-            "Payout": "$50",
-            "Advertiser": "Advertiser A",
-            "Status": "Active",
-            "Description": "This is the description for Campaign 1. It provides details about the campaign goals, target audience, and objectives."
-        },
-        {
-            "id": 2,
-            "campaign_name": "Campaign 2",
-            "Payout": "$100",
-            "Advertiser": "Advertiser B",
-            "Status": "Paused",
-            "Description": "Campaign 2 aims to promote a new product launch. It targets young adults aged 18-30 who are interested in technology."
-        },
-        {
-            "id": 3,
-            "campaign_name": "Campaign 3",
-            "Payout": "$75",
-            "Advertiser": "Advertiser C",
-            "Status": "Completed",
-            "Description": "This campaign focused on increasing brand awareness through social media marketing. It included influencer collaborations and engaging content."
-        },
-        {
-            "id": 4,
-            "campaign_name": "Campaign 4",
-            "Payout": "$120",
-            "Advertiser": "Advertiser D",
-            "Status": "Active",
-            "Description": "Campaign 4 is a seasonal promotion targeting families during the holiday season. It offers special discounts and deals."
+            "Description": "This campaign aims to increase app downloads for a new mobile game. It utilizes in-app advertisements, social media posts, and influencer partnerships."
         }
     ],
     "task": [
         {
             "title": "Sample Title 1",
-            "assign_by": {
-                "value": "0003",
-                "label": "Person 3"
-            },
-            "priority": {
-                "value": "mid",
-                "label": "Medium"
-            },
+            "assign_by": "Person 3",
+            "priority": "Medium",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
             "start_date": "2022-06-10",
             "end_date": "2024-04-12",
@@ -361,99 +100,63 @@
             "option": "none"
         },
         {
-            "title": "Sample Title 1",
-            "assign_by": {
-                "value": "0003",
-                "label": "Person 3"
-            },
-            "priority": {
-                "value": "mid",
-                "label": "Medium"
-            },
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
-            "start_date": "2022-06-10",
-            "end_date": "2024-04-12",
+            "title": "Task Title 6",
+            "assign_by": "Person 7",
+            "priority": "Low",
+            "description": "Prepare the presentation for the annual general meeting.",
+            "start_date": "2023-07-15",
+            "end_date": "2023-08-15",
+            "status": "Not Started",
+            "option": "none"
+        },
+        {
+            "title": "Task Title 5",
+            "assign_by": "Person 6",
+            "priority": "Medium",
+            "description": "Conduct a survey to gather customer feedback on recent updates.",
+            "start_date": "2023-06-01",
+            "end_date": "2023-07-01",
+            "status": "In Progress",
+            "option": "none"
+        },
+        {
+            "title": "Task Title 4",
+            "assign_by": "Person 5",
+            "priority": "High",
+            "description": "Develop a new marketing strategy for the product launch.",
+            "start_date": "2023-02-20",
+            "end_date": "2023-04-20",
+            "status": "In Progress",
+            "option": "none"
+        },
+        {
+            "title": "Task Title 3",
+            "assign_by": "Person 4",
+            "priority": "Medium",
+            "description": "Update the customer service training manual with the latest procedures.",
+            "start_date": "2023-05-10",
+            "end_date": "2023-06-10",
             "status": "Done",
             "option": "none"
         },
         {
-            "title": "Sample Title 1",
-            "assign_by": {
-                "value": "0003",
-                "label": "Person 3"
-            },
-            "priority": {
-                "value": "mid",
-                "label": "Medium"
-            },
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
-            "start_date": "2022-06-10",
-            "end_date": "2024-04-12",
-            "status": "Done",
+            "title": "Task Title 2",
+            "assign_by": "Person 2",
+            "priority": "Low",
+            "description": "Organize the team-building event for next month.",
+            "start_date": "2023-03-01",
+            "end_date": "2023-03-31",
+            "status": "Not Started",
             "option": "none"
         },
         {
-            "title": "Sample Title 1",
-            "assign_by": {
-                "value": "0003",
-                "label": "Person 3"
-            },
-            "priority": {
-                "value": "mid",
-                "label": "Medium"
-            },
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
-            "start_date": "2022-06-10",
-            "end_date": "2024-04-12",
-            "status": "Done",
-            "option": "none"
-        },
-        {
-            "title": "Sample Title 1",
-            "assign_by": {
-                "value": "0003",
-                "label": "Person 3"
-            },
-            "priority": {
-                "value": "mid",
-                "label": "Medium"
-            },
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
-            "start_date": "2022-06-10",
-            "end_date": "2024-04-12",
-            "status": "Done",
-            "option": "none"
-        },
-        {
-            "title": "Sample Title 1",
-            "assign_by": {
-                "value": "0003",
-                "label": "Person 3"
-            },
-            "priority": {
-                "value": "mid",
-                "label": "Medium"
-            },
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
-            "start_date": "2022-06-10",
-            "end_date": "2024-04-12",
-            "status": "Done",
-            "option": "none"
-        },
-        {
-            "title": "Sample Title 1",
-            "assign_by": {
-                "value": "0003",
-                "label": "Person 3"
-            },
-            "priority": {
-                "value": "mid",
-                "label": "Medium"
-            },
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.",
-            "start_date": "2022-06-10",
-            "end_date": "2024-04-12",
-            "status": "Done",
+            "title": "Task Title 1",
+            "assign_by": "Person 1",
+            "priority": "High",
+            "description": "Complete the quarterly financial report and review it with the finance team.",
+            "start_date": "2023-01-15",
+            "end_date": "2023-02-15",
+            "status": "In Progress",
             "option": "none"
         }
     ]

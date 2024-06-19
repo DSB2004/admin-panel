@@ -3,7 +3,7 @@ import DATA from "../../assets/test.json";
 
 const Campaign = createSlice({
     name: "campaign",
-    initialState: { loading: false, content: DATA.campaign },
+    initialState: { content_loading: false, content: DATA.campaign },
     reducers: {
         getEmployee: (state, action) => {
             // Define your reducer logic here

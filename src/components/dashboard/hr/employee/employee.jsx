@@ -67,7 +67,6 @@ export default function EMPLOYEE() {
             if (PAGE) {
                 const res = await DISPATCH_ACTION(VIEW_EMPLOYEES({ PAGE })).unwrap();
                 const { data } = res;
-                console.log(data)
                 SET_CONTENT(data)
             }
         }
@@ -84,7 +83,7 @@ export default function EMPLOYEE() {
             <div className="card table-card">
                 <div className="card-header">
                     <div className="card-title" style={{ width: "260px" }} >
-                        <SearchBar SearchFunction={() => { HandleSearch() }} ref={SearchID} />
+                        <SearchBar placeholder="Search by Employee ID" SearchFunction={() => { HandleSearch() }} ref={SearchID} />
                     </div>
                     <div className="card-tools">
                         <Button text="Add Employee" className="btn-sm" onClick={() => DISPATCH({ type: "ADD" })} />

@@ -1,0 +1,36 @@
+.comment {
+    border: 2px solid rgb(245, 245, 245);
+    margin: 10px;
+    padding: 5px;
+
+}
+
+.comment-intro {
+    height: 40px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+.comment-intro h5 {
+    font-size: 15px;
+    margin: 0px 5px;
+    font-weight: bold;
+}
+
+.comment-img {
+    border: 2px solid rgb(220, 220, 220);
+    border-radius: 100%;
+    padding: 2px;
+    height: 35px;
+    width: 35px;
+}
+
+.comment-content {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
