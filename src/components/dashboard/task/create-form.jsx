@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import Input from '../../../layouts/form/input'
-import TextArea from '../../../layouts/form/text-area'
+import TextEditor from "../../../layouts/form/text-editor"
 import Button from '../../../layouts/form/button'
 import Dropdown from '../../../layouts/form/dropdown'
 import MultiSelect from '../../../layouts/form/multiSelect'
@@ -44,7 +44,7 @@ export default function CreateForm({ showModal, toggleModal }) {
                 <div className="card-body">
                     <Input label="Task ID" autoComplete={true} placeholder="Auto Generated" type="text" />
                     <Input label="Task Title" ref={title} autoComplete={true} placeholder="Enter the task title..." type="text" />
-                    <TextArea label="Description" ref={description} placeholder="Enter the description..." rows={20} />
+                    <TextEditor label="Description" ref={description} placeholder="Enter the description..." rows={20} />
                     <div className="row">
                         <div className="col-md-6">
                             <Input label="Start Date" ref={start_data} placeholder="Enter the start date..." type="date" />

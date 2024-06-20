@@ -11,7 +11,7 @@ import GetCredentials from "../../../../utils/get_credentials.util"
 // import { CREATE_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
 import { RiLoader2Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
-export default function EditForm({ showModal, toggleModal, emp_id }, props) {
+export default function EditForm({ showModal, toggleModal, emp_id }) {
     const dispatch = useDispatch();
     const [updateMsg, update_msg] = useState('');
     const [disableInput, toggleDisable] = useState();
@@ -100,7 +100,7 @@ export default function EditForm({ showModal, toggleModal, emp_id }, props) {
             //     update_msg("Error Happened!! Check Field")
             // }
             // else {
-            //     toggleModal(false)
+            //     toggleModal()
             // }
 
         }
@@ -130,7 +130,7 @@ export default function EditForm({ showModal, toggleModal, emp_id }, props) {
                         <button
                             type="button"
                             className="btn btn-tool visible"
-                            onClick={() => toggleModal(false)}
+                            onClick={() => toggleModal()}
                             fdprocessedid="kxhf0x"
                         >
                             <i className="fas fa-times" />

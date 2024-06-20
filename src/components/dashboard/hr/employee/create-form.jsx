@@ -162,18 +162,14 @@ export default function CreateForm({ showModal, toggleModal }) {
                 reporting_to: employee_reporting_manager.current.getValue()[0].value
             };
             const ENCRYTED_EMPLOYEE_DETAILS = await EncryptData(EMPLOYEE_DETAILS);
-            console.log(ENCRYTED_EMPLOYEE_DETAILS)
             const res = await dispatch(CREATE_EMPLOYEE(ENCRYTED_EMPLOYEE_DETAILS)).unwrap();
-            if (res.body.error) {
-                update_msg("Error Happened!! Check Field")
-            }
-            else {
-                toggleModal(false)
-            }
 
+            if (res) {
+                toggleModal()
+            }
         }
         catch (err) {
-            update_msg("All Fields are required")
+            update_msg(err.message)
         }
     }
 
@@ -197,7 +193,7 @@ export default function CreateForm({ showModal, toggleModal }) {
                         <button
                             type="button"
                             className="btn btn-tool visible"
-                            onClick={() => toggleModal(false)}
+                            onClick={() => toggleModal()}
                             fdprocessedid="kxhf0x"
                         >
                             <i className="fas fa-times" />
@@ -335,7 +331,9 @@ export default function CreateForm({ showModal, toggleModal }) {
                     </div>
 
                 </form>
-                <p className='alert-message margin-20'>{updateMsg}</p>
+                {
+                    <p className='alert-message margin-20'>{updateMsg}</p>
+                }
             </div>
         </Dialog>
     );

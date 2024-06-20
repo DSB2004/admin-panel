@@ -70,6 +70,7 @@ body {
 .inner-wrapper {
   height: 90vh;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .card-sub-title {
@@ -81,6 +82,9 @@ body {
 
 }
 
+.overflow-hidden {
+  overflow-x: hidden;
+}
 
 
 
@@ -116,9 +120,6 @@ body {
   justify-content: space-between;
 }
 
-td {
-  min-width: 180px;
-}
 
 
 @keyframes spin {
@@ -150,18 +151,19 @@ td {
   transform: translate(-50%, 50%);
 }
 
+.dropdown-transition {
+  transition: all 500ms ease-in-out;
+}
+
 @media screen and (max-width:700px) {
+
   .pagenation_container {
     flex-direction: column;
     margin: 10px auto;
   }
 
   .dataTables_info {
-    font-size: 20px;
-  }
-
-  td {
-    min-width: 160px;
+    font-size: 15px;
   }
 
 
@@ -169,4 +171,10 @@ td {
 
 .quill {
   height: 500px;
+}
+
+@media screen and (max-width:600px) {
+  .margin-top-10 {
+    margin-top: 10px;
+  }
 }

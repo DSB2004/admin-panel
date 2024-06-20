@@ -46,6 +46,8 @@ export default function TASK() {
 
     // const CONTENT
 
+    console.log(CAMPAIGN_STATE.content)
+
 
 
     const ACTION_LIST = (element) => [
@@ -67,74 +69,74 @@ export default function TASK() {
             <OptionForm showModal={STATE.form === "OPTION"} content={STATE.content} campaign_id={STATE.id} DISPATCH={DISPATCH} />
             <ViewCampaign showModal={STATE.form === "VIEW"} campaign_id={STATE.id} DISPATCH={DISPATCH} />
 
-            < div className="card table-card" >
+            <section className="content-header">
+                <div className="container-fluid">
+                    <div className="row mb-2">
+                        <div className="col-sm-6">
+                            <SearchBar placeholder="Search by Campaign ID" SearchFunction={() => console.log('hello')} />
+                        </div>
 
-                <div className="card-header">
-                    <div className="card-title" style={{ width: "260px" }} >
-                        <SearchBar placeholder="Search by Campaign ID" />
-                    </div>
-                    <div className="card-tools">
-                        <Button text="Add Campaign" className="btn-sm" onClick={() => DISPATCH({ type: "ADD" })} />
+                        <div className="col-sm-6">
+                            <ol className="breadcrumb float-sm-right">
+                                <Button text="Add Employee" className="btn-sm margin-top-10" onClick={() => DISPATCH({ type: "ADD" })} />
+                            </ol>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                {
-                    !CAMPAIGN_STATE.content_loading ? <>
-                        <div className="card-body table-scroll">
-                            <div id="example2_wrapper" className="dataTables_wrapper dt-bootstrap4">
-
-                                <div className="row">
-                                    <div className="col-sm-12">
-                                        <table id="example2" className="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
-                                            <thead>
-                                                {
-                                                    Campaign.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)
-                                                }
-                                            </thead>
-                                            <tbody>
-
-
-                                                {
-                                                    CAMPAIGN_STATE.content.map((element, index) => {
-                                                        return (
-                                                            <>
-                                                                <tr className="odd">
-                                                                    <td className="sorting_1 dtr-control" tabIndex={0} onClick={() => DISPATCH({ type: "VIEW" })} >
-                                                                        {element.campaign_name}</td>
-                                                                    <td>{element.Payout}</td>
-                                                                    <td>{element.Advertiser}</td>
-                                                                    <td>{element.Status}</td>
-                                                                    <td className="sorting_1 dtr-control">
-                                                                        <ActionButton
-                                                                            actionList={ACTION_LIST(element)} />
-                                                                    </td>
-
-
-                                                                </tr>
-                                                            </>)
-                                                    }
-                                                    )
-                                                }
-
-
-
-                                            </tbody>
-
-                                        </table>
-
+            {/* HEADER */}
+            {
+                !CAMPAIGN_STATE.content_loading ?
+                    <>
+                        <div className='row overflow-hidden'>
+                            <div className='col-12'>
+                                <div className="card">
+                                    <div className="card-header">
+                                        <h3 className="card-title">Campaign Details</h3>
                                     </div>
+                                    <div className="card-body table-scroll">
+                                        <div id="example2_wrapper" className="dataTables_wrapper dt-bootstrap4"><div className="row"><div className="col-sm-12 col-md-6" /><div className="col-sm-12 col-md-6" /></div><div className="row"><div className="col-sm-12"><table id="example2" className="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+                                            <thead>
+
+                                                <tr>
+                                                    {Campaign.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)}
+                                                </tr>
+
+                                            </thead>
+
+                                            <tbody>
+                                                {CAMPAIGN_STATE && CAMPAIGN_STATE.content.length > 0 && CAMPAIGN_STATE.content.map((element, index) => (
+                                                    <tr className={index % 2 === 0 ? "even" : "odd"} key={element.emp_id}>
+                                                        <td className="sorting_1 dtr-control" tabIndex={0}>
+                                                            {element["campaign_name"]}
+                                                        </td>
+                                                        <td>{element["Payout"]}</td>
+                                                        <td>{element["Advertiser"]}</td>
+                                                        <td>{element['Status']}</td>
+
+                                                        <td>
+                                                            <ActionButton actionList={ACTION_LIST(element.emp_id)} />
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    {/* <Pagenation TOTAL={EMPLOYEE_STATE.total_count} SET_PAGE={SET_PAGE} CURRENT_PAGE={PAGE} /> */}
                                 </div>
                             </div>
                         </div>
+
                     </> :
-                        <>
-                            <RiLoader2Fill className='content-loader loader' />
-                        </>
-                }
-
-
-
-            </div >
+                    <>
+                        <RiLoader2Fill className='content-loader loader' />
+                    </>
+            }
         </>
     )
 }
+

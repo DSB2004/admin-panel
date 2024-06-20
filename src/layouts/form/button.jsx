@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Button({ text, onClick, className, type }) {
+export default function Button({ text, onClick, style, className, type }) {
     return (
         <button
             onClick={() => {
@@ -10,6 +10,7 @@ export default function Button({ text, onClick, className, type }) {
                 }
             }
             }
+            style={style}
             type={type ? type : "button"} class={`${className} btn btn-primary btn-block`}
             fdprocessedid="chtrn">
             {text}
