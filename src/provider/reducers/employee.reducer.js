@@ -3,8 +3,7 @@ import GetCredentials from "../../utils/get_credentials.util";
 import EMPLOYEE_API from "../../api/employee.api";
 import EncryptData from "../../utils/encrypt_data.util";
 import { decrypt } from "../../utils/decrypt_data.util"
-import { API_KEY } from "../../config/index.config";
-import axios from "axios";
+
 
 
 

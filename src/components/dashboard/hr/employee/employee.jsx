@@ -122,7 +122,9 @@ export default function EMPLOYEE() {
                                     <div className="card-header">
                                         <h3 className="card-title">Employee Details</h3>
                                     </div>
-                                    <div className="card-body table-scroll">
+                                    <div className="card-body 
+                                    table-scroll
+                                    ">
                                         <div id="example2_wrapper" className="dataTables_wrapper dt-bootstrap4"><div className="row"><div className="col-sm-12 col-md-6" /><div className="col-sm-12 col-md-6" /></div><div className="row"><div className="col-sm-12"><table id="example2" className="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
                                             <thead>
 
