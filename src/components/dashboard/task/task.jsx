@@ -9,6 +9,7 @@ import CreateForm from './create-form'
 import EditForm from './edit-form'
 import Pagenation from '../../../layouts/table/pagenation'
 import { useSelector } from 'react-redux'
+import ViewForm from './view-task'
 
 export default function TASK() {
   const [INDEX, SETINDEX] = useState(0);
@@ -47,13 +48,24 @@ export default function TASK() {
   return (
     <>
 
-
-      <EditForm showModal={STATE.type === "EDIT"} task_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
-      <CreateForm showModal={STATE.type === "ADD"} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
-
+      {
+        STATE.type === "ADD" ? <>
+          <CreateForm showModal={STATE.type === "ADD"} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
+        </> : <></>
+      }
+      {
+        STATE.type === "VIEW" ? <>
+          <ViewForm showModal={STATE.type === "VIEW"} DISPATCH={DISPATCH} />
+        </> : <></>
+      }
+      {
+        STATE.type === "EDIT" ? <>
+          <EditForm showModal={STATE.type === "EDIT"} task_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
+        </> : <></>
+      }
       {/* HEADER */}
 
-      <section className="content-header">
+      < section className="content-header" >
         <div className="container-fluid">
           <div className="row mb-2">
             <div className="col-sm-6">
@@ -62,57 +74,61 @@ export default function TASK() {
 
             <div className="col-sm-6">
               <ol className="breadcrumb float-sm-right">
-                <Button text="Add Employee" className="btn-sm margin-top-10" onClick={() => DISPATCH({ type: "ADD" })} />
+                <Button text="Add Task" className="btn-sm margin-top-10" onClick={() => DISPATCH({ type: "ADD" })} />
               </ol>
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* HEADER */}
       {
         !TASK_STATE.content_loading ?
           <>
-            <div className='row overflow-hidden'>
-              <div className='col-12'>
-                <div className="card">
-                  <div className="card-header">
-                    <h3 className="card-title">Task Details</h3>
-                  </div>
-                  <div className="card-body table-scroll">
-                    <div id="example2_wrapper" className="dataTables_wrapper dt-bootstrap4"><div className="row"><div className="col-sm-12 col-md-6" /><div className="col-sm-12 col-md-6" /></div><div className="row"><div className="col-sm-12"><table id="example2" className="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
-                      <thead>
+            <section className='content'>
+              <div class="container-fluid">
+                <div className='row'>
+                  <div className='col-12'>
+                    <div className="card">
+                      <div className="card-header">
+                        <h3 className="card-title">Task Details</h3>
+                      </div>
+                      <div className="card-body table-scroll">
+                        <div id="example2_wrapper" className="dataTables_wrapper dt-bootstrap4"><div className="row"><div className="col-sm-12 col-md-6" /><div className="col-sm-12 col-md-6" /></div><div className="row"><div className="col-sm-12"><table id="example2" className="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+                          <thead>
 
-                        <tr>
-                          {Task.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)}
-                        </tr>
+                            <tr>
+                              {Task.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)}
+                            </tr>
 
-                      </thead>
-                      <tbody>
-                        {CONTENT && CONTENT.length > 0 && CONTENT.map((element, index) => (
-                          <tr className={index % 2 === 0 ? "even" : "odd"} key={element.emp_id}>
-                            <td className="sorting_1 dtr-control" tabIndex={0}>
-                              {element["title"]}
-                            </td>
-                            <td>{element["assign_by"]}</td>
-                            <td>{element["priority"]}</td>
-                            <td>{element['end_date']}</td>
-                            <td>{element['status']}</td>
-                            <td>{element['option']}</td>
-                            <td>
-                              <ActionButton actionList={ACTION_LIST(element.emp_id)} />
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                    </div>
-                    </div>
+                          </thead>
+                          <tbody>
+                            {CONTENT && CONTENT.length > 0 && CONTENT.map((element, index) => (
+                              <tr className={index % 2 === 0 ? "even" : "odd"} key={element.emp_id}>
+                                <td className="sorting_1 dtr-control" tabIndex={0}>
+                                  {element["title"]}
+                                </td>
+                                <td>{element["assign_by"]}</td>
+                                <td>{element["priority"]}</td>
+                                <td>{element['end_date']}</td>
+                                <td>{element['status']}</td>
+                                <td>{element['option']}</td>
+                                <td>
+                                  <ActionButton actionList={ACTION_LIST(element.emp_id)} />
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
 
           </> :
           <>

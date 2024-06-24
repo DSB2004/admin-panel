@@ -320,10 +320,10 @@ export default function CreateForm({ showModal, toggleModal }) {
                         </div>
                     </div>
 
-                    {(DEV_MODE === 'true') ? <>
+                    {/* {(DEV_MODE === 'true') ? <>
                         <input type="checkbox" onChange={runtest} />
                     </> : <></>
-                    }
+                    } */}
 
 
                     <div className="flex-center">

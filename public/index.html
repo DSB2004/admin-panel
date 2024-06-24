@@ -48,87 +48,87 @@
         display: none;
       } */
     </style>
-    <script src="/plugins/jquery/jquery.min.js"></script>
-    <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script>
-      $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/plugins/chart.js/Chart.min.js"></script>
-    <script src="/plugins/sparklines/sparkline.js"></script>
-    <script src="/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <script src="/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <script src="/plugins/moment/moment.min.js"></script>
-    <script src="/plugins/daterangepicker/daterangepicker.js"></script>
-    <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-    
-    
-    <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    
-    
-    <script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="/plugins/summernote/summernote-bs4.min.js"></script>
-    <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
-    
-    <script src="/plugins/select2/js/select2.full.min.js"></script>
-    
-    <script src="/dist/js/adminlte.js"></script>
-    
-    
-    <!-- <script src="/dist/js/pages/dashboard.js"></script> -->
-    
-    <script>
-      $(document).ready(function() {
-        $('.select2').select2()
-    
-        $('.select2bs4').select2({
-          theme: 'bootstrap4'
-        })
-    
-    
-      $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    
-    
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-      
-     
-      
-    });
-    
-    </script>
   </head>
-  <body>
+  <body  class="sidebar-mini sidebar-closed sidebar-collapse" style="height: auto;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
-
+      
       You can add webfonts, meta tags, or analytics to this file.
       The build step will place the bundled scripts into the <body> tag.
-
+        
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
-
+  <script src="/plugins/jquery/jquery.min.js"></script>
+  <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/plugins/chart.js/Chart.min.js"></script>
+  <script src="/plugins/sparklines/sparkline.js"></script>
+  <script src="/plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+  <script src="/plugins/jquery-knob/jquery.knob.min.js"></script>
+  <script src="/plugins/moment/moment.min.js"></script>
+  <script src="/plugins/daterangepicker/daterangepicker.js"></script>
+  <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+  
+  
+  <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  
+  
+  <script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="/plugins/summernote/summernote-bs4.min.js"></script>
+  <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
+  
+  <script src="/plugins/select2/js/select2.full.min.js"></script>
+  
+  <script src="/dist/js/adminlte.js"></script>
+  
+  
+  <!-- <script src="/dist/js/pages/dashboard.js"></script> -->
+  
+  <script>
+    $(document).ready(function() {
+      $('.select2').select2()
+  
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+  
+  
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  
+  
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    
+   
+    
+  });
+  
+  </script>
+  
 
 
 

@@ -91,9 +91,21 @@ export default function EMPLOYEE() {
 
     return (
         <>
-            <CreateForm showModal={STATE.type === "ADD"} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
-            <EditForm showModal={STATE.type === "EDIT"} emp_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
-            <ViewForm showModal={STATE.type === 'VIEW'} emp_id={STATE.id} DISPATCH={DISPATCH} ></ViewForm>
+            {
+                STATE.type === "ADD" ? <>
+                    <CreateForm showModal={STATE.type === "ADD"} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
+                </> : <></>
+            }
+            {
+                STATE.type === "EDIT" ? <>
+                    <EditForm showModal={STATE.type === "EDIT"} emp_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
+                </> : <></>
+            }
+            {
+                STATE.type === "VIEW" ? <>
+                    <ViewForm showModal={STATE.type === 'VIEW'} emp_id={STATE.id} DISPATCH={DISPATCH} ></ViewForm>
+                </> : <></>
+            }
             {/* HEADER */}
 
             <section className="content-header">
@@ -116,50 +128,51 @@ export default function EMPLOYEE() {
             {
                 !EMPLOYEE_STATE.content_loading ?
                     <>
-                        <div className='row overflow-hidden'>
-                            <div className='col-12'>
-                                <div className="card">
-                                    <div className="card-header">
-                                        <h3 className="card-title">Employee Details</h3>
-                                    </div>
-                                    <div className="card-body 
-                                    table-scroll
-                                    ">
-                                        <div id="example2_wrapper" className="dataTables_wrapper dt-bootstrap4"><div className="row"><div className="col-sm-12 col-md-6" /><div className="col-sm-12 col-md-6" /></div><div className="row"><div className="col-sm-12"><table id="example2" className="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
-                                            <thead>
+                        <section className='content'>
+                            <div class="container-fluid">
+                                <div className='row'>
+                                    <div className='col-12'>
+                                        <div className="card">
+                                            <div className="card-header">
+                                                <h3 className="card-title">Employee Details</h3>
+                                            </div>
+                                            <div className="card-body table-scroll">
+                                                <div id="example2_wrapper" className="dataTables_wrapper dt-bootstrap4"><div className="row"><div className="col-sm-12 col-md-6" /><div className="col-sm-12 col-md-6" /></div><div className="row"><div className="col-sm-12"><table id="example2" className="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+                                                    <thead>
 
-                                                <tr>
-                                                    {Employee.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)}
-                                                </tr>
+                                                        <tr>
+                                                            {Employee.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)}
+                                                        </tr>
 
-                                            </thead>
-                                            <tbody>
-                                                {CONTENT && CONTENT.length > 0 && CONTENT.map((element, index) => (
-                                                    <tr className={index % 2 === 0 ? "even" : "odd"} key={element.emp_id}>
-                                                        <td className="sorting_1 dtr-control" tabIndex={0}>
-                                                            {element["Employee ID"]}
-                                                        </td>
-                                                        <td>{element["Employee Name"]}</td>
-                                                        <td>{element["Employee Email"]}</td>
-                                                        <td>{element['User Role']}</td>
-                                                        <td>{element['Reporting To']}</td>
-                                                        <td>{element['Status']}</td>
-                                                        <td>
-                                                            <ActionButton actionList={ACTION_LIST(element['Employee ID'])} />
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                        </div>
-                                        </div>
+                                                    </thead>
+                                                    <tbody>
+                                                        {CONTENT && CONTENT.length > 0 && CONTENT.map((element, index) => (
+                                                            <tr className={index % 2 === 0 ? "even" : "odd"} key={element.emp_id}>
+                                                                <td className="sorting_1 dtr-control" tabIndex={0}>
+                                                                    {element["Employee ID"]}
+                                                                </td>
+                                                                <td>{element["Employee Name"]}</td>
+                                                                <td>{element["Employee Email"]}</td>
+                                                                <td>{element['User Role']}</td>
+                                                                <td>{element['Reporting To']}</td>
+                                                                <td>{element['Status']}</td>
+                                                                <td>
+                                                                    <ActionButton actionList={ACTION_LIST(element['Employee ID'])} />
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                                </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <Pagenation TOTAL={EMPLOYEE_STATE.total_count} SET_PAGE={SET_PAGE} CURRENT_PAGE={PAGE} />
                                         </div>
                                     </div>
-                                    <Pagenation TOTAL={EMPLOYEE_STATE.total_count} SET_PAGE={SET_PAGE} CURRENT_PAGE={PAGE} />
                                 </div>
                             </div>
-                        </div>
-
+                        </section>
                     </> :
                     <>
                         <RiLoader2Fill className='content-loader loader' />

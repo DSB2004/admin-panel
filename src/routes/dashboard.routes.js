@@ -18,7 +18,7 @@ const DASHBOARD_ROUTES = () => {
 
             <Route path="/" element={<Dashboard />} >
                 {/* INDEX ROUTE */}
-                <Route index element={<Welcome />} />
+                {/* <Route index element={<Welcome />} /> */}
                 {/* ADMIN ROUTE */}
                 <Route path="task" element={<TASK />} />
 

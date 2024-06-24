@@ -48,14 +48,14 @@ export default function ViewCampaign({ showModal, campaign_id, DISPATCH }) {
                 <div className="card-body view-campaign">
 
                     <div className='view-campaign-section larger'>
-                        <h2 className='view-campaign-name'>{CAMPAIGN_CONTENT.test['campaign name']}</h2>
+                        <h2 className='view-campaign-name'>{CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test['campaign name']}</h2>
                         <h6 className='view-campaign-label'>Description</h6>
                         <div className='view-campaign-label'>
                             <TextArea
                                 style={description_style}
                                 readOnly={true}
                                 modules={{ toolbar: false }}
-                                value={CAMPAIGN_CONTENT.test.description} />
+                                value={CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test.description} />
 
                         </div>
 
@@ -66,9 +66,12 @@ export default function ViewCampaign({ showModal, campaign_id, DISPATCH }) {
                             <Button text="Submit"></Button>
                         </div>
                         <div className='comment-section'>
-
                             {
-                                CAMPAIGN_CONTENT.comments.map(ele => <Comments content={ele} />)
+                                CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.comments ? <>
+                                    {
+                                        CAMPAIGN_CONTENT.comments.map(ele => <Comments content={ele} />)
+                                    }
+                                </> : <>Error rendering comments</>
                             }
                         </div>
                     </div>
@@ -79,27 +82,27 @@ export default function ViewCampaign({ showModal, campaign_id, DISPATCH }) {
 
                             <div className='campaign-description-container'>
                                 <div className='campaign-description-key'>Name</div>
-                                <div>{CAMPAIGN_CONTENT.test['campaign name']}</div>
+                                <div>{CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test['campaign name']}</div>
                             </div>
 
                             <div className='campaign-description-container'>
                                 <div className='campaign-description-key'>Platform</div>
-                                <div>{CAMPAIGN_CONTENT.test.platform}</div>
+                                <div>{CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test.platform}</div>
                             </div>
 
                             <div className='campaign-description-container'>
                                 <div className='campaign-description-key'>Advertiser</div>
-                                <div>{CAMPAIGN_CONTENT.test.advertiser}</div>
+                                <div>{CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test.advertiser}</div>
                             </div>
 
                             <div className='campaign-description-container'>
                                 <div className='campaign-description-key'>Payout</div>
-                                <div>{CAMPAIGN_CONTENT.test.payout}</div>
+                                <div>{CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test.payout}</div>
                             </div>
 
                             <div className='campaign-description-container'>
                                 <div className='campaign-description-key'>LP</div>
-                                <div>{CAMPAIGN_CONTENT.test.lp}</div>
+                                <div>{CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test.lp}</div>
                             </div>
 
 

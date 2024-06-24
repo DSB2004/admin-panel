@@ -21,9 +21,9 @@ export default function Dashboard() {
             <Header />
             <Sidebar />
             <div className="content-wrapper">
-                <div className='inner-wrapper'>
+                {/* <div className='inner-wrapper'> */}
                     <Outlet />
-                </div>
+                {/* </div> */}
             </div>
         </>
     )

@@ -18,13 +18,10 @@ export default function EditForm({ showModal, campaign_id, DISPATCH }) {
 
     useEffect(() => {
         if (campaign_id) {
-
             const content = CAMPAIGN_CONTENT.test;
-            // console.log(content)
             content['platform'] = CAMPAIGN_CONTENT.platform.filter(ele => ele.value === content['platform'])[0];
             console.log(content)
             SET_CONTENT(content)
-
         }
     }, [campaign_id])
 

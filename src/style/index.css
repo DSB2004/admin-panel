@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  overflow: hidden
+  /* overflow: hidden */
 }
 
 ::-webkit-scrollbar {
@@ -60,18 +60,14 @@ body {
   height: 5px;
 }
 
-.table {
-  height: 70vh;
-  overflow-y: hidden;
-
-}
 
 
+/* 
 .inner-wrapper {
   height: 90vh;
   overflow-y: scroll;
   overflow-x: hidden;
-}
+} */
 
 .card-sub-title {
   font-size: 15px;
@@ -137,10 +133,6 @@ body {
 }
 
 
-.table-card {
-  position: relative;
-  min-height: 85vh;
-}
 
 
 .content-loader {
