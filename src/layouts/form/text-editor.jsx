@@ -5,7 +5,7 @@ const TextEditor = forwardRef(({ label, style, rows, value, readOnly, placeholde
     return (
         <div className="form-group" style={{ height: '250px', ...style }}>
             <label htmlFor="exampleInputEmail1">{label}</label>
-            <ReactQuill style={{ height: readOnly ? '90%' : "70%" }} value={value} modules={modules} rows={rows} placeholder={placeholder} ref={ref} readOnly={readOnly} />
+            <ReactQuill  style={{ height: readOnly ? '90%' : "70%" }} value={value} modules={modules} rows={rows} placeholder={placeholder} ref={ref} readOnly={readOnly} />
         </div>
     )
 })

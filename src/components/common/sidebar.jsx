@@ -10,7 +10,8 @@ import RemoveCredentials from '../../utils/remove_credentials'
 export default function Sidebar() {
 
     return (
-        <aside className="main-sidebar sidebar-dark-primary elevation-4 react-dashboard-sidebar" >
+        <aside className="main-sidebar sidebar-dark-primary elevation-4 react-dashboard-sidebar"
+            style={{ minHeight: "100vh" }}>
             <NavHead />
             <div className="sidebar">
                 <NavUser />

@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  /* overflow: hidden */
+  overflow: hidden;
 }
+
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -61,13 +62,11 @@ body {
 }
 
 
-
-/* 
-.inner-wrapper {
-  height: 90vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-} */
+.overflow-content {
+  overflow-y: auto;
+  height: 80vh;
+  ;
+}
 
 .card-sub-title {
   font-size: 15px;
@@ -108,15 +107,56 @@ body {
   overflow-x: auto;
 }
 
-.pagenation_container {
-  width: 97%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+.file-upload-wrapper {
+  /* background-color: red; */
+  position: relative;
+  height: 85vh;
 }
 
+.dropzone {
+  height: 80%;
+  margin: 0px;
+  border: 2px dashed grey;
+  background-color: #f2f2f2;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
+.dropzone p {
+  font-size: 15px;
+  margin: 0px;
+  text-align: center;
+}
+
+.add-icon {
+  color: #bdbdbd;
+  font-size: 100px;
+}
+
+.file-icon {
+  color: #bdbdbd;
+  font-size: 100px;
+  margin-bottom: 10px;
+}
+
+.margin-5-0 {
+  margin: 10px 0px;
+}
+
+.file-upload {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background-color: #fff;
+  padding: 20px;
+}
 
 @keyframes spin {
   0% {
@@ -131,7 +171,6 @@ body {
 .loader {
   animation: spin 1s linear infinite;
 }
-
 
 
 
@@ -159,14 +198,22 @@ body {
   }
 
 
-}
+  .quill {
+    height: 500px;
+  }
 
-.quill {
-  height: 500px;
+  /* 
+  .file-upload-wrapper {
+    width: 350px;
+    height: 350px;
+  } */
+
 }
 
 @media screen and (max-width:600px) {
-  .margin-top-10 {
-    margin-top: 10px;
-  }
+  /* .file-upload-wrapper {
+    width: 300px;
+    height: 300px;
+  } */
+
 }

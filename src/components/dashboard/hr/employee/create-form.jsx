@@ -5,15 +5,15 @@ import Button from '../../../../layouts/form/button';
 import Checkbox from '../../../../layouts/form/check-box';
 import Dialog from '@mui/material/Dialog';
 import EncryptData from '../../../../utils/encrypt_data.util';
-import { DEV_MODE } from '../../../../config/index.config';
 import EMPLOYEE_CONTENT from '../../../../assets/employee.json';
 import GetCredentials from "../../../../utils/get_credentials.util"
 import { CREATE_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
+import { DEV_MODE } from '../../../../env';
 import { RiLoader2Fill } from "react-icons/ri";
 import { useDispatch } from 'react-redux';
 export default function CreateForm({ showModal, toggleModal }) {
     const dispatch = useDispatch();
-    const [updateMsg, update_msg] = useState('');
+    const [alertMsg, update_msg] = useState('');
     const [disableInput, toggleDisable] = useState();
     // for office use
     const employee_name = useRef();
@@ -74,7 +74,7 @@ export default function CreateForm({ showModal, toggleModal }) {
     }
 
     const runtest = (e) => {
-        if (DEV_MODE && e.target.checked) {
+        if (e.target.checked) {
             employee_name.current.value = EMPLOYEE_CONTENT.test.name;
             employee_email.current.value = EMPLOYEE_CONTENT.test.email;
             employee_password.current.value = EMPLOYEE_CONTENT.test.password;
@@ -320,10 +320,10 @@ export default function CreateForm({ showModal, toggleModal }) {
                         </div>
                     </div>
 
-                    {/* {(DEV_MODE === 'true') ? <>
+                    {(DEV_MODE === 'true') ? <>
                         <input type="checkbox" onChange={runtest} />
                     </> : <></>
-                    } */}
+                    }
 
 
                     <div className="flex-center">
@@ -331,9 +331,8 @@ export default function CreateForm({ showModal, toggleModal }) {
                     </div>
 
                 </form>
-                {
-                    <p className='alert-message margin-20'>{updateMsg}</p>
-                }
+
+                <p className='alert-message margin-20'>{alertMsg}</p>
             </div>
         </Dialog>
     );

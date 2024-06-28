@@ -1,7 +1,7 @@
 
-import { ENCRYPT_KEY } from "../config/index.config";
+import { ENCRYPT_KEY } from "../env";
 
-const encrypt = (text) => {
+export const encrypt = (text) => {
     if (text !== undefined) {
         text = String(text)
         let result = '';
@@ -18,7 +18,7 @@ const encrypt = (text) => {
 };
 
 function EncryptData(data) {
-    // console.log(data)
+
     return new Promise((resolve, reject) => {
         try {
             let encryptedData = {};

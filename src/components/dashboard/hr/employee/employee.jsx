@@ -62,8 +62,8 @@ export default function EMPLOYEE() {
             SET_CONTENT(res)
 
         }
-
     }
+    
     const handlePageChange = async (PAGE) => {
         if (PAGE) {
             const CACHE_DATA = EMPLOYEE_STATE.content.find(ele => ele.page === PAGE);
@@ -128,7 +128,7 @@ export default function EMPLOYEE() {
             {
                 !EMPLOYEE_STATE.content_loading ?
                     <>
-                        <section className='content'>
+                        <section className='content overflow-content'>
                             <div class="container-fluid">
                                 <div className='row'>
                                     <div className='col-12'>
@@ -157,7 +157,7 @@ export default function EMPLOYEE() {
                                                                 <td>{element['Reporting To']}</td>
                                                                 <td>{element['Status']}</td>
                                                                 <td>
-                                                                    <ActionButton actionList={ACTION_LIST(element['Employee ID'])} />
+                                                                    <ActionButton actionList={ACTION_LIST(element['Auto Employee ID'])} />
                                                                 </td>
                                                             </tr>
                                                         ))}
@@ -165,9 +165,9 @@ export default function EMPLOYEE() {
                                                 </table>
                                                 </div>
                                                 </div>
+                                                    <Pagenation TOTAL={EMPLOYEE_STATE.total_count} SET_PAGE={SET_PAGE} CURRENT_PAGE={PAGE} />
                                                 </div>
                                             </div>
-                                            <Pagenation TOTAL={EMPLOYEE_STATE.total_count} SET_PAGE={SET_PAGE} CURRENT_PAGE={PAGE} />
                                         </div>
                                     </div>
                                 </div>

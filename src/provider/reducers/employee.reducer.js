@@ -66,8 +66,6 @@ export const SEARCH_EMPLOYEE = createAsyncThunk("get-search-employee", async (co
             return [];
         }
         const EMP_DATA = JSON.parse(res.data.body);
-        EMP_DATA["Employee Email"] = decrypt(EMP_DATA["Employee Email"]);
-        console.log(EMP_DATA)
         return [EMP_DATA];
     } catch (err) {
         console.log(err);
@@ -75,9 +73,6 @@ export const SEARCH_EMPLOYEE = createAsyncThunk("get-search-employee", async (co
         throw err;
     }
 });
-
-
-
 
 
 const Employee = createSlice({

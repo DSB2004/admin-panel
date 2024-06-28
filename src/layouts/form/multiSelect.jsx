@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import Select from 'react-select';
-const MultiSelect = forwardRef(({ label, options = [] }, ref) => {
+const MultiSelect = forwardRef(({ label, name, options = [] }, ref) => {
 
 
     const customStyles = {
@@ -13,7 +13,7 @@ const MultiSelect = forwardRef(({ label, options = [] }, ref) => {
     return (
         <>
             <label htmlFor="exampleInputEmail1">{label}</label>
-            <Select options={options} styles={customStyles} isMulti ref={ref} />
+            <Select name={name} options={options} styles={customStyles} isMulti ref={ref} />
         </>
     )
 

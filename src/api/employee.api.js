@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { AWS_URL, API_KEY } from '../config/index.config';
+import { AWS_URL, API_KEY } from '../env';
 
 
 const EMPLOYEE_API = Axios.create({

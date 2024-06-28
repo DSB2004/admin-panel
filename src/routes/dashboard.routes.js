@@ -3,7 +3,7 @@ import React from "react";
 import Welcome from "../components/common/welcome";
 import Dashboard from "../pages/dashboard"
 
-
+import FileUpload from "../components/dashboard/task/file-upload";
 import TASK from "../components/dashboard/task/task"
 import EMPLOYEE from "../components/dashboard/hr/employee/employee";
 import CAMPAIGN from "../components/dashboard/campaign/campaign";
@@ -20,7 +20,9 @@ const DASHBOARD_ROUTES = () => {
                 {/* INDEX ROUTE */}
                 {/* <Route index element={<Welcome />} /> */}
                 {/* ADMIN ROUTE */}
-                <Route path="task" element={<TASK />} />
+                <Route path='file-upload' element={<FileUpload />} />
+                <Route path="task" element={<TASK />} >
+                </Route>
 
                 <Route path="resources" element={<h1>Resources</h1>} />
 

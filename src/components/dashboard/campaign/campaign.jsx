@@ -81,11 +81,10 @@ export default function TASK() {
                 </div>
             </section>
 
-            {/* HEADER */}
             {
                 !CAMPAIGN_STATE.content_loading ?
                     <>
-                        <section className='content'>
+                        <section className='content overflow-content'>
                             <div class="container-fluid">
                                 <div className='row'>
                                     <div className='col-12'>

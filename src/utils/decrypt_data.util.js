@@ -1,5 +1,5 @@
 
-import { ENCRYPT_KEY } from "../config/index.config";
+import { ENCRYPT_KEY } from "../env";
 
 export const decrypt = (encryptedText) => {
     const decodedText = atob(encryptedText);

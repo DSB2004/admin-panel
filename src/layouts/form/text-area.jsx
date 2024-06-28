@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react'
 
-const TextArea = forwardRef(({ placeholder, rows }, ref) => {
+const TextArea = forwardRef(({ placeholder, rows, name }, ref) => {
     return (
-        <textarea placeholder={placeholder} rows={rows} className="form-control">
+        <textarea name={name} placeholder={placeholder} rows={rows} className="form-control">
         </textarea>
     )
 })

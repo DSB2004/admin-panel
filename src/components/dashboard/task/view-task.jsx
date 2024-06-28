@@ -5,24 +5,26 @@ import { Dialog } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-import Task from '../../../assets/task.json'
+// import Task from '../../../assets/task.json'
 const ViewForm = ({ showModal, DISPATCH, task_id }) => {
-    // const [TASK_DETAIL, SET_DETAIL] = useState();
 
-    // const EMPLOYEE_STATE = useSelector(state => state.Employee);
+    const [TASK_DETAIL, SET_DETAIL] = useState();
 
-    // useEffect(() => {
-    //     if (emp_id) {
-    //         const details = EMPLOYEE_STATE.search_content.filter(ele => ele['Employee ID'] === emp_id);
-    //         if (details && details.length > 0) {
-    //             SET_DETAIL(details[0]);
+    const TASK_STATE = useSelector(state => state.Task);
+    useEffect(() => {
+        if (task_id) {
+            console.log(TASK_STATE.search_content)
 
-    //         }
-    //     }
-    // }, [emp_id])
+            const details = TASK_STATE.search_content.filter(ele => ele['Task_Id'] === task_id);
+            if (details && details.length > 0) {
+                console.log("Found");
+                SET_DETAIL(details[0])
+
+            }
+        }
+    }, [task_id])
 
 
-    const [TASK_DETAIL, SET_DETAIL] = useState(Task.test);
 
     return (
         <Dialog
@@ -49,38 +51,36 @@ const ViewForm = ({ showModal, DISPATCH, task_id }) => {
                         </button>
                     </div>
                 </div>
+
                 <div >
                     <div className='campaign-description'>
 
-                        {/* <div className='campaign-description-container'>
-                            <div className='campaign-description-key'>ID</div>
-                            <div>{TASK_DETAIL && TASK_DETAIL['Employee ID']}</div>
-                        </div> */}
 
                         <div className='campaign-description-container'>
                             <div className='campaign-description-key'>Title</div>
-                            <div>{TASK_DETAIL && TASK_DETAIL['title']}</div>
+                            <div>{TASK_DETAIL && TASK_DETAIL['TaskTitle']}</div>
                         </div>
 
                         <div className='campaign-description-container'>
-                            <div className='campaign-description-key'>Assign by</div>
-                            <div>{TASK_DETAIL && TASK_DETAIL['assign_by'].label}</div>
+                            <div className='campaign-description-key'>Assigned by</div>
+                            <div>{TASK_DETAIL && TASK_DETAIL['AssignedBy']}</div>
                         </div>
 
 
                         <div className='campaign-description-container'>
                             <div className='campaign-description-key'>Priority</div>
-                            <div>{TASK_DETAIL && TASK_DETAIL['priority'].label}</div>
+                            <div>{TASK_DETAIL && TASK_DETAIL['Priority']}</div>
+                        </div>
+
+
+                        <div className='campaign-description-container'>
+                            <div className='campaign-description-key'>Due Date</div>
+                            <div>{TASK_DETAIL && TASK_DETAIL['DueDate']}</div>
                         </div>
 
                         <div className='campaign-description-container'>
-                            <div className='campaign-description-key'>Start Date</div>
-                            <div>{TASK_DETAIL && TASK_DETAIL['start_date']}</div>
-                        </div>
-
-                        <div className='campaign-description-container'>
-                            <div className='campaign-description-key'>End Date</div>
-                            <div>{TASK_DETAIL && TASK_DETAIL['end-date']}</div>
+                            <div className='campaign-description-key'>Status</div>
+                            <div>{TASK_DETAIL && TASK_DETAIL['Status']}</div>
                         </div>
 
 

@@ -26,34 +26,31 @@ export default function SignIn() {
 
     const HandleSignIn = async () => {
         try {
-
-            if (PASSWORD_REF.current && EMAIL_REF.current && REMEMBER_ME_REF.current.checked) {
-                update_msg(<RiLoader2Fill className='loader' />)
-                const USER_CREDENTIALS = {
-                    email: EMAIL_REF.current.value,
-                    password: PASSWORD_REF.current.value,
-                    remember_user: REMEMBER_ME_REF.current.checked
-                }
-                const ENCRYPTED_USER_CREDENTIALS = await EncryptData(USER_CREDENTIALS);
-                const response = await AUTH_API.post("/login", ENCRYPTED_USER_CREDENTIALS);
-                // console.log(response.data.body)
-                if (response.data.body.error) {
-                    update_msg(response.data.body.error)
-                }
-                else {
-                    const res = await SetCredentials(response.data.body);
-                    navigate('/');
-                    return res;
-                }
-            }
-            else {
+            if (!PASSWORD_REF.current || !EMAIL_REF.current || !REMEMBER_ME_REF.current.checked) {
                 update_msg("All Fields are required");
                 return;
             }
+            update_msg(<RiLoader2Fill className='loader' />)
+            const USER_CREDENTIALS = {
+                email: EMAIL_REF.current.value,
+                password: PASSWORD_REF.current.value,
+                remember_user: REMEMBER_ME_REF.current.checked
+            }
+
+            const ENCRYPTED_USER_CREDENTIALS = await EncryptData(USER_CREDENTIALS);
+
+            const response = await AUTH_API.post("/login", ENCRYPTED_USER_CREDENTIALS);
+            if (response.data.body.error) {
+                update_msg(response.data.body.error)
+                return;
+            }
+
+            await SetCredentials(response.data.body);
+            navigate('/');
         }
         catch (err) {
             console.log(err)
-            update_msg("Field Not Provided");
+            update_msg("Error Happened!");
             return;
         }
     }

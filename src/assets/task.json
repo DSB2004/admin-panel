@@ -5,30 +5,7 @@
         "Priority",
         "Due Date",
         "Status",
-        "Options",
-        "Actions"
-    ],
-    "assign_by": [
-        {
-            "value": "0001",
-            "label": "Person 1"
-        },
-        {
-            "value": "0002",
-            "label": "Person 2"
-        },
-        {
-            "value": "0003",
-            "label": "Person 3"
-        },
-        {
-            "value": "0004",
-            "label": "Person 4"
-        },
-        {
-            "value": "0005",
-            "label": "Person 5"
-        }
+        "Options"
     ],
     "priority": [
         {
@@ -42,6 +19,20 @@
         {
             "value": "low",
             "label": "Low"
+        }
+    ],
+    "status": [
+        {
+            "value": "active",
+            "label": "Active"
+        },
+        {
+            "value": "delay",
+            "label": "Delayed"
+        },
+        {
+            "value": "complete",
+            "label": "Complete"
         }
     ],
     "test": {

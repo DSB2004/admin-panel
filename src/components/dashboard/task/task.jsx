@@ -10,10 +10,11 @@ import EditForm from './edit-form'
 import Pagenation from '../../../layouts/table/pagenation'
 import { useSelector } from 'react-redux'
 import ViewForm from './view-task'
-
+import { VIEW_TASK } from '../../../provider/reducers/task.reducer'
+import { useDispatch } from 'react-redux'
 export default function TASK() {
-  const [INDEX, SETINDEX] = useState(0);
-  const TASK_STATE = useSelector(state => state.Task);
+
+
   const reducer = (state, action) => {
     const { type, id } = action;
     if (type === "VIEW") {
@@ -29,9 +30,13 @@ export default function TASK() {
   };
 
 
-  const ACTION_LIST = (ID) => [
-    { content: "View", onClick: () => DISPATCH({ type: "VIEW", id: ID }) },
-    { content: "Edit", onClick: () => DISPATCH({ type: "EDIT", id: ID }) },
+  const DISPATCH_ACTION = useDispatch();
+
+  const TASK_STATE = useSelector(state => state.Task);
+
+  const ACTION_LIST = (id) => [
+    { content: "View", onClick: () => DISPATCH({ type: "VIEW", id: id }) },
+    { content: "Edit", onClick: () => DISPATCH({ type: "EDIT", id: id }) },
     { content: "Mark As Completed", onClick: () => console.log("Mark As Completed") },
     { content: "Mark in Progress", onClick: () => console.log("Mark in Progress") },
     { content: "Delete", onClick: () => console.log("Delete") },
@@ -44,6 +49,28 @@ export default function TASK() {
 
 
 
+  const handlePageChange = async (PAGE) => {
+    if (PAGE) {
+      const CACHE_DATA = TASK_STATE.content.find(ele => ele.page === PAGE);
+      if (!CACHE_DATA) {
+        console.log('API called');
+        try {
+          const res = await DISPATCH_ACTION(VIEW_TASK({ PAGE })).unwrap();
+          const { data } = res;
+          SET_CONTENT(data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      } else {
+        SET_CONTENT(CACHE_DATA.data);
+      }
+    }
+  };
+
+  useEffect(() => {
+    handlePageChange(PAGE)
+  }, [PAGE, TASK_STATE.content]);
+
 
   return (
     <>
@@ -55,7 +82,7 @@ export default function TASK() {
       }
       {
         STATE.type === "VIEW" ? <>
-          <ViewForm showModal={STATE.type === "VIEW"} DISPATCH={DISPATCH} />
+          <ViewForm showModal={STATE.type === "VIEW"} DISPATCH={DISPATCH} task_id={STATE.id} />
         </> : <></>
       }
       {
@@ -85,7 +112,7 @@ export default function TASK() {
       {
         !TASK_STATE.content_loading ?
           <>
-            <section className='content'>
+            <section className='content overflow-content'>
               <div class="container-fluid">
                 <div className='row'>
                   <div className='col-12'>
@@ -94,34 +121,44 @@ export default function TASK() {
                         <h3 className="card-title">Task Details</h3>
                       </div>
                       <div className="card-body table-scroll">
-                        <div id="example2_wrapper" className="dataTables_wrapper dt-bootstrap4"><div className="row"><div className="col-sm-12 col-md-6" /><div className="col-sm-12 col-md-6" /></div><div className="row"><div className="col-sm-12"><table id="example2" className="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
-                          <thead>
+                        <div id="example2_wrapper" className="dataTables_wrapper dt-bootstrap4">
+                          <div className="row">
+                            <div className="col-sm-12 col-md-6" />
+                            <div className="col-sm-12 col-md-6" />
+                          </div>
+                          <div className="row">
+                            <div className="col-sm-12">
+                              <table id="example2" className="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+                                <thead>
 
-                            <tr>
-                              {Task.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)}
-                            </tr>
+                                  <tr>
+                                    {Task.header.map(element => <THead text={element} key={`tabl-header-${element}`} />)}
+                                  </tr>
 
-                          </thead>
-                          <tbody>
-                            {CONTENT && CONTENT.length > 0 && CONTENT.map((element, index) => (
-                              <tr className={index % 2 === 0 ? "even" : "odd"} key={element.emp_id}>
-                                <td className="sorting_1 dtr-control" tabIndex={0}>
-                                  {element["title"]}
-                                </td>
-                                <td>{element["assign_by"]}</td>
-                                <td>{element["priority"]}</td>
-                                <td>{element['end_date']}</td>
-                                <td>{element['status']}</td>
-                                <td>{element['option']}</td>
-                                <td>
-                                  <ActionButton actionList={ACTION_LIST(element.emp_id)} />
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                        </div>
-                        </div>
+                                </thead>
+                                <tbody>
+                                  {CONTENT && CONTENT.length > 0 && CONTENT.map((element, index) => (
+                                    <tr className={index % 2 === 0 ? "even" : "odd"} key={element.emp_id}>
+                                      <td className="sorting_1 dtr-control" tabIndex={0}>
+                                        {element["TaskTitle"]}
+                                      </td>
+                                      <td>{element["AssignedBy"]}</td>
+
+                                      <td>{element['Priority']}</td>
+                                      <td>{element["DueDate"]}</td>
+                                      <td>{element['Status']}</td>
+                                      <td>{element['Option']}
+                                        <ActionButton actionList={ACTION_LIST(element['Task_Id'])} />
+
+                                      </td>
+
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <Pagenation TOTAL={TASK_STATE.total_count} SET_PAGE={SET_PAGE} CURRENT_PAGE={PAGE} />
                         </div>
                       </div>
                     </div>

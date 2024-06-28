@@ -11,7 +11,7 @@ const ViewForm = ({ showModal, DISPATCH, emp_id }) => {
 
     useEffect(() => {
         if (emp_id) {
-            const details = EMPLOYEE_STATE.search_content.filter(ele => ele['Employee ID'] === emp_id);
+            const details = EMPLOYEE_STATE.search_content.filter(ele => ele['Auto Employee ID'] === emp_id);
             if (details && details.length > 0) {
                 SET_DETAIL(details[0]);
 
@@ -60,7 +60,7 @@ const ViewForm = ({ showModal, DISPATCH, emp_id }) => {
 
                         <div className='campaign-description-container'>
                             <div className='campaign-description-key'>Email</div>
-                            <div>{EMPLOYEE_DETAIL && EMPLOYEE_DETAIL['Employee Email']}</div>
+                            <div style={{ textTransform: "lowercase" }}>{EMPLOYEE_DETAIL && EMPLOYEE_DETAIL['Employee Email']}</div>
                         </div>
 
 

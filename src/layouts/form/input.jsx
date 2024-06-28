@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react';
 import AutoSuggestion from './auto_suggestion';
-const Input = forwardRef(({ type, label, placeholder, autoComplete = false, disable, pattern, title, value }, ref) => {
+const Input = forwardRef(({ type, label, placeholder, name, autoComplete = false, disable, pattern, title, value }, ref) => {
     const [auto_com_value, setValue] = useState("");
 
     return (
@@ -10,6 +10,7 @@ const Input = forwardRef(({ type, label, placeholder, autoComplete = false, disa
                 onChange={(e) => setValue(e.target.value)}
                 ref={ref}
                 type={type}
+                name={name}
                 className="form-control"
                 placeholder={placeholder}
                 fdprocessedid="z92wtr"
