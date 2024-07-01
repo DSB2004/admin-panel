@@ -3,6 +3,11 @@ body {
   overflow: hidden;
 }
 
+.full-screeb-loader {
+  height: 100vh;
+  position: relative;
+}
+
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -147,6 +152,7 @@ body {
   margin: 10px 0px;
 }
 
+
 .file-upload {
   position: absolute;
   top: 50%;
@@ -156,6 +162,12 @@ body {
   height: 400px;
   background-color: #fff;
   padding: 20px;
+}
+
+.content-loader-wrapper {
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 @keyframes spin {

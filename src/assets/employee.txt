@@ -11,7 +11,7 @@
     "gender": [
         {
             "label": "Male",
-            "value": 5262
+            "value":5262
         },
         {
             "label": "Female",
@@ -25,27 +25,27 @@
     "designation": [
         {
             "label": "Software Engineer",
-            "value": 1357
+            "value": "1357"
         },
         {
             "label": "Marketing Manager",
-            "value": 7284
+            "value": "7284"
         },
         {
             "label": "Financial Analyst",
-            "value": 4196
+            "value": "4196"
         },
         {
             "label": "HR Specialist",
-            "value": 5821
+            "value": "5821"
         },
         {
             "label": "Sales Representative",
-            "value": 9367
+            "value": "9367"
         },
         {
             "label": "Customer Support Specialist",
-            "value": 2749
+            "value": "2749"
         }
     ],
     "marital_status": [
@@ -1100,4 +1100,77 @@
             "label": "Retired"
         }
     ]
+,
+    "test": {
+        "name": "John Smith",
+        "password": "dH7js8FjN9hK",
+        "email": "john123456.smith@example.com",
+        "address": "123 Main St",
+        "address2": "Apt 4B",
+        "pin": "123456",
+        "city_id": "7v8Kd6Hj",
+        "state_id": [
+            {
+                "value": "Columbus",
+                "label": "Columbus"
+            }
+        ],
+        "country_id": [
+            {
+                "value": "United States",
+                "label": "United States"
+            }
+        ],
+        "status": [
+            {
+                "value": "status_2",
+                "label": "Status 2"
+            }
+        ],
+        "phone_no": "9876543210",
+        "whatsapp": "0123456789",
+        "linkedin": "https://www.linkedin.com/in/johnsmith",
+        "skype": "link:john.smith",
+        "personal_email": "john.smith@personal.com",
+        "privation_period": "2022-03-12",
+        "designation_id": [
+            {
+                "value": "Designation 1",
+                "label": "Designation 1"
+            }
+        ],
+        "department_id": [
+            {
+                "value": "Department 3",
+                "label": "Department 3"
+            }
+        ],
+        "Econ_per_name": "Jane Doe",
+        "Econ_per_number": "1234567890",
+        "Econ_per_relation": [
+            {
+                "label": "Wife",
+                "value": "wife"
+            }
+        ],
+        "company_id": "5Gj9Ks7M",
+        "marital_status": [
+            {
+                "label": "Married",
+                "value": "0002"
+            }
+        ],
+        "gender": [
+            {
+                "label": "Male",
+                "value": "Male"
+            }
+        ],
+        "reporting_to": [
+            {
+                "value": "Manager 1",
+                "label": "Manager 1"
+            }
+        ]
+    }
 }

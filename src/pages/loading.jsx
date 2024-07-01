@@ -1,9 +1,11 @@
 import React from 'react'
-
+import { RiLoader2Fill } from "react-icons/ri";
 export default function Loading() {
     return (
-        <h1>
-            Loading!!! please wait
-        </h1>
+        <>
+            <div className="full-screeb-loader">
+                <RiLoader2Fill className='content-loader loader' />
+            </div>
+        </>
     )
 }

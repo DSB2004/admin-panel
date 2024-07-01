@@ -45,12 +45,14 @@ export default function TASK() {
   const [PAGE, SET_PAGE] = useState(1);
   const [STATE, DISPATCH] = useReducer(reducer, { id: null, type: null });
   const SearchID = useRef();
+  const [loading, set_loading] = useState(false);
   const [CONTENT, SET_CONTENT] = useState(TASK_STATE.content);
 
 
 
   const handlePageChange = async (PAGE) => {
     if (PAGE) {
+      set_loading(true);
       const CACHE_DATA = TASK_STATE.content.find(ele => ele.page === PAGE);
       if (!CACHE_DATA) {
         console.log('API called');
@@ -64,6 +66,7 @@ export default function TASK() {
       } else {
         SET_CONTENT(CACHE_DATA.data);
       }
+      set_loading(false);
     }
   };
 
@@ -98,7 +101,6 @@ export default function TASK() {
             <div className="col-sm-6">
               <SearchBar placeholder="Search by Task ID" />
             </div>
-
             <div className="col-sm-6">
               <ol className="breadcrumb float-sm-right">
                 <Button text="Add Task" className="btn-sm margin-top-10" onClick={() => DISPATCH({ type: "ADD" })} />
@@ -110,7 +112,7 @@ export default function TASK() {
 
       {/* HEADER */}
       {
-        !TASK_STATE.content_loading ?
+        !loading ?
           <>
             <section className='content overflow-content'>
               <div class="container-fluid">

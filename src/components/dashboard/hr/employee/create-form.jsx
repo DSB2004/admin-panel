@@ -1,16 +1,15 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Dropdown from '../../../../layouts/form/dropdown';
 import Input from '../../../../layouts/form/input';
 import Button from '../../../../layouts/form/button';
 import Checkbox from '../../../../layouts/form/check-box';
 import Dialog from '@mui/material/Dialog';
-import EncryptData from '../../../../utils/encrypt_data.util';
 import EMPLOYEE_CONTENT from '../../../../assets/employee.json';
+import TEST_DATA from "../../../../assets/test.json"
 import GetCredentials from "../../../../utils/get_credentials.util"
 import { CREATE_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
-import { DEV_MODE } from '../../../../env';
 import { RiLoader2Fill } from "react-icons/ri";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 export default function CreateForm({ showModal, toggleModal }) {
     const dispatch = useDispatch();
     const [alertMsg, update_msg] = useState('');
@@ -52,6 +51,8 @@ export default function CreateForm({ showModal, toggleModal }) {
     const employee_gender = useRef();
     const employee_marital_status = useRef();
 
+
+    const COMPANY_STATE = useSelector(state => state.Company)
     const handleToggle = (e) => {
         if (e.target.checked) {
             toggleDisable(e.target.checked)
@@ -75,29 +76,29 @@ export default function CreateForm({ showModal, toggleModal }) {
 
     const runtest = (e) => {
         if (e.target.checked) {
-            employee_name.current.value = EMPLOYEE_CONTENT.test.name;
-            employee_email.current.value = EMPLOYEE_CONTENT.test.email;
-            employee_password.current.value = EMPLOYEE_CONTENT.test.password;
-            employee_designation.current.setValue(EMPLOYEE_CONTENT.test.designation_id)
-            employee_department.current.setValue(EMPLOYEE_CONTENT.test.department_id)
-            employee_privation_period.current.value = EMPLOYEE_CONTENT.test.privation_period;
-            employee_phone_no.current.value = EMPLOYEE_CONTENT.test.phone_no;
-            employee_whatsapp.current.value = EMPLOYEE_CONTENT.test.whatsapp;
-            employee_linkedin.current.value = EMPLOYEE_CONTENT.test.linkedin;
-            employee_skype.current.value = EMPLOYEE_CONTENT.test.skype;
-            employee_personal_email.current.value = EMPLOYEE_CONTENT.test.personal_email;
-            emergency_contact_name.current.value = EMPLOYEE_CONTENT.test.Econ_per_name;
-            emergency_contact_number.current.value = EMPLOYEE_CONTENT.test.Econ_per_number;
-            permanent_address1.current.value = EMPLOYEE_CONTENT.test.address;
-            permanent_address2.current.value = EMPLOYEE_CONTENT.test.address2;
-            permanent_pincode.current.value = EMPLOYEE_CONTENT.test.pin;
-            permanent_city.current.value = EMPLOYEE_CONTENT.test.city_id;
-            permanent_country.current.setValue(EMPLOYEE_CONTENT.test.country_id);
-            permanent_state.current.setValue(EMPLOYEE_CONTENT.test.state_id);
-            employee_gender.current.setValue(EMPLOYEE_CONTENT.test.gender);
-            employee_marital_status.current.setValue(EMPLOYEE_CONTENT.test.marital_status);
-            employee_reporting_manager.current.setValue(EMPLOYEE_CONTENT.test.reporting_to);
-            emergency_contact_relation.current.setValue(EMPLOYEE_CONTENT.test.Econ_per_relation)
+            employee_name.current.value = TEST_DATA.employee.name;
+            employee_email.current.value = TEST_DATA.employee.email;
+            employee_password.current.value = TEST_DATA.employee.password;
+            employee_designation.current.setValue(TEST_DATA.employee.designation_id)
+            employee_department.current.setValue(TEST_DATA.employee.department_id)
+            employee_privation_period.current.value = TEST_DATA.employee.privation_period;
+            employee_phone_no.current.value = TEST_DATA.employee.phone_no;
+            employee_whatsapp.current.value = TEST_DATA.employee.whatsapp;
+            employee_linkedin.current.value = TEST_DATA.employee.linkedin;
+            employee_skype.current.value = TEST_DATA.employee.skype;
+            employee_personal_email.current.value = TEST_DATA.employee.personal_email;
+            emergency_contact_name.current.value = TEST_DATA.employee.Econ_per_name;
+            emergency_contact_number.current.value = TEST_DATA.employee.Econ_per_number;
+            permanent_address1.current.value = TEST_DATA.employee.address;
+            permanent_address2.current.value = TEST_DATA.employee.address2;
+            permanent_pincode.current.value = TEST_DATA.employee.pin;
+            permanent_city.current.value = TEST_DATA.employee.city_id;
+            permanent_country.current.setValue(TEST_DATA.employee.country_id);
+            permanent_state.current.setValue(TEST_DATA.employee.state_id);
+            employee_gender.current.setValue(TEST_DATA.employee.gender);
+            employee_marital_status.current.setValue(TEST_DATA.employee.marital_status);
+            employee_reporting_manager.current.setValue(TEST_DATA.employee.reporting_to);
+            emergency_contact_relation.current.setValue(TEST_DATA.employee.Econ_per_relation)
         } else {
             employee_name.current.value = '';
             employee_email.current.value = '';
@@ -159,11 +160,9 @@ export default function CreateForm({ showModal, toggleModal }) {
                 designation_id: employee_designation.current.getValue()[0].value,
                 department_id: employee_department.current.getValue()[0].value,
                 privation_period: employee_privation_period.current.value,
-                reporting_to: employee_reporting_manager.current.getValue()[0].value
+                reporting_to: employee_reporting_manager.current.getValue()[0].ref
             };
-            const ENCRYTED_EMPLOYEE_DETAILS = await EncryptData(EMPLOYEE_DETAILS);
-            const res = await dispatch(CREATE_EMPLOYEE(ENCRYTED_EMPLOYEE_DETAILS)).unwrap();
-
+            const res = await dispatch(CREATE_EMPLOYEE(EMPLOYEE_DETAILS)).unwrap();
             if (res) {
                 toggleModal()
             }
@@ -172,7 +171,6 @@ export default function CreateForm({ showModal, toggleModal }) {
             update_msg(err.message)
         }
     }
-
 
 
     return (
@@ -226,7 +224,7 @@ export default function CreateForm({ showModal, toggleModal }) {
                             <Dropdown ref={employee_department} label="Department" options={EMPLOYEE_CONTENT.department} />
                         </div>
                         <div className="col-md-6">
-                            <Dropdown ref={employee_reporting_manager} label="Reporting To" options={EMPLOYEE_CONTENT.manager} />
+                            <Dropdown ref={employee_reporting_manager} label="Reporting To" options={COMPANY_STATE.employee_list} />
                         </div>
                     </div>
 
@@ -320,10 +318,10 @@ export default function CreateForm({ showModal, toggleModal }) {
                         </div>
                     </div>
 
-                    {(DEV_MODE === 'true') ? <>
-                        <input type="checkbox" onChange={runtest} />
-                    </> : <></>
-                    }
+                    {/* {(DEV_MODE === 'true') ? <> */}
+                    <input type="checkbox" onChange={runtest} />
+                    {/* </> : <></> */}
+                    {/* } */}
 
 
                     <div className="flex-center">

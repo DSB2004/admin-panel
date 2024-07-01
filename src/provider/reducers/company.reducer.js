@@ -31,14 +31,18 @@ const Company = createSlice({
             })
             .addCase(GET_COMPANY_DETAILS.fulfilled, (state, action) => {
                 const { payload } = action;
+                // console.log(payload)
                 state.content_loading = false;
                 state.employee_list = payload.employee_list.map((element) => ({
                     value: encrypt(element.auto_id),
+                    ref: element.auto_id,
                     label: element.emp_name
                 }));
 
+
                 state.department_list = payload.department_list;
                 state.designation_list = payload.designation_list;
+                // console.log(state)
             })
             .addCase(GET_COMPANY_DETAILS.rejected, (state) => {
                 state.content_loading = false;

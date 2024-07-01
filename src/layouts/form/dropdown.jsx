@@ -24,7 +24,10 @@ const Dropdown = forwardRef(({ label, name, options = [], disable, value }, ref)
     return (
         <>
             <label htmlFor="exampleInputEmail1">{label}</label>
-            <Select name={name} options={options} styles={customStyles} value={value} ref={ref} isDisabled={disable} />
+            <Select
+                menuPosition="fixed"
+                menuPlacement="auto"
+                name={name} options={options} styles={customStyles} value={value} ref={ref} isDisabled={disable} />
         </>
     )
 })

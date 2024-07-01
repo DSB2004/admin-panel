@@ -24,7 +24,7 @@ export default function NavItemDrop({ children, text }) {
                     <i className="right fas fa-angle-left" />
                 </p>
             </Link>
-            <ul className="nav nav-treeview " onClick={() => { setIsOpen(false) }}>
+            <ul className="nav nav-treeview ">
                 {children}
             </ul>
         </li>

@@ -73,7 +73,7 @@ export const SEARCH_EMPLOYEE = createAsyncThunk("get-search-employee", async (co
 const Task = createSlice({
     name: "employee",
     initialState: {
-        content_loading: false, total_count: 0, form_loading: false, content: [], search_content: []
+        total_count: 0, content: [], search_content: []
     }
     , extraReducers: (builder) => {
         builder.addCase(CREATE_TASK.pending, (state, action) => {
@@ -81,7 +81,6 @@ const Task = createSlice({
         })
 
         builder.addCase(CREATE_TASK.fulfilled, (state, action) => {
-            state.form_loading = false;
             state.total_count += 1;
             const newTask = {
                 "Task_Id": action.payload.TaskId,
@@ -103,39 +102,24 @@ const Task = createSlice({
         });
 
         builder.addCase(CREATE_TASK.rejected, (state, action) => {
-            state.form_loading = false;
+
         })
 
 
         // view all employee 
 
         builder.addCase(VIEW_TASK.pending, (state, action) => {
-            state.content_loading = true;
+
         })
         builder.addCase(VIEW_TASK.fulfilled, (state, action) => {
             const { page, data, count } = action.payload
             state.total_count = count
-            state.content_loading = false;
             state.search_content = [...state.search_content, ...data]
             state.content.push({ page, data });
         })
         builder.addCase(VIEW_TASK.rejected, (state, action) => {
-            state.content_loading = false;
-        })
 
-
-        // search employee
-        builder.addCase(SEARCH_EMPLOYEE.pending, (state, action) => {
-            state.content_loading = true;
         })
-        builder.addCase(SEARCH_EMPLOYEE.fulfilled, (state, action) => {
-
-            state.content_loading = false;
-        })
-        builder.addCase(SEARCH_EMPLOYEE.rejected, (state, action) => {
-            state.content_loading = false;
-        })
-
 
     }
 });

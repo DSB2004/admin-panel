@@ -45,6 +45,7 @@ export default function EMPLOYEE() {
     const [CONTENT, SET_CONTENT] = useState([])
     const SearchID = useRef();
 
+    const [loading, set_loading] = useState(false);
 
     const ACTION_LIST = (ID) => [
         { content: "View", onClick: () => DISPATCH({ type: "VIEW", id: ID }) },
@@ -57,17 +58,19 @@ export default function EMPLOYEE() {
 
 
     const HandleSearch = async () => {
-        if (SearchID.current.value && SearchID.current.value != "") {
-            const res = await DISPATCH_ACTION(SEARCH_EMPLOYEE({ ID: SearchID.current.value })).unwrap();
-            SET_CONTENT(res)
-
-        }
+        // set_loading(true);
+        // if (SearchID.current.value && SearchID.current.value != "") {
+        //     const res = await DISPATCH_ACTION(SEARCH_EMPLOYEE({ ID: SearchID.current.value })).unwrap();
+        //     SET_CONTENT(res)
+        // }
+        // set_loading(false)
     }
-    
+
+
     const handlePageChange = async (PAGE) => {
         if (PAGE) {
+            set_loading(true);
             const CACHE_DATA = EMPLOYEE_STATE.content.find(ele => ele.page === PAGE);
-            // console.log(EMPLOYEE_STATE.content)
             if (!CACHE_DATA) {
                 console.log('API called');
                 try {
@@ -80,13 +83,15 @@ export default function EMPLOYEE() {
             } else {
                 SET_CONTENT(CACHE_DATA.data);
             }
+            set_loading(false);
         }
     };
+
+
 
     useEffect(() => {
         handlePageChange(PAGE)
     }, [PAGE, EMPLOYEE_STATE.content]);
-
 
 
     return (
@@ -98,7 +103,7 @@ export default function EMPLOYEE() {
             }
             {
                 STATE.type === "EDIT" ? <>
-                    <EditForm showModal={STATE.type === "EDIT"} emp_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
+                    <EditForm showModal={STATE.type === "EDIT"} page={PAGE} emp_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
                 </> : <></>
             }
             {
@@ -126,7 +131,7 @@ export default function EMPLOYEE() {
 
             {/* HEADER */}
             {
-                !EMPLOYEE_STATE.content_loading ?
+                !loading ?
                     <>
                         <section className='content overflow-content'>
                             <div class="container-fluid">
