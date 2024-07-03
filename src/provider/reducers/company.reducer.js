@@ -16,6 +16,8 @@ export const GET_COMPANY_DETAILS = createAsyncThunk("get-company-details", async
     }
 });
 
+
+
 const Company = createSlice({
     name: "Company",
     initialState: {
@@ -24,6 +26,26 @@ const Company = createSlice({
         department_list: [],
         designation_list: [],
     },
+
+    reducers: {
+        add_employee: (state, action) => {
+            const { payload } = action;
+            const new_employee = {
+                value: encrypt(payload.auto_id),
+                ref: payload.auto_id,
+                label: payload.name
+            }
+            state.employee_list.push(new_employee);
+        },
+        edit_employee: (state, action) => {
+            const { payload } = action;
+            const index = state.employee_list.findIndex(ele => ele.ref === payload.auto_id);
+            if (index !== -1) {
+                state.employee_list[index] = { ...state.employee_list[index], label: payload.name };
+            }
+
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(GET_COMPANY_DETAILS.pending, (state) => {
@@ -31,15 +53,12 @@ const Company = createSlice({
             })
             .addCase(GET_COMPANY_DETAILS.fulfilled, (state, action) => {
                 const { payload } = action;
-                // console.log(payload)
                 state.content_loading = false;
                 state.employee_list = payload.employee_list.map((element) => ({
                     value: encrypt(element.auto_id),
                     ref: element.auto_id,
                     label: element.emp_name
                 }));
-
-
                 state.department_list = payload.department_list;
                 state.designation_list = payload.designation_list;
                 // console.log(state)
@@ -49,6 +68,8 @@ const Company = createSlice({
             });
     },
 });
+
+export const { edit_employee, add_employee } = Company.actions;
 
 export default Company.reducer;
 

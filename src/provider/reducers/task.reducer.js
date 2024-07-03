@@ -1,10 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import GetCredentials from "../../utils/get_credentials.util";
 import EncryptData from "../../utils/encrypt_data.util";
-import { decrypt } from "../../utils/decrypt_data.util"
 import TASK_API from "../../api/task.api";
-
-
+import TASK from "../../assets/task.json"
 
 export const CREATE_TASK = createAsyncThunk("post-create-employee", async (content) => {
     try {
@@ -19,10 +17,13 @@ export const CREATE_TASK = createAsyncThunk("post-create-employee", async (conte
                 'panelid': GetCredentials().panelid
             }
         })
+        console.log(response)
         if (response.data.body.resType === 'error') {
             throw new Error(response.data.body.resMessage.split(":")[1]);
         }
-        return { TaskId: response.data.body.TaskId, ...content };
+        return {
+            TaskId: response.data.body.resMessage, ...content
+        };
 
     } catch (err) {
         console.error("Error in sending data at post-create-task:", err);
@@ -37,8 +38,35 @@ export const VIEW_TASK = createAsyncThunk("get-all-tasks", async (content) => {
         const REQ_PAGE = content.PAGE;
         const ENCRYPTED_DATA = await EncryptData(content);
 
+
+        // {
+        //     "Task_Id": "TECH20240628091042",
+        //     "TaskTitle": "Testing Task abc",
+        //     "DueDate": "2024-05-28",
+        //     "AssignedBy": "sohan",
+        //     "Status": "active",
+        //     "Priority": "mid"
+        // }
+
         const res = await TASK_API.get(`/get_list?page=${ENCRYPTED_DATA.PAGE}`);
         const PAGE_DATA = res.data.body.data;
+        for (let element of PAGE_DATA) {
+            const status = TASK.status.find(ele => ele.value === element['Status']);
+            if (status) {
+                element['Status'] = status.label
+            }
+            else {
+                element['Status'] = "Not Found"
+            }
+            const priority = TASK.priority.find(ele => ele.value === element['Priority']);
+            if (priority) {
+                element['Priority'] = priority.label
+            }
+            else {
+                element['Priority'] = "Not Found"
+            }
+        }
+        console.log(PAGE_DATA);
         return { page: REQ_PAGE, count: res.data.body.tasks_count, data: PAGE_DATA };
 
     } catch (err) {

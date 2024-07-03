@@ -4,7 +4,8 @@ import EMPLOYEE_API from "../../api/employee.api";
 import EncryptData from "../../utils/encrypt_data.util";
 import { decrypt } from "../../utils/decrypt_data.util"
 import EMPLOYEE from "../../assets/employee.json";
-
+import { add_employee, edit_employee } from "./company.reducer";
+import Store from '../store'
 
 export const CREATE_EMPLOYEE = createAsyncThunk("post-create-employee", async (content, thunkAPI) => {
     try {
@@ -19,16 +20,26 @@ export const CREATE_EMPLOYEE = createAsyncThunk("post-create-employee", async (c
             throw new Error(response.data.body.resMessage.split(":")[1]);
         }
         else if (response.data.body.resType === 'success') {
-            const ENCRYPT_DATA = await EncryptData({ ID: response.data.body.resMessage })
-            const res = await EMPLOYEE_API.get(`/single_details?id=${ENCRYPT_DATA.ID}`);
-            if (res.data.body.resType === 'error') {
-                throw new Error(response.data.body.resMessage.split(":")[1]);
+            const data = {
+                "Auto Employee ID": response.data.body.resMessage,
+                "Employee ID": 'AUTO ID',
+                "Employee Name": content.name,
+                "Employee Email": content.email,
+                "User Role": content.designation_name,
+                "Reporting To": content.reporting_to_name
+                , "Status": "Active"
             }
-            else {
-                const EMP_DATA = JSON.parse(res.data.body);
-                // console.log(EMP_DATA)
-                return EMP_DATA;
-            }
+            Store.dispatch(add_employee({ auto_id: response.data.body.resMessage, name: content.name }));
+            return data;
+            // const ENCRYPT_DATA = await EncryptData({ ID: response.data.body.resMessage })
+            // const res = await EMPLOYEE_API.get(`/single_details?id=${ENCRYPT_DATA.ID}`);
+            // if (res.data.body.resType === 'error') {
+            //     throw new Error(response.data.body.resMessage.split(":")[1]);
+            // }
+            // else {
+            //     const EMP_DATA = JSON.parse(res.data.body);
+            //     return EMP_DATA;
+            // }
         }
 
     } catch (err) {
@@ -39,14 +50,25 @@ export const CREATE_EMPLOYEE = createAsyncThunk("post-create-employee", async (c
 
 export const EDIT_EMPLOYEE = createAsyncThunk("edit-all-employee", async (content) => {
     const encryted_content = await EncryptData(content)
-    console.log(content, encryted_content)
     try {
-        const response = await EMPLOYEE_API.put("/update", encryted_content)
-        console.log(response)
+        await EMPLOYEE_API.put("/update", encryted_content)
+        const key = content.id;
+        const page = content.page;
+        const data = {
+            "Employee ID": content.id,
+            "Employee Name": content.name,
+            "Employee Email": content.email,
+            "User Role": content.designation_name,
+            "Reporting To": content.reporting_to_name,
+        }
+        Store.dispatch(edit_employee(
+            { auto_id: content.auto_emp_id, name: content.name }
+        ));
+        return { data, key, page };
     }
     catch (err) {
         console.error("Error in updating data at put-update-employee:", err);
-        throw new Error(err.message)
+        throw err;
     }
 
 })
@@ -59,6 +81,13 @@ export const VIEW_EMPLOYEES = createAsyncThunk("get-all-employee", async (conten
         const PAGE_DATA = JSON.parse(res.data.body.data);
         for (let element of PAGE_DATA) {
             element['Employee Email'] = decrypt(element['Employee Email']);
+            const status = EMPLOYEE.status.find(ele => ele.value === element['Status']);
+            if (status) {
+                element['Status'] = status.label
+            }
+            else {
+                element['Status'] = "Not Found"
+            }
             const user_role = EMPLOYEE.designation.find(ele => ele.value === element['User Role']);
             if (user_role) {
                 element['User Role'] = user_role.label
@@ -69,8 +98,8 @@ export const VIEW_EMPLOYEES = createAsyncThunk("get-all-employee", async (conten
         }
         return { page: REQ_PAGE, count: res.data.body.user_count, data: PAGE_DATA };
     } catch (err) {
-        console.log(err);
-        console.log("Error in fetching data at get-all-employees");
+
+        console.log("Error in fetching data at get-all-employees", err);
         throw err;
     }
 });
@@ -85,9 +114,8 @@ export const SEARCH_EMPLOYEE = createAsyncThunk("get-search-employee", async (co
         const EMP_DATA = JSON.parse(res.data.body);
         return EMP_DATA;
     } catch (err) {
-        console.log(err);
-        console.log("Error in fetching data at get-search-employee");
-        // throw err;
+        console.log("Error in fetching data at get-search-employee", err);
+        throw err;
     }
 });
 
@@ -115,7 +143,6 @@ const Employee = createSlice({
             const page_count = Math.ceil(state.total_count / 10);
             const pageIndex = state.content.findIndex(page => page.page === page_count);
             if (pageIndex !== -1) {
-                console.log("Page exists: ", state.content[pageIndex]);
                 if (state.content[pageIndex].data.length < 11) {
                     state.content[pageIndex].data.push(newEmployee);
                 }
@@ -133,13 +160,40 @@ const Employee = createSlice({
 
         })
         builder.addCase(VIEW_EMPLOYEES.fulfilled, (state, action) => {
-            const { page, data, count } = action.payload
+            const { page, data, count } = action.payload;
             state.total_count = count
             state.search_content = [...state.search_content, ...data]
             state.content.push({ page, data });
         })
         builder.addCase(VIEW_EMPLOYEES.rejected, (state, action) => {
+        })
 
+        builder.addCase(EDIT_EMPLOYEE.pending, (state, action) => {
+            // 
+        })
+
+        builder.addCase(EDIT_EMPLOYEE.fulfilled, (state, action) => {
+            const { page, data, key } = action.payload;
+            // console.log(data)
+
+            // Update search_content
+            const searchContentIndex = state.search_content.findIndex(emp => emp['Employee ID'] === key);
+            if (searchContentIndex !== -1) {
+                state.search_content[searchContentIndex] = { ...state.search_content[searchContentIndex], ...data };
+            }
+
+            // Update content
+            const contentPageIndex = state.content.findIndex(pageData => pageData.page === page);
+            if (contentPageIndex !== -1) {
+                const contentPageDataIndex = state.content[contentPageIndex].data.findIndex(emp => emp['Employee ID'] === key);
+                if (contentPageDataIndex !== -1) {
+                    state.content[contentPageIndex].data[contentPageDataIndex] = { ...state.content[contentPageIndex].data[contentPageDataIndex], ...data };
+                }
+            }
+        });
+
+        builder.addCase(EDIT_EMPLOYEE.rejected, (state, action) => {
+            console.log("Error in edit employee")
         })
 
 

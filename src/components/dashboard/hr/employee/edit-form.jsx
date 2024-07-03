@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState ,useInsertionEffect} from 'react';
 import Dropdown from '../../../../layouts/form/dropdown';
 import Input from '../../../../layouts/form/input';
 import Button from '../../../../layouts/form/button';
@@ -9,8 +9,7 @@ import { SEARCH_EMPLOYEE, EDIT_EMPLOYEE } from '../../../../provider/reducers/em
 import GetCredentials from "../../../../utils/get_credentials.util"
 import { RiLoader2Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
-import { encrypt } from '../../../../utils/encrypt_data.util';
-export default function CreateForm({ showModal, toggleModal, emp_id }) {
+export default function EditForm({ showModal, toggleModal, emp_id, page }) {
     const dispatch = useDispatch();
     const [alertMsg, update_msg] = useState('');
     const [disableInput, toggleDisable] = useState();
@@ -75,45 +74,49 @@ export default function CreateForm({ showModal, toggleModal, emp_id }) {
 
     }
 
-    const handleRender = async () => {
-        const response = await dispatch(SEARCH_EMPLOYEE({ ID: emp_id })).unwrap();
-        employee_id.current.value = response['Employee ID']
-        employee_name.current.value = response["Employee Name"];
-        employee_email.current.value = response["Employee Email"];
-        employee_designation.current.setValue(EMPLOYEE_CONTENT.designation.find(ele => ele.value === response["Designation ID"]))
-        employee_department.current.setValue(EMPLOYEE_CONTENT.department.find(ele => ele.value === response["Department ID"]))
-        employee_privation_period.current.value = response['Privation Period'];
-        employee_phone_no.current.value = response["Phone No"];
-        employee_whatsapp.current.value = response["WhatsApp"];
-        employee_linkedin.current.value = response["LinkedIn"];
-        employee_skype.current.value = response["Skype"];
-        employee_personal_email.current.value = response["Personal Email"];
-        emergency_contact_name.current.value = response["Emergency Contact Person Name"];
-        emergency_contact_number.current.value = response["Emergency Contact Person Number"];
-        permanent_address1.current.value = response["Address"];
-        permanent_address2.current.value = response["Address2"];
-        permanent_pincode.current.value = response["Pin"];
-        permanent_city.current.value = response["City ID"];
-        permanent_country.current.setValue(EMPLOYEE_CONTENT.country.find(ele => ele.value === response["Country ID"]));
-        permanent_state.current.setValue(EMPLOYEE_CONTENT.state.find(ele => ele.value === response["State ID"]));
-        personal_address1.current.value = response["PE Address"];
-        personal_address2.current.value = response["PE Address2"];
-        personal_pincode.current.value = response["PE Pin"];
-        personal_city.current.value = response["PE City ID"];
-        personal_country.current.setValue(EMPLOYEE_CONTENT.country.find(ele => ele.value === response["PE Country ID"]));
-        personal_state.current.setValue(EMPLOYEE_CONTENT.state.find(ele => ele.value === response["PE State ID"]));
-        employee_gender.current.setValue(EMPLOYEE_CONTENT.gender.find(ele => ele.value === response["Gender"]));
-        employee_marital_status.current.setValue(EMPLOYEE_CONTENT.marital_status.find(ele => ele.value === response["Marital Status"]));
-        employee_reporting_manager.current.setValue(COMPANY_STATE.employee_list.find(ele => ele.ref === response["Reporting To ID"]));
-        emergency_contact_relation.current.setValue(EMPLOYEE_CONTENT.relations.find(ele => ele.value === response["Emergency Contact Person Relation"]));
+    const handleRender = async (id, page) => {
+        console.log(id, page)
+        const response = await dispatch(SEARCH_EMPLOYEE({ ID: id })).unwrap();
+        if (response) {
+            employee_id.current.value = response['Employee ID']
+            employee_name.current.value = response["Employee Name"];
+            employee_email.current.value = response["Employee Email"];
+            employee_designation.current.setValue(EMPLOYEE_CONTENT.designation.find(ele => ele.value === response["Designation ID"]))
+            employee_department.current.setValue(EMPLOYEE_CONTENT.department.find(ele => ele.value === response["Department ID"]))
+            employee_privation_period.current.value = response['Privation Period'];
+            employee_phone_no.current.value = response["Phone No"];
+            employee_whatsapp.current.value = response["WhatsApp"];
+            employee_linkedin.current.value = response["LinkedIn"];
+            employee_skype.current.value = response["Skype"];
+            employee_personal_email.current.value = response["Personal Email"];
+            emergency_contact_name.current.value = response["Emergency Contact Person Name"];
+            emergency_contact_number.current.value = response["Emergency Contact Person Number"];
+            permanent_address1.current.value = response["Address"];
+            permanent_address2.current.value = response["Address2"];
+            permanent_pincode.current.value = response["Pin"];
+            permanent_city.current.value = response["City ID"];
+            permanent_country.current.setValue(EMPLOYEE_CONTENT.country.find(ele => ele.value === response["Country ID"]));
+            permanent_state.current.setValue(EMPLOYEE_CONTENT.state.find(ele => ele.value === response["State ID"]));
+            personal_address1.current.value = response["PE Address"];
+            personal_address2.current.value = response["PE Address2"];
+            personal_pincode.current.value = response["PE Pin"];
+            personal_city.current.value = response["PE City ID"];
+            personal_country.current.setValue(EMPLOYEE_CONTENT.country.find(ele => ele.value === response["PE Country ID"]));
+            personal_state.current.setValue(EMPLOYEE_CONTENT.state.find(ele => ele.value === response["PE State ID"]));
+            employee_gender.current.setValue(EMPLOYEE_CONTENT.gender.find(ele => ele.value === response["Gender"]));
+            employee_marital_status.current.setValue(EMPLOYEE_CONTENT.marital_status.find(ele => ele.value === response["Marital Status"]));
+            employee_reporting_manager.current.setValue(COMPANY_STATE.employee_list.find(ele => ele.ref === response["Reporting To ID"]));
+            emergency_contact_relation.current.setValue(EMPLOYEE_CONTENT.relations.find(ele => ele.value === response["Emergency Contact Person Relation"]));
+        }
     }
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
-            console.log(emp_id)
             update_msg(<RiLoader2Fill className='loader' />)
             const EMPLOYEE_DETAILS = {
                 auto_emp_id: emp_id,
+                page: page,
+                id: employee_id.current.value,
                 name: employee_name.current.value,
                 email: employee_email.current.value,
                 address: permanent_address1.current.value,
@@ -140,15 +143,15 @@ export default function CreateForm({ showModal, toggleModal, emp_id }) {
                 Econ_per_number: Number(emergency_contact_number.current.value),
                 Econ_per_relation: emergency_contact_relation.current.getValue()[0].value,
                 designation_id: employee_designation.current.getValue()[0].value,
+                designation_name: employee_designation.current.getValue()[0].label,
                 department_id: employee_department.current.getValue()[0].value,
                 privation_period: employee_privation_period.current.value,
-                reporting_to: employee_reporting_manager.current.getValue()[0].ref
+                reporting_to: employee_reporting_manager.current.getValue()[0].ref,
+                reporting_to_name: employee_reporting_manager.current.getValue()[0].label,
             };
-            const res = await dispatch(EDIT_EMPLOYEE(EMPLOYEE_DETAILS)).unwrap()
-            // .then((result) => {
-            //     toggleModal()
-            // }).catch((err) => {
-            // });
+            await dispatch(EDIT_EMPLOYEE(EMPLOYEE_DETAILS)).unwrap()
+            toggleModal()
+
         }
         catch (err) {
             console.log(err)
@@ -156,11 +159,11 @@ export default function CreateForm({ showModal, toggleModal, emp_id }) {
         }
     }
 
-    useEffect(() => {
-        if (emp_id) {
-            handleRender(emp_id);
+    useInsertionEffect(() => {
+        if (emp_id && page) {
+            handleRender(emp_id, page);
         }
-    }, [emp_id])
+    }, [emp_id, page])
 
     return (
         <Dialog

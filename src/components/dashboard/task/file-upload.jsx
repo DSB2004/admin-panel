@@ -4,6 +4,8 @@ import Button from '../../../layouts/form/button';
 import { IoAddOutline } from "react-icons/io5";
 import { FaFile } from "react-icons/fa";
 import { RiLoader2Fill } from "react-icons/ri";
+import TEST_API from '../../../api/test.api';
+
 
 const FileUpload = () => {
     const [file, setFile] = useState();
@@ -12,7 +14,7 @@ const FileUpload = () => {
     const onDrop = useCallback((acceptedFiles) => {
         update_msg("");
         const selectedFile = acceptedFiles[0];
-        const allowedExtensions = ['docx', 'pdf', 'jpg', 'jpeg', 'png', 'webp'];
+        const allowedExtensions = ['docx', 'pdf', 'jpg', 'jpeg', 'png', "txt", 'webp'];
         const fileExtension = selectedFile.name.split('.').pop().toLowerCase();
         if (!allowedExtensions.includes(fileExtension)) {
             update_msg('File type not allowed.');
@@ -26,12 +28,30 @@ const FileUpload = () => {
         multiple: false,  // Limit to one file
     });
 
-    const handleUpload = () => {
-        // Implement your upload logic here
-        if (file) {
-            console.log('Uploading file:', file);
-        } else {
-            update_msg('No file selected.');
+    const handleUpload = async () => {
+        try {
+            if (file) {
+                update_msg(<RiLoader2Fill className='loader' />)
+                const response = await TEST_API.post("/upload", file, {
+                    headers: {
+                        "Content-Type": file.type,
+                        "filename": file.name
+                    }
+                })
+                if (response.data.body.resType === 'success') {
+                    update_msg("File Uploaded Successfully");
+                    setFile();
+                }
+                else {
+                    update_msg("Error While Uploading File");
+                    setFile();
+                }
+            } else {
+                update_msg('No file selected.');
+            }
+        }
+        catch (err) {
+            console.log(err)
         }
     };
 

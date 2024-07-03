@@ -22,12 +22,11 @@ export default function Dashboard() {
             }
             else {
                 await dispatch(GET_COMPANY_DETAILS()).unwrap().then((result) => {
-                    // console.log(result)
-                    loading(false)
                 }).catch((err) => {
                     console.log('Error Loading Content');
                 });
             }
+            loading(false)
         }
         handleRender()
     }, [])

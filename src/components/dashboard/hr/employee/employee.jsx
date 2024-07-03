@@ -87,8 +87,6 @@ export default function EMPLOYEE() {
         }
     };
 
-
-
     useEffect(() => {
         handlePageChange(PAGE)
     }, [PAGE, EMPLOYEE_STATE.content]);

@@ -159,8 +159,10 @@ export default function CreateForm({ showModal, toggleModal }) {
                 Econ_per_relation: emergency_contact_relation.current.getValue()[0].value,
                 designation_id: employee_designation.current.getValue()[0].value,
                 department_id: employee_department.current.getValue()[0].value,
+                designation_name: employee_designation.current.getValue()[0].label,
                 privation_period: employee_privation_period.current.value,
-                reporting_to: employee_reporting_manager.current.getValue()[0].ref
+                reporting_to: employee_reporting_manager.current.getValue()[0].ref,
+                reporting_to_name: employee_reporting_manager.current.getValue()[0].label,
             };
             const res = await dispatch(CREATE_EMPLOYEE(EMPLOYEE_DETAILS)).unwrap();
             if (res) {
