@@ -13,7 +13,10 @@ const MultiSelect = forwardRef(({ label, name, options = [] }, ref) => {
     return (
         <>
             <label htmlFor="exampleInputEmail1">{label}</label>
-            <Select name={name} options={options} styles={customStyles} isMulti ref={ref} />
+            <Select name={name}
+                menuPosition="fixed"
+                menuPlacement="auto"
+                options={options} styles={customStyles} isMulti ref={ref} />
         </>
     )
 

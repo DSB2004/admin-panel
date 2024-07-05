@@ -20,26 +20,25 @@ export const CREATE_EMPLOYEE = createAsyncThunk("post-create-employee", async (c
             throw new Error(response.data.body.resMessage.split(":")[1]);
         }
         else if (response.data.body.resType === 'success') {
-            const data = {
-                "Auto Employee ID": response.data.body.resMessage,
-                "Employee ID": 'AUTO ID',
-                "Employee Name": content.name,
-                "Employee Email": content.email,
-                "User Role": content.designation_name,
-                "Reporting To": content.reporting_to_name
-                , "Status": "Active"
+            const ENCRYPT_DATA = await EncryptData({ ID: response.data.body.resMessage })
+            const res = await EMPLOYEE_API.get(`/single_details?id=${ENCRYPT_DATA.ID}`);
+            if (res.data.body.resType === 'error') {
+                throw new Error(response.data.body.resMessage.split(":")[1]);
             }
-            Store.dispatch(add_employee({ auto_id: response.data.body.resMessage, name: content.name }));
-            return data;
-            // const ENCRYPT_DATA = await EncryptData({ ID: response.data.body.resMessage })
-            // const res = await EMPLOYEE_API.get(`/single_details?id=${ENCRYPT_DATA.ID}`);
-            // if (res.data.body.resType === 'error') {
-            //     throw new Error(response.data.body.resMessage.split(":")[1]);
-            // }
-            // else {
-            //     const EMP_DATA = JSON.parse(res.data.body);
-            //     return EMP_DATA;
-            // }
+            else {
+                const EMP_DATA = JSON.parse(res.data.body);
+                const data = {
+                    "Auto Employee ID": response.data.body.resMessage,
+                    "Employee ID": EMP_DATA['Employee ID'],
+                    "Employee Name": content.name,
+                    "Employee Email": content.email,
+                    "User Role": content.designation_name,
+                    "Reporting To": content.reporting_to_name
+                    , "Status": "Active"
+                }
+                Store.dispatch(add_employee({ auto_id: response.data.body.resMessage, name: content.name }));
+                return data;
+            }
         }
 
     } catch (err) {
@@ -119,6 +118,24 @@ export const SEARCH_EMPLOYEE = createAsyncThunk("get-search-employee", async (co
     }
 });
 
+export const SUSPEND_EMPLOYEE = createAsyncThunk("suspend-employee", async (content) => {
+    const ENCRYPTED_DATA = await EncryptData(content);
+    try {
+        const res = await EMPLOYEE_API.put("/update", ENCRYPTED_DATA)
+        console.log(res)
+        const key = content.auto_emp_id;
+        const page = content.page;
+        const data = {
+            "Status": "Suspended"
+        }
+        return { data, key, page };
+    }
+    catch (err) {
+        console.error("Error in updating data at put-update-employee:", err);
+        throw err;
+    }
+})
+
 
 const Employee = createSlice({
     name: "employee",
@@ -195,6 +212,35 @@ const Employee = createSlice({
         builder.addCase(EDIT_EMPLOYEE.rejected, (state, action) => {
             console.log("Error in edit employee")
         })
+
+
+
+        builder.addCase(SUSPEND_EMPLOYEE.pending, (state, action) => {
+            // 
+        })
+
+        builder.addCase(SUSPEND_EMPLOYEE.fulfilled, (state, action) => {
+            const { page, data, key } = action.payload;
+
+            const searchContentIndex = state.search_content.findIndex(emp => emp['Auto Employee ID'] === key);
+            if (searchContentIndex !== -1) {
+                state.search_content[searchContentIndex] = { ...state.search_content[searchContentIndex], ...data };
+            }
+
+            // Update content
+            const contentPageIndex = state.content.findIndex(pageData => pageData.page === page);
+            if (contentPageIndex !== -1) {
+                const contentPageDataIndex = state.content[contentPageIndex].data.findIndex(emp => emp['Auto Employee ID'] === key);
+                if (contentPageDataIndex !== -1) {
+                    state.content[contentPageIndex].data[contentPageDataIndex] = { ...state.content[contentPageIndex].data[contentPageDataIndex], ...data };
+                }
+            }
+        });
+
+        builder.addCase(SUSPEND_EMPLOYEE.rejected, (state, action) => {
+            console.log("Error in suspending employee")
+        })
+
 
 
 

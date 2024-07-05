@@ -14,7 +14,6 @@ export default function Dashboard() {
     const [content_loading, loading] = useState(true);
     useEffect(() => {
         const handleRender = async () => {
-
             loading(true)
             const data = GetCredentials();
             if (!data.panelid || !data.loginid) {

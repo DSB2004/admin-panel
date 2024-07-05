@@ -1,14 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import React from "react";
-import Welcome from "../components/common/welcome";
+
 import Dashboard from "../pages/dashboard"
 
-import FileUpload from "../components/dashboard/task/file-upload";
+// import FileUpload from "../components/dashboard/task/file-upload";
 import TASK from "../components/dashboard/task/task"
 import EMPLOYEE from "../components/dashboard/hr/employee/employee";
 import CAMPAIGN from "../components/dashboard/campaign/campaign";
-
-// import EmployeeTable from "../components/hr/employee/employee-table";
 
 
 const DASHBOARD_ROUTES = () => {
@@ -17,10 +15,9 @@ const DASHBOARD_ROUTES = () => {
         <Routes>
 
             <Route path="/" element={<Dashboard />} >
-                {/* INDEX ROUTE */}
-                {/* <Route index element={<Welcome />} /> */}
-                {/* ADMIN ROUTE */}
-                <Route path='file-upload' element={<FileUpload />} />
+
+
+                {/* < Route path='file-upload' element={<FileUpload />} /> */}
                 <Route path="task" element={<TASK />} >
                 </Route>
 

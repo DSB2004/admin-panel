@@ -22,6 +22,7 @@ import Employee from "../../../../assets/employee.json";
 import CreateForm from './create-form';
 import EditForm from './edit-form';
 import ViewForm from './view-employee';
+import Suspended from './mark-as-suspended';
 
 
 export default function EMPLOYEE() {
@@ -33,8 +34,10 @@ export default function EMPLOYEE() {
             return { id: null, type: "ADD" };
         } else if (type === "EDIT") {
             return { id: id, type: "EDIT" };
+        } else if (type === "STATUS") {
+            return { id: id, type: "STATUS" };
         } else if (type === "CLOSE") {
-            return { id: null, type: null };
+            return { id: null, type: "CLOSE" };
         }
         return state;
     };
@@ -50,7 +53,7 @@ export default function EMPLOYEE() {
     const ACTION_LIST = (ID) => [
         { content: "View", onClick: () => DISPATCH({ type: "VIEW", id: ID }) },
         { content: "Edit", onClick: () => DISPATCH({ type: "EDIT", id: ID }) },
-        { content: "Mark As Suspended", onClick: () => console.log("Mark As Suspended") },
+        { content: "Mark As Suspended", onClick: () => DISPATCH({ type: "STATUS", id: ID }) },
     ];
 
     const DISPATCH_ACTION = useDispatch();
@@ -107,6 +110,11 @@ export default function EMPLOYEE() {
             {
                 STATE.type === "VIEW" ? <>
                     <ViewForm showModal={STATE.type === 'VIEW'} emp_id={STATE.id} DISPATCH={DISPATCH} ></ViewForm>
+                </> : <></>
+            }
+            {
+                STATE.type === "STATUS" ? <>
+                    <Suspended showModal={STATE.type === 'STATUS'} page={PAGE} emp_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
                 </> : <></>
             }
             {/* HEADER */}

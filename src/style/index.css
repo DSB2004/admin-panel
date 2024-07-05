@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .full-screeb-loader {
@@ -184,7 +184,9 @@ body {
   animation: spin 1s linear infinite;
 }
 
-
+.center-content {
+  text-align: center;
+}
 
 .content-loader {
   position: absolute;

@@ -43,7 +43,6 @@ export default function CreateForm({ showModal, DISPATCH }) {
                 <div className="card-body">
 
                     <Input ref={campaign_name} label="Campaign Name" placeholder="Enter the campaign name..." type="text" />
-
                     <TextArea label="Description" ref={campaign_description} placeholder="Enter description for campaign..." rows={6} />
                     <div className='row'>
                         <div className='col-md-6'>

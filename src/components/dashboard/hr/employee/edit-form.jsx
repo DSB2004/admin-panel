@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState ,useInsertionEffect} from 'react';
+import React, { useEffect, useRef, useState, useInsertionEffect } from 'react';
 import Dropdown from '../../../../layouts/form/dropdown';
 import Input from '../../../../layouts/form/input';
 import Button from '../../../../layouts/form/button';
@@ -75,38 +75,44 @@ export default function EditForm({ showModal, toggleModal, emp_id, page }) {
     }
 
     const handleRender = async (id, page) => {
-        console.log(id, page)
-        const response = await dispatch(SEARCH_EMPLOYEE({ ID: id })).unwrap();
-        if (response) {
-            employee_id.current.value = response['Employee ID']
-            employee_name.current.value = response["Employee Name"];
-            employee_email.current.value = response["Employee Email"];
-            employee_designation.current.setValue(EMPLOYEE_CONTENT.designation.find(ele => ele.value === response["Designation ID"]))
-            employee_department.current.setValue(EMPLOYEE_CONTENT.department.find(ele => ele.value === response["Department ID"]))
-            employee_privation_period.current.value = response['Privation Period'];
-            employee_phone_no.current.value = response["Phone No"];
-            employee_whatsapp.current.value = response["WhatsApp"];
-            employee_linkedin.current.value = response["LinkedIn"];
-            employee_skype.current.value = response["Skype"];
-            employee_personal_email.current.value = response["Personal Email"];
-            emergency_contact_name.current.value = response["Emergency Contact Person Name"];
-            emergency_contact_number.current.value = response["Emergency Contact Person Number"];
-            permanent_address1.current.value = response["Address"];
-            permanent_address2.current.value = response["Address2"];
-            permanent_pincode.current.value = response["Pin"];
-            permanent_city.current.value = response["City ID"];
-            permanent_country.current.setValue(EMPLOYEE_CONTENT.country.find(ele => ele.value === response["Country ID"]));
-            permanent_state.current.setValue(EMPLOYEE_CONTENT.state.find(ele => ele.value === response["State ID"]));
-            personal_address1.current.value = response["PE Address"];
-            personal_address2.current.value = response["PE Address2"];
-            personal_pincode.current.value = response["PE Pin"];
-            personal_city.current.value = response["PE City ID"];
-            personal_country.current.setValue(EMPLOYEE_CONTENT.country.find(ele => ele.value === response["PE Country ID"]));
-            personal_state.current.setValue(EMPLOYEE_CONTENT.state.find(ele => ele.value === response["PE State ID"]));
-            employee_gender.current.setValue(EMPLOYEE_CONTENT.gender.find(ele => ele.value === response["Gender"]));
-            employee_marital_status.current.setValue(EMPLOYEE_CONTENT.marital_status.find(ele => ele.value === response["Marital Status"]));
-            employee_reporting_manager.current.setValue(COMPANY_STATE.employee_list.find(ele => ele.ref === response["Reporting To ID"]));
-            emergency_contact_relation.current.setValue(EMPLOYEE_CONTENT.relations.find(ele => ele.value === response["Emergency Contact Person Relation"]));
+        try {
+
+            console.log(id, page)
+            const response = await dispatch(SEARCH_EMPLOYEE({ ID: id })).unwrap();
+            if (response) {
+                employee_id.current.value = response['Employee ID']
+                employee_name.current.value = response["Employee Name"];
+                employee_email.current.value = response["Employee Email"];
+                employee_designation.current.setValue(EMPLOYEE_CONTENT.designation.find(ele => ele.value === response["Designation ID"]))
+                employee_department.current.setValue(EMPLOYEE_CONTENT.department.find(ele => ele.value === response["Department ID"]))
+                employee_privation_period.current.value = response['Privation Period'];
+                employee_phone_no.current.value = response["Phone No"];
+                employee_whatsapp.current.value = response["WhatsApp"];
+                employee_linkedin.current.value = response["LinkedIn"];
+                employee_skype.current.value = response["Skype"];
+                employee_personal_email.current.value = response["Personal Email"];
+                emergency_contact_name.current.value = response["Emergency Contact Person Name"];
+                emergency_contact_number.current.value = response["Emergency Contact Person Number"];
+                permanent_address1.current.value = response["Address"];
+                permanent_address2.current.value = response["Address2"];
+                permanent_pincode.current.value = response["Pin"];
+                permanent_city.current.value = response["City ID"];
+                permanent_country.current.setValue(EMPLOYEE_CONTENT.country.find(ele => ele.value === response["Country ID"]));
+                permanent_state.current.setValue(EMPLOYEE_CONTENT.state.find(ele => ele.value === response["State ID"]));
+                personal_address1.current.value = response["PE Address"];
+                personal_address2.current.value = response["PE Address2"];
+                personal_pincode.current.value = response["PE Pin"];
+                personal_city.current.value = response["PE City ID"];
+                personal_country.current.setValue(EMPLOYEE_CONTENT.country.find(ele => ele.value === response["PE Country ID"]));
+                personal_state.current.setValue(EMPLOYEE_CONTENT.state.find(ele => ele.value === response["PE State ID"]));
+                employee_gender.current.setValue(EMPLOYEE_CONTENT.gender.find(ele => ele.value === response["Gender"]));
+                employee_marital_status.current.setValue(EMPLOYEE_CONTENT.marital_status.find(ele => ele.value === response["Marital Status"]));
+                employee_reporting_manager.current.setValue(COMPANY_STATE.employee_list.find(ele => ele.ref === response["Reporting To ID"]));
+                emergency_contact_relation.current.setValue(EMPLOYEE_CONTENT.relations.find(ele => ele.value === response["Emergency Contact Person Relation"]));
+            }
+        }
+        catch (err) {
+            console.log("Error Happended in Edit Employee")
         }
     }
     const handleSubmit = async (e) => {
