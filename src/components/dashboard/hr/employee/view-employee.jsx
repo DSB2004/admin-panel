@@ -4,20 +4,21 @@ import Button from "../../../../layouts/form/button";
 
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-const ViewForm = ({ showModal, DISPATCH, emp_id }) => {
+const ViewForm = ({ showModal, dispatch, id, page }) => {
+    
     const [EMPLOYEE_DETAIL, SET_DETAIL] = useState();
 
     const EMPLOYEE_STATE = useSelector(state => state.Employee);
 
     useEffect(() => {
-        if (emp_id) {
-            const details = EMPLOYEE_STATE.search_content.filter(ele => ele['Auto Employee ID'] === emp_id);
+        if (id && page && showModal) {
+            const details = EMPLOYEE_STATE.content[page]
             if (details && details.length > 0) {
-                SET_DETAIL(details[0]);
+                SET_DETAIL(details.find(ele => ele["Auto Employee ID"] === id));
 
             }
         }
-    }, [emp_id])
+    }, [id, page])
 
 
     return (
@@ -38,7 +39,7 @@ const ViewForm = ({ showModal, DISPATCH, emp_id }) => {
                         <button
                             type="button"
                             className="btn btn-tool visible"
-                            onClick={() => DISPATCH({ type: "CLOSE" })}
+                            onClick={() => dispatch({ type: "CLOSE" })}
                             fdprocessedid="kxhf0x"
                         >
                             <i className="fas fa-times" />

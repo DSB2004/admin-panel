@@ -1099,5 +1099,32 @@
             "value": 7369,
             "label": "Retired"
         }
+    ],
+    "search_key": [
+        {
+            "label": "User Role",
+            "key": "role",
+            "placeholder": "Enter the user role ..."
+        },
+        {
+            "label": "Email",
+            "key": "email",
+            "placeholder": "Enter employee full email ..."
+        },
+        {
+            "label": "Name",
+            "key": "emp_name",
+            "placeholder": "Enter name of the employee ..."
+        },
+        {
+            "label": "Reporting To",
+            "key": "reporting_to",
+            "placeholder": "Enter the Reporting To name ..."
+        },
+        {
+            "label": "Status",
+            "key": "status",
+            "placeholder": "Enter employee status ..."
+        }
     ]
 }

@@ -5,12 +5,12 @@ import Button from '../../../../layouts/form/button';
 import Checkbox from '../../../../layouts/form/check-box';
 import Dialog from '@mui/material/Dialog';
 import EMPLOYEE_CONTENT from '../../../../assets/employee.json';
-import { SEARCH_EMPLOYEE, EDIT_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
+import { GET_EMPLOYEE_PROFILE, EDIT_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
 import GetCredentials from "../../../../utils/get_credentials.util"
 import { RiLoader2Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
-export default function EditForm({ showModal, toggleModal, emp_id, page }) {
-    const dispatch = useDispatch();
+export default function EditForm({ showModal, dispatch, id, page, getData }) {
+    const DISPATCH_REDUX = useDispatch();
     const [alertMsg, update_msg] = useState('');
     const [disableInput, toggleDisable] = useState();
 
@@ -76,9 +76,8 @@ export default function EditForm({ showModal, toggleModal, emp_id, page }) {
 
     const handleRender = async (id, page) => {
         try {
-
             console.log(id, page)
-            const response = await dispatch(SEARCH_EMPLOYEE({ ID: id })).unwrap();
+            const response = await DISPATCH_REDUX(GET_EMPLOYEE_PROFILE({ ID: id })).unwrap();
             if (response) {
                 employee_id.current.value = response['Employee ID']
                 employee_name.current.value = response["Employee Name"];
@@ -120,7 +119,7 @@ export default function EditForm({ showModal, toggleModal, emp_id, page }) {
             e.preventDefault();
             update_msg(<RiLoader2Fill className='loader' />)
             const EMPLOYEE_DETAILS = {
-                auto_emp_id: emp_id,
+                auto_emp_id: id,
                 page: page,
                 id: employee_id.current.value,
                 name: employee_name.current.value,
@@ -155,8 +154,9 @@ export default function EditForm({ showModal, toggleModal, emp_id, page }) {
                 reporting_to: employee_reporting_manager.current.getValue()[0].ref,
                 reporting_to_name: employee_reporting_manager.current.getValue()[0].label,
             };
-            await dispatch(EDIT_EMPLOYEE(EMPLOYEE_DETAILS)).unwrap()
-            toggleModal()
+            await DISPATCH_REDUX(EDIT_EMPLOYEE(EMPLOYEE_DETAILS)).unwrap()
+            dispatch({ type: "CLOSE", id: null })
+            getData();
 
         }
         catch (err) {
@@ -166,10 +166,10 @@ export default function EditForm({ showModal, toggleModal, emp_id, page }) {
     }
 
     useInsertionEffect(() => {
-        if (emp_id && page) {
-            handleRender(emp_id, page);
+        if (id && page && showModal) {
+            handleRender(id, page);
         }
-    }, [emp_id, page])
+    }, [id, page])
 
     return (
         <Dialog
@@ -189,7 +189,7 @@ export default function EditForm({ showModal, toggleModal, emp_id, page }) {
                         <button
                             type="button"
                             className="btn btn-tool visible"
-                            onClick={() => toggleModal()}
+                            onClick={() => dispatch({ type: "CLOSE", id: null })}
                             fdprocessedid="kxhf0x"
                         >
                             <i className="fas fa-times" />

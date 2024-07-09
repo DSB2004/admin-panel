@@ -10,7 +10,7 @@ import EditForm from './edit-form'
 import Pagenation from '../../../layouts/table/pagenation'
 import { useSelector } from 'react-redux'
 import ViewForm from './view-task'
-import { VIEW_TASK } from '../../../provider/reducers/task.reducer'
+import { GET_TASKS } from '../../../provider/reducers/task.reducer'
 import { useDispatch } from 'react-redux'
 export default function TASK() {
 
@@ -30,7 +30,7 @@ export default function TASK() {
   };
 
 
-  const DISPATCH_ACTION = useDispatch();
+  const DISPATCH_REDUX = useDispatch();
 
   const TASK_STATE = useSelector(state => state.Task);
 
@@ -44,35 +44,31 @@ export default function TASK() {
 
   const [PAGE, SET_PAGE] = useState(1);
   const [STATE, DISPATCH] = useReducer(reducer, { id: null, type: null });
-  const SearchID = useRef();
   const [loading, set_loading] = useState(false);
   const [CONTENT, SET_CONTENT] = useState(TASK_STATE.content);
 
 
 
-  const handlePageChange = async (PAGE) => {
-    if (PAGE) {
-      set_loading(true);
-      const CACHE_DATA = TASK_STATE.content.find(ele => ele.page === PAGE);
-      if (!CACHE_DATA) {
-        console.log('API called');
-        try {
-          const res = await DISPATCH_ACTION(VIEW_TASK({ PAGE })).unwrap();
-          const { data } = res;
-          SET_CONTENT(data);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      } else {
-        SET_CONTENT(CACHE_DATA.data);
-      }
+  const handleContentRender = async () => {
+    //  to call data from backend 
+    set_loading(true);
+    try {
+      const res = await DISPATCH_REDUX(GET_TASKS({ PAGE })).unwrap();
+      const { data } = res;
+      SET_CONTENT(data);
+    }
+    catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
       set_loading(false);
     }
-  };
+  }
+
+
 
   useEffect(() => {
-    handlePageChange(PAGE)
-  }, [PAGE, TASK_STATE.content]);
+    handleContentRender()
+  }, [PAGE]);
 
 
   return (
@@ -80,26 +76,36 @@ export default function TASK() {
 
       {
         STATE.type === "ADD" ? <>
-          <CreateForm showModal={STATE.type === "ADD"} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
+          <CreateForm
+            showModal={STATE.type === "ADD"}
+            dispatch={DISPATCH}
+            getData={handleContentRender}
+          />
         </> : <></>
       }
       {
         STATE.type === "VIEW" ? <>
-          <ViewForm showModal={STATE.type === "VIEW"} DISPATCH={DISPATCH} task_id={STATE.id} />
+          <ViewForm showModal={STATE.type === "VIEW"}
+            dispatch={DISPATCH}
+            id={STATE.id}
+            page={PAGE} />
         </> : <></>
       }
-      {
+      {/* {
         STATE.type === "EDIT" ? <>
           <EditForm showModal={STATE.type === "EDIT"} task_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
         </> : <></>
-      }
+      } */}
       {/* HEADER */}
 
       < section className="content-header" >
         <div className="container-fluid">
           <div className="row mb-2">
             <div className="col-sm-6">
-              <SearchBar placeholder="Search by Task ID" />
+              <SearchBar
+                dropdownOption={[]}
+                handleSearch={() => console.log("Searching")}
+              />
             </div>
             <div className="col-sm-6">
               <ol className="breadcrumb float-sm-right">

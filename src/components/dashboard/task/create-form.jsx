@@ -9,7 +9,8 @@ import { Dialog } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { CREATE_TASK } from '../../../provider/reducers/task.reducer'
 import { RiLoader2Fill } from "react-icons/ri";
-export default function CreateForm({ showModal, toggleModal }) {
+export default function CreateForm({ showModal, dispatch, getData }) {
+
     const [alertMsg, update_msg] = useState('');
     const description = useRef();
     const title = useRef();
@@ -19,9 +20,11 @@ export default function CreateForm({ showModal, toggleModal }) {
     const priority = useRef();
     const assignto = useRef();
     const assignby = useRef();
-    const dispatch = useDispatch();
+    const DISPATCH_REDUX = useDispatch();
+
     const COMPANY_STATE = useSelector(state => state.Company)
-    // console.log)
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         update_msg(<RiLoader2Fill className='loader' />)
@@ -36,11 +39,11 @@ export default function CreateForm({ showModal, toggleModal }) {
                 "Priority": priority.current.getValue()[0].value,
                 "Assigned_By_Employee_id": assignby.current.getValue()[0].value,
                 "Assigned_To_Employee_id": assignto.current.getValue().map(element => element.value),
-                "Assigned_By_Name": assignby.current.getValue()[0].label
             }
-            const res = await dispatch(CREATE_TASK(task_data)).unwrap();
+            const res = await DISPATCH_REDUX(CREATE_TASK(task_data)).unwrap();
             if (res) {
-                toggleModal()
+                dispatch({ type: "CLOSE" });
+                getData()
             }
         } catch (err) {
             update_msg(err.message)
@@ -66,7 +69,7 @@ export default function CreateForm({ showModal, toggleModal }) {
                         <button
                             type="button"
                             className="btn btn-tool visible"
-                            onClick={() => toggleModal()}
+                            onClick={() => dispatch({ type: "CLOSE" })}
                             fdprocessedid="kxhf0x"
                         >
                             <i className="fas fa-times" />

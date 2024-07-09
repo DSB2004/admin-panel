@@ -10,8 +10,11 @@ import GetCredentials from "../../../../utils/get_credentials.util"
 import { CREATE_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
 import { RiLoader2Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
-export default function CreateForm({ showModal, toggleModal }) {
-    const dispatch = useDispatch();
+
+export default function CreateForm({ showModal, dispatch, getData }) {
+
+    const DISPATCH_REDUX = useDispatch();
+
     const [alertMsg, update_msg] = useState('');
     const [disableInput, toggleDisable] = useState();
     // for office use
@@ -53,6 +56,8 @@ export default function CreateForm({ showModal, toggleModal }) {
 
 
     const COMPANY_STATE = useSelector(state => state.Company)
+
+
     const handleToggle = (e) => {
         if (e.target.checked) {
             toggleDisable(e.target.checked)
@@ -129,7 +134,7 @@ export default function CreateForm({ showModal, toggleModal }) {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
-            update_msg(<RiLoader2Fill className='loader' />)
+            update_msg(<RiLoader2Fill className='loader' />);
             const EMPLOYEE_DETAILS = {
                 name: employee_name.current.value,
                 email: employee_email.current.value,
@@ -164,9 +169,10 @@ export default function CreateForm({ showModal, toggleModal }) {
                 reporting_to: employee_reporting_manager.current.getValue()[0].ref,
                 reporting_to_name: employee_reporting_manager.current.getValue()[0].label,
             };
-            const res = await dispatch(CREATE_EMPLOYEE(EMPLOYEE_DETAILS)).unwrap();
+            const res = await DISPATCH_REDUX(CREATE_EMPLOYEE(EMPLOYEE_DETAILS)).unwrap();
             if (res) {
-                toggleModal()
+                dispatch({ type: "CLOSE", id: null });
+                getData();
             }
         }
         catch (err) {
@@ -193,7 +199,7 @@ export default function CreateForm({ showModal, toggleModal }) {
                         <button
                             type="button"
                             className="btn btn-tool visible"
-                            onClick={() => toggleModal()}
+                            onClick={() => dispatch({ type: "CLOSE", id: null })}
                             fdprocessedid="kxhf0x"
                         >
                             <i className="fas fa-times" />

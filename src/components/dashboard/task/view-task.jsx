@@ -6,23 +6,20 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 // import Task from '../../../assets/task.json'
-const ViewForm = ({ showModal, DISPATCH, task_id }) => {
+const ViewForm = ({ showModal, dispatch, id, page }) => {
 
     const [TASK_DETAIL, SET_DETAIL] = useState();
 
     const TASK_STATE = useSelector(state => state.Task);
     useEffect(() => {
-        if (task_id) {
-            console.log(TASK_STATE.search_content)
-
-            const details = TASK_STATE.search_content.filter(ele => ele['Task_Id'] === task_id);
+        if (id && page) {
+            const details = TASK_STATE.content[page];
             if (details && details.length > 0) {
                 console.log("Found");
-                SET_DETAIL(details[0])
-
+                SET_DETAIL(details.find(ele => ele["Task_Id"] === id));
             }
         }
-    }, [task_id])
+    }, [id, page])
 
 
 
@@ -44,7 +41,7 @@ const ViewForm = ({ showModal, DISPATCH, task_id }) => {
                         <button
                             type="button"
                             className="btn btn-tool visible"
-                            onClick={() => DISPATCH({ type: "CLOSE" })}
+                            onClick={() => dispatch({ type: "CLOSE" })}
                             fdprocessedid="kxhf0x"
                         >
                             <i className="fas fa-times" />

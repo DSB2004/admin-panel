@@ -27,7 +27,9 @@ const Dropdown = forwardRef(({ label, name, options = [], disable, value }, ref)
             <Select
                 menuPosition="fixed"
                 menuPlacement="auto"
-                name={name} options={options} styles={customStyles} value={value} ref={ref} isDisabled={disable} />
+                name={name} 
+                options={options}
+                 styles={customStyles} value={value} ref={ref} isDisabled={disable} />
         </>
     )
 })

@@ -3,7 +3,7 @@ import React, { useState, useReducer, useEffect, useRef } from 'react';
 // utils
 
 import { useSelector, useDispatch } from 'react-redux';
-import { VIEW_EMPLOYEES, SEARCH_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
+import { GET_EMPLOYEES } from '../../../../provider/reducers/employee.reducer';
 
 // icons
 import { RiLoader2Fill } from "react-icons/ri";
@@ -26,6 +26,10 @@ import Suspended from './mark-as-suspended';
 
 
 export default function EMPLOYEE() {
+    const DISPATCH_REDUX = useDispatch();
+
+
+    //  to handle modal render 
     const reducer = (state, action) => {
         const { type, id } = action;
         if (type === "VIEW") {
@@ -36,85 +40,106 @@ export default function EMPLOYEE() {
             return { id: id, type: "EDIT" };
         } else if (type === "STATUS") {
             return { id: id, type: "STATUS" };
-        } else if (type === "CLOSE") {
+        }
+        else if (type === "CLOSE") {
             return { id: null, type: "CLOSE" };
         }
         return state;
     };
-
-    const EMPLOYEE_STATE = useSelector((state) => state.Employee);
     const [STATE, DISPATCH] = useReducer(reducer, { id: null, type: null });
-    const [PAGE, SET_PAGE] = useState(1);
-    const [CONTENT, SET_CONTENT] = useState([])
-    const SearchID = useRef();
 
+    // redux state
+    const EMPLOYEE_STATE = useSelector((state) => state.Employee);
+
+    //  managing page counter
+    const [PAGE, SET_PAGE] = useState(1);
+
+    // managing content on page
+    const [CONTENT, SET_CONTENT] = useState([]);
+
+    //  managing loading state 
     const [loading, set_loading] = useState(false);
 
+    // managing search content
+    const [searchBody, setSearchBody] = useState();
+
+
+    //  for action button
     const ACTION_LIST = (ID) => [
         { content: "View", onClick: () => DISPATCH({ type: "VIEW", id: ID }) },
         { content: "Edit", onClick: () => DISPATCH({ type: "EDIT", id: ID }) },
         { content: "Mark As Suspended", onClick: () => DISPATCH({ type: "STATUS", id: ID }) },
     ];
 
-    const DISPATCH_ACTION = useDispatch();
 
 
 
-    const HandleSearch = async () => {
-        // set_loading(true);
-        // if (SearchID.current.value && SearchID.current.value != "") {
-        //     const res = await DISPATCH_ACTION(SEARCH_EMPLOYEE({ ID: SearchID.current.value })).unwrap();
-        //     SET_CONTENT(res)
-        // }
-        // set_loading(false)
+    const handleContentRender = async (content) => {
+        // content: { page:number,searchType:string||undefined,searchVal:string||undefined}
+        set_loading(true);
+        try {
+            const res = await DISPATCH_REDUX(GET_EMPLOYEES(content)).unwrap();
+            const { data } = res;
+            SET_CONTENT(data);
+        }
+        catch (error) {
+            console.error('Error fetching data:', error);
+        } finally {
+            set_loading(false);
+        }
     }
 
 
-    const handlePageChange = async (PAGE) => {
-        if (PAGE) {
-            set_loading(true);
-            const CACHE_DATA = EMPLOYEE_STATE.content.find(ele => ele.page === PAGE);
-            if (!CACHE_DATA) {
-                console.log('API called');
-                try {
-                    const res = await DISPATCH_ACTION(VIEW_EMPLOYEES({ PAGE })).unwrap();
-                    const { data } = res;
-                    SET_CONTENT(data);
-                } catch (error) {
-                    console.error('Error fetching data:', error);
-                }
-            } else {
-                SET_CONTENT(CACHE_DATA.data);
-            }
-            set_loading(false);
-        }
-    };
+    const handleSearch = (searchBody) => {
+        setSearchBody(searchBody);
+    }
 
     useEffect(() => {
-        handlePageChange(PAGE)
-    }, [PAGE, EMPLOYEE_STATE.content]);
+        handleContentRender({ page: PAGE, body: searchBody })
+    }, [PAGE, searchBody]);
+
+
+
+
 
 
     return (
         <>
             {
                 STATE.type === "ADD" ? <>
-                    <CreateForm showModal={STATE.type === "ADD"} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
+                    <CreateForm
+                        showModal={STATE.type === "ADD"}
+                        getData={handleContentRender}
+                        dispatch={DISPATCH} />
                 </> : <></>
             }
             {
                 STATE.type === "EDIT" ? <>
-                    <EditForm showModal={STATE.type === "EDIT"} page={PAGE} emp_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
+                    <EditForm
+                        showModal={STATE.type === "EDIT"}
+                        getData={handleContentRender}
+                        id={STATE.id}
+                        page={PAGE}
+                        dispatch={DISPATCH} />
                 </> : <></>
             }
             {
                 STATE.type === "VIEW" ? <>
-                    <ViewForm showModal={STATE.type === 'VIEW'} emp_id={STATE.id} DISPATCH={DISPATCH} ></ViewForm>
+                    <ViewForm
+                        showModal={STATE.type === 'VIEW'}
+                        page={PAGE}
+                        id={STATE.id}
+                        dispatch={DISPATCH} />
                 </> : <></>
             }
             {
                 STATE.type === "STATUS" ? <>
-                    <Suspended showModal={STATE.type === 'STATUS'} page={PAGE} emp_id={STATE.id} toggleModal={() => DISPATCH({ type: "CLOSE" })} />
+                    <Suspended
+                        showModal={STATE.type === 'STATUS'}
+                        getData={handleContentRender}
+                        id={STATE.id}
+                        dispatch={DISPATCH}
+                        page={PAGE} />
                 </> : <></>
             }
             {/* HEADER */}
@@ -123,7 +148,10 @@ export default function EMPLOYEE() {
                 <div className="container-fluid">
                     <div className="row mb-2">
                         <div className="col-sm-6">
-                            <SearchBar placeholder="Search by Employee ID" SearchFunction={HandleSearch} ref={SearchID} />
+                            <SearchBar placeholder="Search by Employee ID"
+                                handleSearch={handleSearch}
+                                dropdownOption={Employee.search_key}
+                            />
                         </div>
 
                         <div className="col-sm-6">

@@ -5,20 +5,22 @@ import Button from '../../../../layouts/form/button'
 import { RiLoader2Fill } from "react-icons/ri";
 import { SUSPEND_EMPLOYEE } from '../../../../provider/reducers/employee.reducer';
 import EMPLOYEE from "../../../../assets/employee.json"
-export default function Suspended({ showModal, toggleModal, emp_id, page }) {
+export default function Suspended({ showModal, dispatch, id, page, getData }) {
     const [alertMsg, update_msg] = useState('');
     const [EMPLOYEE_DETAIL, SET_DETAIL] = useState();
     const EMPLOYEE_STATE = useSelector(state => state.Employee);
-    const dispatch = useDispatch()
+
+    const DISPATCH_REDUX = useDispatch()
+
     useEffect(() => {
-        if (emp_id && page) {
-            const details = EMPLOYEE_STATE.search_content.filter(ele => ele['Auto Employee ID'] === emp_id);
+        if (id && page && showModal) {
+            const details = EMPLOYEE_STATE.content[page]
             if (details && details.length > 0) {
-                SET_DETAIL(details[0]);
+                SET_DETAIL(details.find(ele => ele["Auto Employee ID"] === id));
 
             }
         }
-    }, [emp_id, page])
+    }, [id, page])
 
     const suspendEmployee = async () => {
         try {
@@ -26,17 +28,17 @@ export default function Suspended({ showModal, toggleModal, emp_id, page }) {
             update_msg(<RiLoader2Fill className='loader' />)
             const data = {
                 page: page,
-                auto_emp_id: emp_id,
+                auto_emp_id: id,
                 status: EMPLOYEE.status.find(ele => ele.label === "Suspended").value
             }
-            console.log(data)
-            const res = await dispatch(SUSPEND_EMPLOYEE(data)).unwrap();
+            const res = await DISPATCH_REDUX(SUSPEND_EMPLOYEE(data)).unwrap();
             if (res) {
-                toggleModal();
+                dispatch({ type: "CLOSE", id: null });
+                getData()
             }
         } catch (err) {
-            console.log(err)
-            // update_msg(err.message);
+            // console.log(err)
+            update_msg(err.message);
         }
     }
     return (
@@ -59,7 +61,7 @@ export default function Suspended({ showModal, toggleModal, emp_id, page }) {
                             <button
                                 type="button"
                                 className="btn btn-tool visible"
-                                onClick={() => toggleModal()}
+                                onClick={() => dispatch({ type: "CLOSE", id: null })}
                                 fdprocessedid="kxhf0x"
                             >
                                 <i className="fas fa-times" />
@@ -86,8 +88,8 @@ export default function Suspended({ showModal, toggleModal, emp_id, page }) {
                         </div>
 
 
-                        <Button text="Suspend Employee" className="btn-sm btn-danger" onClick={() => suspendEmployee()} />
-                        <Button text="Cancel" className="btn-sm  margin-top-10" onClick={() => toggleModal()} />
+                        <Button text="Suspend Employee" className="btn btn-danger" onClick={() => suspendEmployee()} />
+                        <Button text="Cancel" className="btn margin-top-10" onClick={() => dispatch({ type: "CLOSE", id: null })} />
 
                     </div>
                     <p className='alert-message'>{alertMsg}</p>
