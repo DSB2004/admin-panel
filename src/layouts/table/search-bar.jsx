@@ -1,54 +1,80 @@
-import React, { forwardRef, useEffect, useState } from 'react'
-import { EmployeeSearchSuggestion } from '../../utils/employee-auto-suggestion';
-
+import React, { useEffect, useState } from 'react'
+import "../../style/suggestion.css"
 const SearchBar = ({
     dropdownOption,
-    handleSearch
+    handleSearch,
+    suggesstionFunction
 }) => {
 
 
-    const [searchType, setSearchType] = useState({
-        "label": "None",
-        "placeholder": "First select a type for search ..."
-    },);
+    // the search val should be a string or number always as it is use to pass the required value from the auto suggestion 
+
     const [searchVal, setSearchVal] = useState("");
+
+    // this input val is used for getting data from input bar of search
+
+    const [inputVal, updateInputVal] = useState("");
+    // use to set all the possible suggesstion given by the auto suggestion function
     const [possible, setPossible] = useState([]);
 
 
-    const handleChange = async () => {
-        const result = await EmployeeSearchSuggestion({ type: searchType?.key, val: searchVal?.label });
-        setPossible(result)
-    }
-
-
-
-    useEffect(() => {
-        if (searchType.key === undefined) {
-            setPossible([])
-            setSearchVal()
+    //  default case
+    //  use to set the cases for auto suggestion to provide output 
+    // always followes this object structure for searching 
+    //  for reference (/assets/employee.json) check the search_key object 
+    const [searchType, setSearchType] = useState(
+        {
+            "label": "All",
+            "key": "all",
+            "placeholder": "Showing all results ..."
         }
-        const Event = setTimeout(() => {
-            if (searchVal?.label !== "" && searchType?.key !== undefined) {
-                handleChange()
-            }
-        }, 500)
-        return () => clearTimeout(Event);
-    }
-        , [searchVal, searchType])
+    );
 
 
-
+    //  use to call the search function from parent
+    //  component to make the search api call
     const makeSearch = () => {
+        setPossible([])
         if (handleSearch) {
-            if (searchType?.key && searchVal?.value) {
-                setPossible([])
-                handleSearch({ key: searchType?.key, value: searchVal?.value });
+            if (searchType?.key === 'all') {
+                handleSearch({});
+            }
+            else if (searchType?.key && searchVal !== '') {
+                handleSearch({ key: searchType?.key, value: searchVal });
             }
             else {
                 console.log("Provide search key")
             }
         }
     };
+
+
+    //  use to call the auto suggestion function
+    // always keep this async as the 
+    // suggesstion function might have to call an backend api for data
+    const handleChange = async (type, value) => {
+        if (typeof (suggesstionFunction) === 'function') {
+            const result = await suggesstionFunction({ type, value });
+            setPossible(result)
+        }
+    }
+
+
+    //  handle change event for searchType  and searchVal 
+    // implement a throttling effect to reduce the suggestion overhead
+
+    useEffect(() => {
+        if (searchType.key === undefined || searchType.key === 'all') {
+            setPossible([])
+            updateInputVal("")
+        }
+        const Event = setTimeout(() => {
+
+            handleChange(searchType?.key, inputVal);
+        }, 500)
+        return () => clearTimeout(Event);
+    }
+        , [inputVal, searchType])
 
 
 
@@ -60,8 +86,8 @@ const SearchBar = ({
                     </button>
                     <div className="dropdown-menu" style={{}}>
                         {
-                            dropdownOption?.map(ele =>
-                                <div className="dropdown-item" href="#"
+                            dropdownOption?.map((ele, index) =>
+                                <div className="dropdown-item" key={'search-bar' + index} href="#"
                                     onClick={() => setSearchType(ele)}
                                 >{ele.label}</div>
                             )
@@ -69,35 +95,40 @@ const SearchBar = ({
                     </div>
                 </div>
 
+
                 <input
-                    disabled={searchType.key === undefined}
+                    disabled={searchType.key === "all"}
                     type="text"
-                    onChange={(e) => setSearchVal({ label: e.target.value, value: e.target.value })}
+                    onChange={(e) => updateInputVal(e.target.value)}
                     placeholder={searchType?.placeholder}
                     className="form-control"
-                    value={searchVal?.label}
+                    value={inputVal}
                     fdprocessedid="99y5lc"
                 />
 
 
                 <span className="input-group-append">
-                    <button type="button" onClick={() => { makeSearch() }} className="btn btn-primary" fdprocessedid="aw1205">Search</button>
+                    <button type="button"
+                        // disabled={ }
+                        onClick={() => {
+                            makeSearch()
+                        }} className="btn btn-primary" fdprocessedid="aw1205">Search</button>
                 </span>
 
                 <div className='suggestion'>
                     {
-                        possible.map(ele => <div
+                        possible.map((ele, index) => <div
+                            key={"suggestion-key-" + index}
                             className="suggestion-div"
                             onClick={() => {
-                                setSearchVal(ele)
-                                setPossible([ele])
+                                setSearchVal(ele.value)
+                                updateInputVal(ele.label)
                             }
                             }
                         >{ele.label}</div>)
                     }
-
-
                 </div>
+
             </div>
 
             <div className='margin-10-0'></div>

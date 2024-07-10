@@ -69,7 +69,7 @@ export default function TASK() {
                 <div className="container-fluid">
                     <div className="row mb-2">
                         <div className="col-sm-6">
-                            <SearchBar placeholder="Search by Campaign ID" SearchFunction={() => console.log('hello')} />
+                            {/* <SearchBar placeholder="Search by Campaign ID" SearchFunction={() => console.log('hello')} /> */}
                         </div>
 
                         <div className="col-sm-6">

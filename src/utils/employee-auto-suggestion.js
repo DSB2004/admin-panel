@@ -3,34 +3,28 @@ import Store from "../provider/store";
 
 export const EmployeeSearchSuggestion = async (content) => {
     const result = [];
+    const normalize = (str) => str?.toLowerCase();
+    const isSubstring = (label, val) => normalize(label).includes(normalize(val));
 
-    if (content.val && content.type) {
-        const normalize = (str) => str.toLowerCase();
-
-        const isSubstring = (label, val) => {
-            const normalizedLabel = normalize(label);
-            const normalizedVal = normalize(val);
-            return normalizedLabel.includes(normalizedVal);
-        };
-
-        if (content?.type === 'role') {
+    if (content && content.type) {
+        if (content.type === 'role') {
             Employee.designation.forEach(ele => {
-                if (isSubstring(ele.label, content.val)) {
+                if (content.value === "" || isSubstring(ele.label, content.value)) {
                     result.push({ label: ele.label, value: ele.value });
                 }
             });
-        } else if (content?.type === 'status') {
+        } else if (content.type === 'status') {
             Employee.status.forEach(ele => {
-                if (isSubstring(ele.label, content.val)) {
+                if (content.value === "" || isSubstring(ele.label, content.value)) {
                     result.push({ label: ele.label, value: ele.value });
                 }
             });
-        }
-        else if (content?.type === 'emp_name' || content?.type === 'reporting_to') {
+        } else if (content.type === 'reporting_to' || content.type === 'emp_name') {
             const employeeList = Store.getState().Company.employee_list;
             employeeList.forEach(ele => {
-                if (isSubstring(ele.label, content.val)) {
-                    result.push({ label: ele.label, value: ele.label });
+                if (content.value === "" || isSubstring(ele.label, content.value)) {
+                    const value = content.type === 'reporting_to' ? ele.ref : ele.label;
+                    result.push({ label: ele.label, value });
                 }
             });
         }

@@ -1102,6 +1102,11 @@
     ],
     "search_key": [
         {
+            "label": "All",
+            "key": "all",
+            "placeholder": "Showing all results ..."
+        },
+        {
             "label": "User Role",
             "key": "role",
             "placeholder": "Enter the user role ..."

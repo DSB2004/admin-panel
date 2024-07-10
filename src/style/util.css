@@ -1,0 +1,33 @@
+/* any util classes used in project */
+
+.overflow-content {
+    overflow-y: auto;
+    height: 80vh;
+    ;
+}
+
+.overflow-hidden {
+    overflow-x: hidden;
+}
+
+
+.relative {
+    position: relative;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+
+.alert-message {
+    width: 100%;
+    text-align: center;
+    height: 20px;
+}
+
+.display-center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

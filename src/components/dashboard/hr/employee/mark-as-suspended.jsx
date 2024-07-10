@@ -37,7 +37,6 @@ export default function Suspended({ showModal, dispatch, id, page, getData }) {
                 getData()
             }
         } catch (err) {
-            // console.log(err)
             update_msg(err.message);
         }
     }

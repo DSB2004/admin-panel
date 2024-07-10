@@ -1,0 +1,38 @@
+/*  for loading screen and loading form icon */
+
+
+.full-screeb-loader {
+    height: 100vh;
+    position: relative;
+}
+
+
+.content-loader-wrapper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.loader {
+    animation: spin 1s linear infinite;
+}
+
+
+
+.content-loader {
+    position: absolute;
+    font-size: 70px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}

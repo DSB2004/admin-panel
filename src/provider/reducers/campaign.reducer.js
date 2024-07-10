@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import DATA from "../../assets/test.json";
+import DATA from "../../assets/campaign.json"
 
 const Campaign = createSlice({
     name: "campaign",

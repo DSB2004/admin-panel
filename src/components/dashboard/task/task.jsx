@@ -146,7 +146,8 @@ export default function TASK() {
                                 </thead>
                                 <tbody>
                                   {CONTENT && CONTENT.length > 0 && CONTENT.map((element, index) => (
-                                    <tr className={index % 2 === 0 ? "even" : "odd"} key={element.emp_id}>
+
+                                    <tr className={index % 2 === 0 ? "even" : "odd"} key={`task-+${index}`}>
                                       <td className="sorting_1 dtr-control" tabIndex={0}>
                                         {element["TaskTitle"]}
                                       </td>
@@ -161,6 +162,7 @@ export default function TASK() {
                                       </td>
 
                                     </tr>
+
                                   ))}
                                 </tbody>
                               </table>

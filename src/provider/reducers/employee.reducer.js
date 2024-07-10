@@ -56,16 +56,15 @@ export const EDIT_EMPLOYEE = createAsyncThunk("edit-all-employee", async (conten
 
 
 export const GET_EMPLOYEES = createAsyncThunk("get-all-employee", async (content) => {
-    console.log("Content passed:", content)
     try {
         let res;
         const encryptedPage = await EncryptData({ page: content['page'] });
 
-        if (content['body']) {
+        if (content['body'] && content['body']['value'] !== undefined) {
             const encryptBody = await EncryptData(content['body']);
-            console.log(content, encryptBody)
             res = await EMPLOYEE_API.get(`/search?page=${encryptedPage.page}&${content['body']['key']}=${encryptBody['value']}`);
         }
+
         else {
             res = await EMPLOYEE_API.get(`/details?page=${encryptedPage.page}`);
 
@@ -75,19 +74,11 @@ export const GET_EMPLOYEES = createAsyncThunk("get-all-employee", async (content
         for (let element of PAGE_DATA) {
             element['Employee Email'] = decrypt(element['Employee Email']);
             const status = EMPLOYEE.status.find(ele => ele.value === element['Status']);
-            if (status) {
-                element['Status'] = status.label
-            }
-            else {
-                element['Status'] = "Not Found"
-            }
+            element['Status'] = status ? status.label : "Not Found"
+
             const user_role = EMPLOYEE.designation.find(ele => ele.value === element['User Role']);
-            if (user_role) {
-                element['User Role'] = user_role.label
-            }
-            else {
-                element['User Role'] = "Not Found"
-            }
+            element['User Role'] = user_role ? user_role.label : "Not Found"
+
         }
         return { count: res.data.body.user_count, data: PAGE_DATA };
     } catch (err) {
@@ -97,10 +88,13 @@ export const GET_EMPLOYEES = createAsyncThunk("get-all-employee", async (content
 });
 
 
+
+
 export const GET_EMPLOYEE_PROFILE = createAsyncThunk("get-employee-profile", async (content) => {
     try {
         const ENCRYPTED_DATA = await EncryptData(content);
         const res = await EMPLOYEE_API.get(`/single_details?id=${ENCRYPTED_DATA.ID}`);
+
         if (res.data.body.error) {
             throw new Error("Error getting employee profile")
         }

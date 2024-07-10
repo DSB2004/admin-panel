@@ -1,14 +1,15 @@
 import React, { useRef } from 'react'
 import Input from '../../../layouts/form/input'
-import TextArea from '../../../layouts/form/text-area'
 import Button from '../../../layouts/form/button'
 import Dropdown from '../../../layouts/form/dropdown'
-import MultiSelect from '../../../layouts/form/multiSelect'
+import MultiSelect from '../../../layouts/form/multi-select'
 import data from "../../../assets/test.json"
-
 import { Dialog } from '@mui/material'
 import { useSelector } from 'react-redux'
+import TextEditor from '../../../layouts/form/text-editor'
+
 export default function EditForm({ showModal, toggleModal, task_id }) {
+
     const description = useRef();
     const title = useRef();
     const start_data = useRef();
@@ -16,6 +17,7 @@ export default function EditForm({ showModal, toggleModal, task_id }) {
     const status = useRef();
     const priority = useRef();
     const assignto = useRef();
+
 
     const TASK_STATE = useSelector((state) => state.Task.content.filter(element => element.id === task_id))[0];
 
@@ -53,8 +55,7 @@ export default function EditForm({ showModal, toggleModal, task_id }) {
                 <form className="card-body" onSubmit={HandleTaskEdit}>
                     <Input label="Task ID" value={task_id} placeholder="Task ID" type="text" ref={title} disable={true} />
                     <Input label="Task Title" value={TASK_STATE && TASK_STATE.title} autoComplete={true} placeholder="Enter the task title..." type="text" ref={title} />
-                    <TextArea label="Description" value={TASK_STATE && TASK_STATE.description} placeholder="Enter the description..." rows={5} ref={description} />
-                    {/* <EditorBox /> */}
+                    <TextEditor label="Description" value={TASK_STATE && TASK_STATE.description} placeholder="Enter the description..." rows={5} ref={description} />
                     <div className="row">
                         <div className="col-md-6">
                             <Input label="Start Date" ref={start_data} placeholder="Enter the start date..." type="date" />

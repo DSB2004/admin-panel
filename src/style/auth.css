@@ -1,0 +1,24 @@
+/*  util classes for auth components */
+
+
+.auth-section {
+    height: 100vh;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-article {
+    width: 500px;
+}
+
+
+.card-sub-title {
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+
+}

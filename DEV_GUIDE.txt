@@ -1,0 +1,24 @@
+Firstly download the AdminLTE repo from their website and add the dist and plugin 
+folder in the public directory (if not present) 
+
+Project Structure
+- component : To save all the major client component 
+- layouts: To save all the re usable components (inputs,selects etc)
+- api : Saves axios object for all the api being used in Project
+- assets: Saves all the assets for testing and static data in Project
+- env : for setting environment variable used in Project
+- provider : for redux logics
+- style: saves css files 
+- util: any extra function used in projects
+- pages: all the pages beign rendered in projects
+- routes : to declare all the seperate client side routes in the project
+
+
+Additional Dependencies used apart from Admin LTE 
+
+- react-select (For DropDown Select component)
+- react-quill (might break down, not maintained any more)  (for text editor)
+- material-ui (for Modals)
+
+
+For setuping project refer the README.md

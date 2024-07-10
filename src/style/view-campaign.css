@@ -1,3 +1,5 @@
+/* for view campaign  */
+
 .view-campaign {
     display: flex;
     align-items: center;
@@ -8,11 +10,6 @@
 .option-label {
     text-align: center;
     font-size: 20px;
-}
-
-.overflow-hidden {
-    overflow: hidden;
-
 }
 
 .view-campaign-section {

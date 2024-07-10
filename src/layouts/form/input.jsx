@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react';
-import AutoSuggestion from './auto_suggestion';
-const Input = forwardRef(({ type, label, placeholder, name, autoComplete = false, disable, pattern, title, value }, ref) => {
+import "../../style/suggestion.css"
+const Input = forwardRef(({ type, label, placeholder, name, disable, pattern, title, value }, ref) => {
     const [auto_com_value, setValue] = useState("");
 
     return (
@@ -19,10 +19,6 @@ const Input = forwardRef(({ type, label, placeholder, name, autoComplete = false
                 title={title}
                 value={value}
             />
-            {autoComplete ? <>
-                <AutoSuggestion value={auto_com_value} />
-            </> : <></>
-            }
         </div >
     );
 });

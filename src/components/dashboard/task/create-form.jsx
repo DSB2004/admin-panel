@@ -3,7 +3,7 @@ import Input from '../../../layouts/form/input'
 import TextEditor from "../../../layouts/form/text-editor"
 import Button from '../../../layouts/form/button'
 import Dropdown from '../../../layouts/form/dropdown'
-import MultiSelect from '../../../layouts/form/multiSelect'
+import MultiSelect from '../../../layouts/form/multi-select'
 import Task from '../../../assets/task.json'
 import { Dialog } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,6 +20,8 @@ export default function CreateForm({ showModal, dispatch, getData }) {
     const priority = useRef();
     const assignto = useRef();
     const assignby = useRef();
+
+    const formref = useRef();
     const DISPATCH_REDUX = useDispatch();
 
     const COMPANY_STATE = useSelector(state => state.Company)

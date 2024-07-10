@@ -1,6 +1,15 @@
-import React, { useReducer, useEffect } from 'react'
+import React from 'react'
 
 export default function Pagenation({ TOTAL, CURRENT_PAGE, SET_PAGE }) {
+
+
+    // used for pagenation effect in tables 
+    //  the TOTAL is the count of total value present returned by database via api
+    // the CURRENT_PAGE is the current page visible on screen
+    //  SET_PAGE is a useState function use to change the change pages
+
+    
+
 
     const handlePreviousClick = () => {
         SET_PAGE(Math.max(1, CURRENT_PAGE - 1));

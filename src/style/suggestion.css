@@ -1,0 +1,23 @@
+/* for auto suggestion in searchbar */
+
+.suggestion {
+    position: absolute;
+    top: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    background-color: #ececec;
+    z-index: 100;
+    box-shadow: 2px 2px solid rgba(0, 0, 0, 0.267);
+}
+
+.suggestion-div {
+    padding: 8px;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.suggestion-div:hover {
+    cursor: pointer;
+    background-color: #e1e1e1;
+}

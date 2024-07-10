@@ -7,6 +7,7 @@ import CAMPAIGN_CONTENT from "../../../assets/campaign.json"
 import Comments from '../../../layouts/comments/comments';
 import Button from '../../../layouts/form/button';
 import Input from '../../../layouts/form/input'
+import parseHtml from '../../../utils/html-parser';
 import THead from '../../../layouts/table/table-header';
 
 
@@ -51,11 +52,16 @@ export default function ViewCampaign({ showModal, campaign_id, DISPATCH }) {
                         <h2 className='view-campaign-name'>{CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test['campaign name']}</h2>
                         <h6 className='view-campaign-label'>Description</h6>
                         <div className='view-campaign-label'>
-                            <TextArea
+
+                            {/*  to directly show the content in the editor in read mode  */}
+                            {/* <TextEditor
                                 style={description_style}
                                 readOnly={true}
                                 modules={{ toolbar: false }}
-                                value={CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test.description} />
+                                value={CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test.description} /> */}
+
+
+                            <div className='margin-10-0' dangerouslySetInnerHTML={{ __html: parseHtml(CAMPAIGN_CONTENT && CAMPAIGN_CONTENT.test.description) }} />
 
                         </div>
 

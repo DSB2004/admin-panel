@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect, useRef } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 
 // utils
 
@@ -23,6 +23,9 @@ import CreateForm from './create-form';
 import EditForm from './edit-form';
 import ViewForm from './view-employee';
 import Suspended from './mark-as-suspended';
+
+
+import { EmployeeSearchSuggestion } from '../../../../utils/employee-auto-suggestion';
 
 
 export default function EMPLOYEE() {
@@ -151,6 +154,7 @@ export default function EMPLOYEE() {
                             <SearchBar placeholder="Search by Employee ID"
                                 handleSearch={handleSearch}
                                 dropdownOption={Employee.search_key}
+                                suggesstionFunction={EmployeeSearchSuggestion}
                             />
                         </div>
 
@@ -186,7 +190,7 @@ export default function EMPLOYEE() {
                                                     </thead>
                                                     <tbody>
                                                         {CONTENT && CONTENT.length > 0 && CONTENT.map((element, index) => (
-                                                            <tr className={index % 2 === 0 ? "even" : "odd"} key={element.emp_id}>
+                                                            <tr className={index % 2 === 0 ? "even" : "odd"} key={`employee-` + index}>
                                                                 <td className="sorting_1 dtr-control" tabIndex={0}>
                                                                     {element["Employee ID"]}
                                                                 </td>

@@ -1,24 +1,27 @@
 import { Dialog } from "@mui/material";
-
-import Button from "../../../../layouts/form/button";
-
-import { useSelector } from "react-redux";
+import { GET_EMPLOYEE_PROFILE } from "../../../../provider/reducers/employee.reducer";
+import EMPLOYEE from "../../../../assets/employee.json"
 import { useEffect, useState } from "react";
-const ViewForm = ({ showModal, dispatch, id, page }) => {
-    
+import { useDispatch } from "react-redux";
+const ViewForm = ({ showModal, dispatch, id }) => {
+
+
     const [EMPLOYEE_DETAIL, SET_DETAIL] = useState();
+    const DISPATCH_REDUX = useDispatch();
 
-    const EMPLOYEE_STATE = useSelector(state => state.Employee);
-
+    const handleRender = async (id) => {
+        const res = await DISPATCH_REDUX(GET_EMPLOYEE_PROFILE({ ID: id })).unwrap();
+        const status = EMPLOYEE.status.find(ele => ele.value === res['Status']);
+        res['Status'] = status ? status.label : "Not Found"
+        const user_role = EMPLOYEE.designation.find(ele => ele.value === res['Designation ID']);
+        res['User Role'] = user_role ? user_role.label : "Not Found"
+        SET_DETAIL(res)
+    }
     useEffect(() => {
-        if (id && page && showModal) {
-            const details = EMPLOYEE_STATE.content[page]
-            if (details && details.length > 0) {
-                SET_DETAIL(details.find(ele => ele["Auto Employee ID"] === id));
-
-            }
+        if (id && showModal) {
+            handleRender(id)
         }
-    }, [id, page])
+    }, [id])
 
 
     return (
