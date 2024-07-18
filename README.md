@@ -17,6 +17,19 @@ The Admin Panel is a web-based application designed to streamline the management
   cd admin-panel
 ```
 
+#### Download AdminLTE repository 
+
+```bash
+  https://github.com/ColorlibHQ/AdminLTE/releases
+```
+
+#### Copy following folder from AdminLTE repo to public folder of project
+
+```bash
+  /plugin
+  /dist
+```
+
 #### Install dependencies
 
 ```bash
